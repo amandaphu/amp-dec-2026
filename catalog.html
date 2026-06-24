@@ -1,0 +1,3594 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Amanda & Mason — Wedding Decor Catalog</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=Montserrat:wght@300;400;500;600&display=swap');
+
+  :root {
+    --blush: #E8C4C4;
+    --blush-light: #F5E6E6;
+    --blush-pale: #FDF5F5;
+    --cream: #FFF8F0;
+    --soft-pink: #D4A0A0;
+    --sage: #9CAF88;
+    --sage-light: #D4DFC7;
+    --sage-pale: #EEF2E9;
+    --gold: #C4A265;
+    --gold-light: #E8D5A8;
+    --gold-pale: #F7F0E0;
+    --brown: #8B7355;
+    --tan: #C4AD8B;
+    --white: #FFFFFF;
+    --off-white: #FEFCF9;
+    --text: #3D3229;
+    --text-light: #6B5D4F;
+    --text-muted: #9B8E80;
+    --border: #E8DFD4;
+    --shadow: rgba(139, 115, 85, 0.08);
+    --shadow-hover: rgba(139, 115, 85, 0.15);
+
+    --font-display: 'Cormorant Garamond', Georgia, serif;
+    --font-body: 'Montserrat', -apple-system, BlinkMacSystemFont, sans-serif;
+    --radius: 12px;
+    --radius-sm: 8px;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  html { }
+
+  body {
+    font-family: var(--font-body);
+    font-weight: 300;
+    color: var(--text);
+    background: var(--off-white);
+    line-height: 1.7;
+    font-size: 14px;
+  }
+
+  /* ── Hero Header ── */
+  .hero {
+    text-align: center;
+    padding: 80px 24px 60px;
+    background: linear-gradient(180deg, var(--blush-pale) 0%, var(--off-white) 100%);
+    border-bottom: 1px solid var(--border);
+  }
+  .hero h1 {
+    font-family: var(--font-display);
+    font-weight: 300;
+    font-size: clamp(2.4rem, 5vw, 3.6rem);
+    color: var(--text);
+    letter-spacing: 0.04em;
+    margin-bottom: 8px;
+  }
+  .hero .subtitle {
+    font-family: var(--font-display);
+    font-weight: 300;
+    font-style: italic;
+    font-size: 1.15rem;
+    color: var(--text-light);
+    margin-bottom: 24px;
+  }
+  .hero .details {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 8px 24px;
+    font-size: 0.82rem;
+    color: var(--text-muted);
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    font-weight: 400;
+  }
+  .hero .details span::before {
+    content: '·';
+    margin-right: 24px;
+  }
+  .hero .details span:first-child::before { display: none; }
+
+  /* ── Palette Strip ── */
+  .palette-strip {
+    display: flex;
+    justify-content: center;
+    gap: 12px;
+    margin-top: 28px;
+  }
+  .palette-dot {
+    width: 28px;
+    height: 28px;
+    border-radius: 50%;
+    border: 2px solid var(--white);
+    box-shadow: 0 1px 4px var(--shadow);
+  }
+
+  /* ── Navigation ── */
+  .catalog-nav {
+    background: var(--cream);
+    border-bottom: 1px solid var(--border);
+    border-top: 1px solid var(--border);
+    padding: 16px 24px;
+  }
+  .catalog-nav .nav-inner {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 0;
+  }
+  .catalog-nav .nav-group {
+    display: flex;
+    align-items: center;
+  }
+  .catalog-nav .nav-group:not(:last-child)::after {
+    content: '·';
+    color: var(--border);
+    font-size: 1.2rem;
+    margin: 0 6px;
+  }
+  .catalog-nav a {
+    display: block;
+    padding: 6px 12px;
+    font-size: 0.72rem;
+    font-weight: 500;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    text-decoration: none;
+    color: var(--text-muted);
+    white-space: nowrap;
+    transition: color 0.2s;
+  }
+  .catalog-nav a:hover,
+  .catalog-nav a:focus {
+    color: var(--gold);
+  }
+
+  /* ── Main Container ── */
+  .container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 24px;
+  }
+
+  /* ── Category Section ── */
+  .category-section {
+    padding: 64px 0 40px;
+  }
+  .category-header {
+    margin-bottom: 40px;
+    padding-bottom: 24px;
+    border-bottom: 1px solid var(--border);
+  }
+  .category-number {
+    font-family: var(--font-display);
+    font-size: 0.85rem;
+    font-weight: 400;
+    color: var(--gold);
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    margin-bottom: 4px;
+  }
+  .category-header h2 {
+    font-family: var(--font-display);
+    font-weight: 300;
+    font-size: clamp(1.8rem, 3.5vw, 2.4rem);
+    color: var(--text);
+    margin-bottom: 12px;
+  }
+  .category-vision {
+    font-size: 0.9rem;
+    color: var(--text-light);
+    max-width: 800px;
+    line-height: 1.8;
+  }
+
+  /* ── Sub-group Header ── */
+  .subgroup {
+    margin-top: 40px;
+    margin-bottom: 24px;
+  }
+  .subgroup h3 {
+    font-family: var(--font-display);
+    font-weight: 400;
+    font-size: 1.4rem;
+    color: var(--text);
+    margin-bottom: 6px;
+  }
+  .subgroup p {
+    font-size: 0.85rem;
+    color: var(--text-light);
+    max-width: 700px;
+  }
+
+  /* ── Setup Blueprint ── */
+  .blueprint {
+    background: linear-gradient(135deg, var(--gold-pale) 0%, var(--cream) 100%);
+    border: 1px solid var(--gold-light);
+    border-radius: var(--radius);
+    padding: 28px 32px;
+    margin-bottom: 32px;
+  }
+  .blueprint h3 {
+    font-family: var(--font-display);
+    font-weight: 500;
+    font-size: 1.2rem;
+    color: var(--brown);
+    margin-bottom: 16px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+  .blueprint h3::before {
+    content: '';
+    display: inline-block;
+    width: 20px;
+    height: 20px;
+    background: var(--gold);
+    border-radius: 4px;
+    opacity: 0.5;
+  }
+  .blueprint ul {
+    list-style: none;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 8px 24px;
+  }
+  .blueprint li {
+    font-size: 0.85rem;
+    color: var(--text-light);
+    padding-left: 16px;
+    position: relative;
+  }
+  .blueprint li::before {
+    content: '—';
+    position: absolute;
+    left: 0;
+    color: var(--gold);
+  }
+  .blueprint .note {
+    margin-top: 16px;
+    font-size: 0.8rem;
+    color: var(--text-muted);
+    font-style: italic;
+  }
+
+  /* ── Product Card ── */
+  .product-card {
+    background: var(--white);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    overflow: hidden;
+    margin-bottom: 24px;
+    box-shadow: 0 2px 12px var(--shadow);
+    transition: box-shadow 0.3s, transform 0.2s;
+  }
+  .product-card:hover {
+    box-shadow: 0 4px 20px var(--shadow-hover);
+    transform: translateY(-2px);
+  }
+  .card-layout {
+    display: grid;
+    grid-template-columns: 280px 1fr;
+    min-height: 260px;
+  }
+
+  /* Card Image */
+  .card-image {
+    background: var(--blush-pale);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 260px;
+    position: relative;
+    overflow: hidden;
+  }
+  .card-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+  .image-placeholder {
+    text-align: center;
+    padding: 24px;
+  }
+  .image-placeholder .icon {
+    font-size: 2.4rem;
+    margin-bottom: 8px;
+    opacity: 0.3;
+  }
+  .image-placeholder span {
+    display: block;
+    font-size: 0.7rem;
+    color: var(--text-muted);
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+  }
+
+  /* Card Body */
+  .card-body {
+    padding: 24px 28px;
+  }
+  .card-top-row {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: 12px;
+    margin-bottom: 8px;
+  }
+  .card-body h4 {
+    font-family: var(--font-display);
+    font-weight: 500;
+    font-size: 1.25rem;
+    color: var(--text);
+    line-height: 1.3;
+  }
+
+  /* Type Badge */
+  .badge {
+    display: inline-flex;
+    padding: 3px 10px;
+    border-radius: 20px;
+    font-size: 0.62rem;
+    font-weight: 600;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    white-space: nowrap;
+    flex-shrink: 0;
+    margin-top: 3px;
+  }
+  .badge-product {
+    background: var(--sage-pale);
+    color: var(--sage);
+    border: 1px solid var(--sage-light);
+  }
+  .badge-inspo {
+    background: var(--blush-pale);
+    color: var(--soft-pink);
+    border: 1px solid var(--blush);
+  }
+
+  .card-description {
+    font-size: 0.85rem;
+    color: var(--text-light);
+    margin-bottom: 16px;
+    line-height: 1.7;
+  }
+
+  /* Card Details Grid */
+  .card-details {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+    gap: 10px 16px;
+    margin-bottom: 16px;
+  }
+  .detail-item {
+    font-size: 0.78rem;
+  }
+  .detail-label {
+    color: var(--text-muted);
+    font-weight: 500;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    font-size: 0.65rem;
+    margin-bottom: 2px;
+  }
+  .detail-value {
+    color: var(--text);
+    font-weight: 400;
+  }
+  .detail-value.price {
+    font-weight: 500;
+    color: var(--brown);
+  }
+
+  /* Buy Options Table */
+  .buy-options {
+    background: var(--cream);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-sm);
+    overflow: hidden;
+    margin-bottom: 16px;
+  }
+  .buy-options-header {
+    padding: 8px 16px;
+    font-size: 0.68rem;
+    font-weight: 600;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--text-muted);
+    border-bottom: 1px solid var(--border);
+    background: var(--gold-pale);
+  }
+  .buy-option {
+    display: grid;
+    grid-template-columns: auto 1fr auto auto auto;
+    align-items: center;
+    gap: 12px;
+    padding: 10px 16px;
+    font-size: 0.8rem;
+    border-bottom: 1px solid var(--border);
+  }
+  .buy-option:last-child { border-bottom: none; }
+  .buy-option.best-value {
+    background: var(--sage-pale);
+  }
+  .buy-option .option-label {
+    font-weight: 500;
+    color: var(--text);
+    white-space: nowrap;
+  }
+  .buy-option .option-store {
+    color: var(--text-light);
+  }
+  .buy-option .option-price {
+    font-weight: 500;
+    color: var(--brown);
+    white-space: nowrap;
+  }
+  .buy-option .option-unit {
+    font-size: 0.72rem;
+    color: var(--text-muted);
+    white-space: nowrap;
+  }
+  .buy-option a {
+    color: var(--gold);
+    text-decoration: none;
+    font-weight: 500;
+    font-size: 0.75rem;
+  }
+  .buy-option a:hover { text-decoration: underline; }
+  .best-value-tag {
+    display: inline-block;
+    background: var(--sage);
+    color: white;
+    font-size: 0.6rem;
+    font-weight: 600;
+    padding: 1px 6px;
+    border-radius: 4px;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+    margin-left: 6px;
+  }
+  .add-link-placeholder {
+    color: var(--text-muted);
+    font-style: italic;
+    font-size: 0.75rem;
+  }
+
+  /* Card Footer (placement, after-wedding, notes) */
+  .card-footer {
+    border-top: 1px solid var(--border);
+    padding-top: 14px;
+    display: grid;
+    gap: 8px;
+  }
+  .card-footer-item {
+    font-size: 0.78rem;
+    display: flex;
+    gap: 8px;
+  }
+  .card-footer-label {
+    color: var(--text-muted);
+    font-weight: 500;
+    text-transform: uppercase;
+    font-size: 0.65rem;
+    letter-spacing: 0.04em;
+    min-width: 90px;
+    flex-shrink: 0;
+    padding-top: 1px;
+  }
+  .card-footer-value {
+    color: var(--text-light);
+  }
+  .mindy-note {
+    background: var(--blush-pale);
+    border-left: 3px solid var(--blush);
+    padding: 8px 12px;
+    border-radius: 0 var(--radius-sm) var(--radius-sm) 0;
+    font-size: 0.8rem;
+    color: var(--text-light);
+    margin-top: 4px;
+  }
+
+  /* ── Venue Map Section ── */
+  .venue-card {
+    background: var(--white);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    overflow: hidden;
+    margin-bottom: 24px;
+    box-shadow: 0 2px 12px var(--shadow);
+  }
+  .venue-card-header {
+    background: linear-gradient(135deg, var(--sage-pale) 0%, var(--cream) 100%);
+    padding: 20px 28px;
+    border-bottom: 1px solid var(--border);
+  }
+  .venue-card-header h4 {
+    font-family: var(--font-display);
+    font-weight: 500;
+    font-size: 1.2rem;
+    color: var(--text);
+  }
+  .venue-card-header .venue-subtitle {
+    font-size: 0.8rem;
+    color: var(--text-light);
+    margin-top: 2px;
+  }
+  .venue-image-container {
+    min-height: 200px;
+    background: var(--blush-pale);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    border-bottom: 1px solid var(--border);
+  }
+  .venue-image-container img {
+    width: 100%;
+    height: auto;
+    display: block;
+  }
+  .venue-image-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 2px;
+    border-bottom: 1px solid var(--border);
+  }
+  .venue-image-grid.grid-1 { grid-template-columns: 1fr; gap: 2px; }
+  .venue-image-grid.grid-2 { grid-template-columns: 1fr 1fr; }
+  .venue-image-grid.grid-3 { grid-template-columns: 1fr 1fr; }
+  .venue-image-grid.grid-4 { grid-template-columns: 1fr 1fr; }
+  .venue-image-grid.grid-5 { grid-template-columns: 1fr 1fr; }
+  .venue-image-grid.grid-5 .venue-img:last-child { grid-column: 1 / -1; }
+  .venue-image-grid .venue-img {
+    overflow: hidden;
+    background: var(--blush-pale);
+    position: relative;
+  }
+  .venue-image-grid .venue-img img {
+    width: 100%;
+    height: auto;
+    display: block;
+  }
+  .venue-image-grid.grid-3 .venue-img:first-child {
+    grid-column: 1 / -1;
+  }
+  .venue-image-grid .venue-img .img-label {
+    position: absolute;
+    bottom: 6px;
+    left: 6px;
+    background: rgba(0,0,0,0.55);
+    color: white;
+    font-size: 0.6rem;
+    font-weight: 500;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    padding: 2px 8px;
+    border-radius: 4px;
+  }
+  .venue-placeholder {
+    text-align: center;
+    padding: 40px;
+  }
+  .venue-placeholder .icon { font-size: 3rem; opacity: 0.2; }
+  .venue-placeholder span {
+    display: block;
+    font-size: 0.75rem;
+    color: var(--text-muted);
+    margin-top: 8px;
+    letter-spacing: 0.04em;
+  }
+  .venue-placeholder .annotation-hint {
+    margin-top: 12px;
+    font-size: 0.7rem;
+    color: var(--text-muted);
+    font-style: italic;
+    max-width: 300px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+  .venue-details {
+    padding: 20px 28px;
+  }
+  .venue-details ul {
+    list-style: none;
+    display: grid;
+    gap: 6px;
+  }
+  .venue-details li {
+    font-size: 0.84rem;
+    color: var(--text-light);
+    padding-left: 18px;
+    position: relative;
+  }
+  .venue-details li::before {
+    position: absolute;
+    left: 0;
+    color: var(--gold);
+    font-weight: 500;
+  }
+  .venue-details li.circle::before { content: '○'; }
+  .venue-details li.rect::before { content: '▭'; font-size: 0.7em; top: 2px; }
+  .venue-details li.arrow::before { content: '→'; }
+  .venue-details li.x-mark::before { content: '✕'; color: var(--soft-pink); }
+  .venue-details li.note::before { content: '✎'; }
+  .venue-notes-field {
+    margin-top: 12px;
+    width: 100%;
+    min-height: 60px;
+    border: 1px dashed var(--border);
+    border-radius: var(--radius-sm);
+    padding: 12px 16px;
+    font-family: var(--font-body);
+    font-size: 0.82rem;
+    color: var(--text-light);
+    background: var(--cream);
+    resize: vertical;
+  }
+
+  /* ── Quotes Table ── */
+  .quotes-table {
+    width: 100%;
+    border-collapse: separate;
+    border-spacing: 0;
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    overflow: hidden;
+    font-size: 0.82rem;
+    margin-bottom: 32px;
+    background: var(--white);
+    box-shadow: 0 2px 12px var(--shadow);
+  }
+  .quotes-table thead {
+    background: var(--gold-pale);
+  }
+  .quotes-table th {
+    padding: 12px 16px;
+    text-align: left;
+    font-weight: 500;
+    font-size: 0.68rem;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--text-muted);
+    border-bottom: 1px solid var(--border);
+  }
+  .quotes-table td {
+    padding: 12px 16px;
+    border-bottom: 1px solid var(--border);
+    color: var(--text-light);
+    vertical-align: top;
+  }
+  .quotes-table tr:last-child td { border-bottom: none; }
+  .quotes-table tr:hover td {
+    background: var(--cream);
+  }
+  .status-badge {
+    display: inline-block;
+    padding: 2px 8px;
+    border-radius: 12px;
+    font-size: 0.65rem;
+    font-weight: 500;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+  }
+  .status-pending {
+    background: var(--gold-pale);
+    color: var(--gold);
+    border: 1px solid var(--gold-light);
+  }
+
+  /* ── Annotation Legend ── */
+  .annotation-legend {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 16px;
+    padding: 16px 24px;
+    background: var(--cream);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-sm);
+    margin-bottom: 28px;
+    font-size: 0.78rem;
+    color: var(--text-light);
+  }
+  .legend-item {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+  }
+  .legend-symbol {
+    font-weight: 600;
+    color: var(--gold);
+    font-size: 1rem;
+  }
+
+  /* ── Responsive ── */
+  @media (max-width: 768px) {
+    .card-layout {
+      grid-template-columns: 1fr;
+    }
+    .card-image {
+      min-height: 200px;
+    }
+    .card-details {
+      grid-template-columns: 1fr 1fr;
+    }
+    .buy-option {
+      grid-template-columns: 1fr;
+      gap: 4px;
+    }
+    .blueprint ul {
+      grid-template-columns: 1fr;
+    }
+    .hero { padding: 48px 20px 40px; }
+    .container { padding: 0 16px; }
+  }
+
+  @media print {
+    body { font-size: 11px; background: white; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+    .hero { padding: 40px 24px 32px; }
+    .catalog-nav { background: var(--cream); border-top: 1px solid var(--border); }
+    .product-card { break-inside: avoid; box-shadow: none; border: 1px solid #ddd; }
+    .product-card:hover { transform: none; box-shadow: none; }
+    .venue-card { break-inside: avoid; box-shadow: none; border: 1px solid #ddd; }
+    .blueprint { break-inside: avoid; }
+    .category-section { break-before: auto; }
+    .category-header { break-after: avoid; }
+    .subgroup { break-after: avoid; }
+    .quotes-table { break-inside: auto; }
+    .quotes-table tr { break-inside: avoid; }
+    .buy-option a { color: var(--gold); }
+    .venue-notes-field { border: 1px solid #ccc; }
+  }
+</style>
+</head>
+<body>
+
+<!-- ════════════════════════════════════════════════════════════ -->
+<!-- HERO HEADER -->
+<!-- ════════════════════════════════════════════════════════════ -->
+<header class="hero">
+  <h1>Amanda &amp; Mason</h1>
+  <p class="subtitle">Wedding Decor Catalog for Mindy</p>
+  <div class="details">
+    <span>December 5, 2026</span>
+    <span>Tankah Art House + Villa Vihara</span>
+    <span>Tankah Bay, Tulum, Mexico</span>
+    <span>~30 Guests</span>
+  </div>
+  <div class="palette-strip">
+    <div class="palette-dot" style="background:#E8C4C4" title="Blush"></div>
+    <div class="palette-dot" style="background:#FFF8F0" title="Cream"></div>
+    <div class="palette-dot" style="background:#D4A0A0" title="Soft Pink"></div>
+    <div class="palette-dot" style="background:#9CAF88" title="Sage"></div>
+    <div class="palette-dot" style="background:#C4A265" title="Gold"></div>
+    <div class="palette-dot" style="background:#8B7355" title="Brown"></div>
+    <div class="palette-dot" style="background:#C4AD8B" title="Tan"></div>
+  </div>
+</header>
+
+<!-- ════════════════════════════════════════════════════════════ -->
+<!-- NAVIGATION -->
+<!-- ════════════════════════════════════════════════════════════ -->
+<nav class="catalog-nav">
+  <div class="nav-inner">
+    <div class="nav-group"><a href="#venue-map">Venue Map</a></div>
+    <div class="nav-group"><a href="#ceremony">Ceremony</a></div>
+    <div class="nav-group"><a href="#candles">Candles</a></div>
+    <div class="nav-group"><a href="#dinnerware">Dinnerware</a><a href="#cutlery">Cutlery</a><a href="#drinkware">Drinkware</a><a href="#linens">Linens</a></div>
+    <div class="nav-group"><a href="#tables">Tables</a><a href="#lighting">Lighting</a><a href="#signage">Guest Experience</a></div>
+    <div class="nav-group"><a href="#florals">Florals</a></div>
+    <div class="nav-group"><a href="#dessert">Dessert &amp; Cake</a></div>
+    <div class="nav-group"><a href="#quotes">Vendor Quotes</a></div>
+  </div>
+</nav>
+
+<div class="container">
+
+<!-- ════════════════════════════════════════════════════════════ -->
+<!-- VENUE MAP / LAYOUT PLANNING -->
+<!-- ════════════════════════════════════════════════════════════ -->
+<section class="category-section" id="venue-map">
+  <div class="category-header">
+    <div class="category-number">Layout Planning</div>
+    <h2>Venue Map</h2>
+    <p class="category-vision">
+      Annotated venue photos showing Mindy exactly where everything goes at Tankah Art House &amp; Villa Vihara. Drop in venue photos and mark them up with placement notes. Use the legend below for annotation symbols.
+    </p>
+  </div>
+
+  <div class="annotation-legend">
+    <div class="legend-item"><span class="legend-symbol">○</span> Round dinner table</div>
+    <div class="legend-item"><span class="legend-symbol">▭</span> Zone (bar, DJ, food, lounge, dance)</div>
+    <div class="legend-item"><span class="legend-symbol">→</span> Furniture movement / guest flow</div>
+    <div class="legend-item"><span class="legend-symbol" style="color:var(--soft-pink)">✕</span> Remove this item</div>
+    <div class="legend-item"><span class="legend-symbol">✎</span> Label / note</div>
+  </div>
+
+  <!-- Area 1: Reception — Main House Ground Floor -->
+  <div class="venue-card">
+    <div class="venue-card-header">
+      <h4>1. Reception — Main House Ground Floor</h4>
+      <p class="venue-subtitle">Bar, dinner tables, lounge setup</p>
+    </div>
+    <div class="venue-image-grid grid-1">
+      <div class="venue-img"><img src="images/venue/reception-interior-night.png" alt="Reception interior — lounge, bar, living room"><span class="img-label">Lounge + Bar + Living Room</span></div>
+      <div class="venue-img"><img src="images/venue/reception-lounge-ocean.png" alt="Lounge and bar with ocean view"><span class="img-label">Lounge + Bar — Ocean View</span></div>
+      <div class="venue-img"><img src="images/venue/reception-lounge-wide.png" alt="Lounge wider sunset view"><span class="img-label">Lounge — Wide Sunset</span></div>
+      <div class="venue-img"><img src="images/venue/dining-table-daytime.png" alt="Round table and dining area daytime"><span class="img-label">Existing Round Table — Daytime</span></div>
+      <div class="venue-img"><img src="images/venue/reception-dining-kitchen-night.png" alt="Dining table and kitchen area at night"><span class="img-label">Dining + Kitchen — Night</span></div>
+    </div>
+    <div class="venue-details">
+      <ul>
+        <li class="rect">Bar: Existing counter along the back wall — use as-is</li>
+        <li class="circle">Dinner tables: 3 round wooden tables in the open-air space between glass-enclosed kitchen and living room</li>
+        <li class="arrow">Lounge (indoor/outdoor): Reposition existing outdoor furniture to the outdoor area by the palm tree/grass — if it fits, otherwise remove</li>
+        <li class="x-mark">Remove: Beach lounge chairs and umbrellas</li>
+      </ul>
+      <textarea class="venue-notes-field" placeholder="Notes about this area..."></textarea>
+    </div>
+  </div>
+
+  <!-- Area 2: Reception — Outdoor / Pool Area -->
+  <div class="venue-card">
+    <div class="venue-card-header">
+      <h4>2. Reception — Outdoor / Pool Area</h4>
+      <p class="venue-subtitle">DJ, dance floor, string lights, pool cover</p>
+    </div>
+    <div class="venue-image-grid grid-1">
+      <div class="venue-img"><img src="images/venue/pool-house-front-dusk.png" alt="House front at dusk showing ground floor and pool"><span class="img-label">House Front — Dusk</span></div>
+      <div class="venue-img"><img src="images/venue/pool-daytime-grass.png" alt="Pool area daytime showing grass and palm tree"><span class="img-label">Pool + Grass Area (Lounge Option)</span></div>
+      <div class="venue-img"><img src="images/venue/pool-beach-drone.png" alt="Pool and house from beach drone"><span class="img-label">Drone — From Beach</span></div>
+    </div>
+    <div class="venue-details">
+      <ul>
+        <li class="rect">DJ setup: Outside near the pool</li>
+        <li class="rect">Dance floor: Concrete area — no dedicated floor needed (unless pool is covered)</li>
+        <li class="note">String lights: Zigzag on ground poles from house to before pool edge — or after/including pool if covered</li>
+        <li class="note">Pool cover: TBD — getting a quote for clear plastic cover</li>
+      </ul>
+      <textarea class="venue-notes-field" placeholder="Notes about this area..."></textarea>
+    </div>
+  </div>
+
+  <!-- Area 3: Ceremony — Beach -->
+  <div class="venue-card">
+    <div class="venue-card-header">
+      <h4>3. Ceremony — Beach</h4>
+      <p class="venue-subtitle">Arbor, seating, aisle decor — better close-up photos coming</p>
+    </div>
+    <div class="venue-image-grid grid-1">
+      <div class="venue-img"><img src="images/venue/beach-from-pool.png" alt="Beach view from pool edge"><span class="img-label">Ceremony Beach — From Pool</span></div>
+      <div class="venue-img"><img src="images/venue/aerial-ocean.png" alt="Aerial view from ocean"><span class="img-label">Aerial — From Ocean</span></div>
+    </div>
+    <div class="venue-details">
+      <ul>
+        <li class="note">Arbor: On the sand facing the ocean</li>
+        <li class="circle">Chairs: 3 rows &times; 5 chairs</li>
+        <li class="note">Aisle decor: Gold flower stands + LED candle holders alternating</li>
+      </ul>
+      <textarea class="venue-notes-field" placeholder="Notes about this area..."></textarea>
+    </div>
+  </div>
+
+  <!-- Area 4: Cocktail Hour — Rooftop -->
+  <div class="venue-card">
+    <div class="venue-card-header">
+      <h4>4. Cocktail Hour — Rooftop (Villa Vihara)</h4>
+      <p class="venue-subtitle">Mariachi, cocktail tables</p>
+    </div>
+    <div class="venue-image-container">
+      <div class="venue-placeholder">
+        <div class="icon">&#x1f378;</div>
+        <span>Photo coming — Villa Vihara rooftop</span>
+        <p class="annotation-hint">Amanda to upload rooftop photos. Annotate with: mariachi location, cocktail table placement.</p>
+      </div>
+    </div>
+    <div class="venue-details">
+      <ul>
+        <li class="note">Mariachi location</li>
+        <li class="circle">Cocktail tables</li>
+      </ul>
+      <textarea class="venue-notes-field" placeholder="Notes about this area..."></textarea>
+    </div>
+  </div>
+
+  <!-- Area 5: Food Station -->
+  <div class="venue-card">
+    <div class="venue-card-header">
+      <h4>5. Food Station</h4>
+      <p class="venue-subtitle">Smaller dining area to the right of the house</p>
+    </div>
+    <div class="venue-image-grid grid-1">
+      <div class="venue-img"><img src="images/venue/dining-table-daytime.png" alt="Dining area daytime showing smaller room behind glass"><span class="img-label">Dining Area — Smaller Room Visible Right</span></div>
+      <div class="venue-img"><img src="images/venue/reception-dining-table.png" alt="Dining room night view"><span class="img-label">Dining Area — Night View</span></div>
+    </div>
+    <div class="venue-details">
+      <ul>
+        <li class="note">Location TBD — Mindy assessing during Thursday walkthrough</li>
+        <li class="note">Options: Small enclosed dining room, or table setup near kitchen</li>
+        <li class="note">Buffet table decorated with same candle/greenery aesthetic</li>
+      </ul>
+      <textarea class="venue-notes-field" placeholder="Notes about this area..."></textarea>
+    </div>
+  </div>
+
+  <!-- Area 6: Cake/Dessert Display -->
+  <div class="venue-card">
+    <div class="venue-card-header">
+      <h4>6. Cake / Dessert Display</h4>
+      <p class="venue-subtitle">Kitchen right side — off to the side by the wall art/rectangle</p>
+    </div>
+    <div class="venue-image-grid grid-1">
+      <div class="venue-img"><img src="images/venue/kitchen-closeup.png" alt="Kitchen — cake table on right side by wall"><span class="img-label">Kitchen — Cake Table on Right Side by Wall</span></div>
+    </div>
+    <div class="venue-details">
+      <ul>
+        <li class="note">Off to the side in the kitchen, by the rectangle/art on the right wall</li>
+        <li class="note">Dedicated table with floral arrangement + candle collection</li>
+      </ul>
+      <textarea class="venue-notes-field" placeholder="Notes about this area..."></textarea>
+    </div>
+  </div>
+</section>
+
+<!-- ════════════════════════════════════════════════════════════ -->
+<!-- CATEGORY 1: CEREMONY / AISLE DECOR -->
+<!-- ════════════════════════════════════════════════════════════ -->
+<section class="category-section" id="ceremony">
+  <div class="category-header">
+    <div class="category-number">Category 1</div>
+    <h2>Ceremony / Aisle Decor</h2>
+    <p class="category-vision">
+      The ceremony is on the beach with ~30 guests in 3 rows of 5 chairs. Down the aisle, elevated pedestal-style pieces alternate between floral-topped gold stands and candle sets in a staggered pattern. No aisle runner. After the ceremony, these pieces get moved to the reception area (bar, cake table, lounge, dance floor).
+    </p>
+  </div>
+
+  <!-- Sub-group: Gold Flower Stands -->
+  <div class="subgroup">
+    <h3>Gold Flower Stands</h3>
+    <p>Pedestal pieces that line the ceremony aisle, alternating with candle holders. Topped with small floral arrangements. After ceremony, repurposed at reception.</p>
+  </div>
+
+  <!-- Item: 2-Piece Gold Flower Stand -->
+  <div class="product-card">
+    <div class="card-layout">
+      <div class="card-image">
+        <div class="image-placeholder">
+          <div class="icon">&#x1f4f7;</div>
+          <span>Add product image</span>
+        </div>
+      </div>
+      <div class="card-body">
+        <div class="card-top-row">
+          <h4>2-Piece Gold Flower Stand</h4>
+          <span class="badge badge-product">Product</span>
+        </div>
+        <p class="card-description">
+          Elegant gold metal flower/candle stand. Clean design, no crystals. Height: 21.6 inches.
+        </p>
+        <div class="card-details">
+          <div class="detail-item">
+            <div class="detail-label">Per Package</div>
+            <div class="detail-value">2 pieces</div>
+          </div>
+          <div class="detail-item">
+            <div class="detail-label">Qty to Order</div>
+            <div class="detail-value">3 packages</div>
+          </div>
+          <div class="detail-item">
+            <div class="detail-label">Target Count</div>
+            <div class="detail-value">6 stands</div>
+          </div>
+          <div class="detail-item">
+            <div class="detail-label">Total Cost</div>
+            <div class="detail-value price">$35.84</div>
+          </div>
+        </div>
+        <div class="buy-options">
+          <div class="buy-options-header">Buy Options — Compare Per-Unit Price</div>
+          <div class="buy-option">
+            <span class="option-label">A</span>
+            <span class="option-store">Temu</span>
+            <span class="option-price">$11.95/pkg</span>
+            <span class="option-unit">$5.98/stand</span>
+            <a href="https://share.temu.com/nwCN9J6BCWA" target="_blank">View &rarr;</a>
+          </div>
+          <div class="buy-option">
+            <span class="option-label">B</span>
+            <span class="option-store add-link-placeholder">Add backup link</span>
+            <span class="option-price">—</span>
+            <span class="option-unit">—</span>
+            <span class="add-link-placeholder">—</span>
+          </div>
+        </div>
+        <div class="card-footer">
+          <div class="card-footer-item">
+            <span class="card-footer-label">Shipping</span>
+            <span class="card-footer-value">35–38 business days</span>
+          </div>
+          <div class="card-footer-item">
+            <span class="card-footer-label">Placement</span>
+            <span class="card-footer-value">Ceremony aisle (alternating with candle holders), then moved to reception bar area, cake table, or lounge</span>
+          </div>
+          <div class="card-footer-item">
+            <span class="card-footer-label">After Wedding</span>
+            <span class="card-footer-value">Donate to Mindy or keep for condo</span>
+          </div>
+          <div class="mindy-note">
+            <strong>Note for Mindy:</strong> These are the plain gold version. I also have crystal versions below — I like mixing them for texture.
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Item: 2-Piece Gold Flower Stand with Crystals -->
+  <div class="product-card">
+    <div class="card-layout">
+      <div class="card-image">
+        <div class="image-placeholder">
+          <div class="icon">&#x1f4f7;</div>
+          <span>Add product image</span>
+        </div>
+      </div>
+      <div class="card-body">
+        <div class="card-top-row">
+          <h4>2-Piece Gold Flower Stand with Crystals</h4>
+          <span class="badge badge-product">Product</span>
+        </div>
+        <p class="card-description">
+          Gold flower stand with hanging crystal bead accents. Adds sparkle. Height: 21.6 inches.
+        </p>
+        <div class="card-details">
+          <div class="detail-item">
+            <div class="detail-label">Per Package</div>
+            <div class="detail-value">2 pieces</div>
+          </div>
+          <div class="detail-item">
+            <div class="detail-label">Qty to Order</div>
+            <div class="detail-value">2 packages</div>
+          </div>
+          <div class="detail-item">
+            <div class="detail-label">Target Count</div>
+            <div class="detail-value">4 stands</div>
+          </div>
+          <div class="detail-item">
+            <div class="detail-label">Total Cost</div>
+            <div class="detail-value price">$18.96</div>
+          </div>
+        </div>
+        <div class="buy-options">
+          <div class="buy-options-header">Buy Options — Compare Per-Unit Price</div>
+          <div class="buy-option">
+            <span class="option-label">A</span>
+            <span class="option-store">Temu</span>
+            <span class="option-price">$9.48/pkg</span>
+            <span class="option-unit">$4.74/stand</span>
+            <a href="https://share.temu.com/oKdnTROpvTA" target="_blank">View &rarr;</a>
+          </div>
+          <div class="buy-option">
+            <span class="option-label">B</span>
+            <span class="option-store add-link-placeholder">Add backup link</span>
+            <span class="option-price">—</span>
+            <span class="option-unit">—</span>
+            <span class="add-link-placeholder">—</span>
+          </div>
+        </div>
+        <div class="card-footer">
+          <div class="card-footer-item">
+            <span class="card-footer-label">Shipping</span>
+            <span class="card-footer-value">35–36 business days</span>
+          </div>
+          <div class="card-footer-item">
+            <span class="card-footer-label">Placement</span>
+            <span class="card-footer-value">Ceremony aisle mixed with plain gold stands, then reception</span>
+          </div>
+          <div class="card-footer-item">
+            <span class="card-footer-label">After Wedding</span>
+            <span class="card-footer-value">Donate to Mindy or keep for condo</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Item: 6-Piece Gold Flower Stand -->
+  <div class="product-card">
+    <div class="card-layout">
+      <div class="card-image">
+        <div class="image-placeholder">
+          <div class="icon">&#x1f4f7;</div>
+          <span>Add product image</span>
+        </div>
+      </div>
+      <div class="card-body">
+        <div class="card-top-row">
+          <h4>6-Piece Gold Flower Stand</h4>
+          <span class="badge badge-product">Product</span>
+        </div>
+        <p class="card-description">
+          Same gold pedestal style. Best value — 6 per order. Height: 19.7 inches.
+        </p>
+        <div class="card-details">
+          <div class="detail-item">
+            <div class="detail-label">Per Package</div>
+            <div class="detail-value">6 pieces</div>
+          </div>
+          <div class="detail-item">
+            <div class="detail-label">Qty to Order</div>
+            <div class="detail-value">1 package</div>
+          </div>
+          <div class="detail-item">
+            <div class="detail-label">Target Count</div>
+            <div class="detail-value">6 stands</div>
+          </div>
+          <div class="detail-item">
+            <div class="detail-label">Total Cost</div>
+            <div class="detail-value price">$25.14</div>
+          </div>
+        </div>
+        <div class="buy-options">
+          <div class="buy-options-header">Buy Options — Compare Per-Unit Price</div>
+          <div class="buy-option best-value">
+            <span class="option-label">A <span class="best-value-tag">Best Value</span></span>
+            <span class="option-store">Temu</span>
+            <span class="option-price">$25.14/pkg</span>
+            <span class="option-unit">$4.19/stand</span>
+            <a href="https://share.temu.com/Er9Y8GLrOhA" target="_blank">View &rarr;</a>
+          </div>
+          <div class="buy-option">
+            <span class="option-label">B</span>
+            <span class="option-store add-link-placeholder">Add backup link</span>
+            <span class="option-price">—</span>
+            <span class="option-unit">—</span>
+            <span class="add-link-placeholder">—</span>
+          </div>
+        </div>
+        <div class="card-footer">
+          <div class="card-footer-item">
+            <span class="card-footer-label">Shipping</span>
+            <span class="card-footer-value">35–36 business days</span>
+          </div>
+          <div class="card-footer-item">
+            <span class="card-footer-label">Placement</span>
+            <span class="card-footer-value">Ceremony aisle, then reception</span>
+          </div>
+          <div class="card-footer-item">
+            <span class="card-footer-label">After Wedding</span>
+            <span class="card-footer-value">Donate to Mindy or keep for condo</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Item: 2-Piece Gold & Multi-Crystal Stand -->
+  <div class="product-card">
+    <div class="card-layout">
+      <div class="card-image">
+        <div class="image-placeholder">
+          <div class="icon">&#x1f4f7;</div>
+          <span>Add product image</span>
+        </div>
+      </div>
+      <div class="card-body">
+        <div class="card-top-row">
+          <h4>2-Piece Gold &amp; Multi-Crystal Stand</h4>
+          <span class="badge badge-product">Product</span>
+        </div>
+        <p class="card-description">
+          Gold stand with dangling multi-strand crystal accents. This is the style from the AI mockup of the ceremony. Height: 17.7 inches.
+        </p>
+        <div class="card-details">
+          <div class="detail-item">
+            <div class="detail-label">Per Package</div>
+            <div class="detail-value">2 pieces</div>
+          </div>
+          <div class="detail-item">
+            <div class="detail-label">Qty to Order</div>
+            <div class="detail-value">3 packages</div>
+          </div>
+          <div class="detail-item">
+            <div class="detail-label">Target Count</div>
+            <div class="detail-value">6 stands</div>
+          </div>
+          <div class="detail-item">
+            <div class="detail-label">Total Cost</div>
+            <div class="detail-value price">$59.87</div>
+          </div>
+        </div>
+        <div class="buy-options">
+          <div class="buy-options-header">Buy Options — Compare Per-Unit Price</div>
+          <div class="buy-option">
+            <span class="option-label">A</span>
+            <span class="option-store">Temu</span>
+            <span class="option-price">$19.96/pkg</span>
+            <span class="option-unit">$9.98/stand</span>
+            <a href="https://share.temu.com/o2vewlTfTlA" target="_blank">View &rarr;</a>
+          </div>
+          <div class="buy-option">
+            <span class="option-label">B</span>
+            <span class="option-store add-link-placeholder">Add backup link</span>
+            <span class="option-price">—</span>
+            <span class="option-unit">—</span>
+            <span class="add-link-placeholder">—</span>
+          </div>
+        </div>
+        <div class="card-footer">
+          <div class="card-footer-item">
+            <span class="card-footer-label">Shipping</span>
+            <span class="card-footer-value">35–36 business days</span>
+          </div>
+          <div class="card-footer-item">
+            <span class="card-footer-label">Placement</span>
+            <span class="card-footer-value">Ceremony aisle — statement pieces. After ceremony, move to cake table or sweetheart area.</span>
+          </div>
+          <div class="card-footer-item">
+            <span class="card-footer-label">After Wedding</span>
+            <span class="card-footer-value">Donate to Mindy or keep for condo</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Item: 2-Piece Gold & Crystal Stand -->
+  <div class="product-card">
+    <div class="card-layout">
+      <div class="card-image">
+        <div class="image-placeholder">
+          <div class="icon">&#x1f4f7;</div>
+          <span>Add product image</span>
+        </div>
+      </div>
+      <div class="card-body">
+        <div class="card-top-row">
+          <h4>2-Piece Gold &amp; Crystal Stand</h4>
+          <span class="badge badge-product">Product</span>
+        </div>
+        <p class="card-description">
+          Gold stand with simpler crystal accent. More understated than the multi-crystal version. Height: 17.7 inches.
+        </p>
+        <div class="card-details">
+          <div class="detail-item">
+            <div class="detail-label">Per Package</div>
+            <div class="detail-value">2 pieces</div>
+          </div>
+          <div class="detail-item">
+            <div class="detail-label">Qty to Order</div>
+            <div class="detail-value">3 packages</div>
+          </div>
+          <div class="detail-item">
+            <div class="detail-label">Target Count</div>
+            <div class="detail-value">6 stands</div>
+          </div>
+          <div class="detail-item">
+            <div class="detail-label">Total Cost</div>
+            <div class="detail-value price">$39.40</div>
+          </div>
+        </div>
+        <div class="buy-options">
+          <div class="buy-options-header">Buy Options — Compare Per-Unit Price</div>
+          <div class="buy-option">
+            <span class="option-label">A</span>
+            <span class="option-store">Temu</span>
+            <span class="option-price">$13.13/pkg</span>
+            <span class="option-unit">$6.57/stand</span>
+            <a href="https://share.temu.com/9iU84NH6BOA" target="_blank">View &rarr;</a>
+          </div>
+          <div class="buy-option">
+            <span class="option-label">B</span>
+            <span class="option-store add-link-placeholder">Add backup link</span>
+            <span class="option-price">—</span>
+            <span class="option-unit">—</span>
+            <span class="add-link-placeholder">—</span>
+          </div>
+        </div>
+        <div class="card-footer">
+          <div class="card-footer-item">
+            <span class="card-footer-label">Shipping</span>
+            <span class="card-footer-value">35–36 business days</span>
+          </div>
+          <div class="card-footer-item">
+            <span class="card-footer-label">Placement</span>
+            <span class="card-footer-value">Ceremony aisle, mixed in with other stand styles</span>
+          </div>
+          <div class="card-footer-item">
+            <span class="card-footer-label">After Wedding</span>
+            <span class="card-footer-value">Donate to Mindy or keep for condo</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Sub-group: LED Candle Holders -->
+  <div class="subgroup">
+    <h3>LED Candle Holders (Aisle)</h3>
+    <p>These alternate with the gold flower stands along the ceremony aisle. LED means no fire risk on the beach.</p>
+  </div>
+
+  <!-- Item: 5-Head LED Candle Holder -->
+  <div class="product-card">
+    <div class="card-layout">
+      <div class="card-image">
+        <div class="image-placeholder">
+          <div class="icon">&#x1f4f7;</div>
+          <span>Add product image</span>
+        </div>
+      </div>
+      <div class="card-body">
+        <div class="card-top-row">
+          <h4>5-Head LED Candle Holder</h4>
+          <span class="badge badge-product">Product</span>
+        </div>
+        <p class="card-description">
+          Tall candelabra-style holder with 5 LED candle lights. Creates height variation along the aisle. Height: 26.8 inches.
+        </p>
+        <div class="card-details">
+          <div class="detail-item">
+            <div class="detail-label">Per Package</div>
+            <div class="detail-value">1 piece</div>
+          </div>
+          <div class="detail-item">
+            <div class="detail-label">Qty to Order</div>
+            <div class="detail-value">4 units</div>
+          </div>
+          <div class="detail-item">
+            <div class="detail-label">Target Count</div>
+            <div class="detail-value">4 holders</div>
+          </div>
+          <div class="detail-item">
+            <div class="detail-label">Total Cost</div>
+            <div class="detail-value price">$59.68</div>
+          </div>
+        </div>
+        <div class="buy-options">
+          <div class="buy-options-header">Buy Options — Compare Per-Unit Price</div>
+          <div class="buy-option">
+            <span class="option-label">A</span>
+            <span class="option-store">Temu</span>
+            <span class="option-price">$14.92/unit</span>
+            <span class="option-unit">$14.92/holder</span>
+            <a href="https://share.temu.com/VDh5sGu2MGA" target="_blank">View &rarr;</a>
+          </div>
+          <div class="buy-option">
+            <span class="option-label">B</span>
+            <span class="option-store add-link-placeholder">Add backup link</span>
+            <span class="option-price">—</span>
+            <span class="option-unit">—</span>
+            <span class="add-link-placeholder">—</span>
+          </div>
+        </div>
+        <div class="card-footer">
+          <div class="card-footer-item">
+            <span class="card-footer-label">Shipping</span>
+            <span class="card-footer-value">35–36 business days</span>
+          </div>
+          <div class="card-footer-item">
+            <span class="card-footer-label">Placement</span>
+            <span class="card-footer-value">Ceremony aisle (alternating with gold flower stands). After ceremony, move to reception lounge or dance floor perimeter.</span>
+          </div>
+          <div class="card-footer-item">
+            <span class="card-footer-label">After Wedding</span>
+            <span class="card-footer-value">Keep for condo or donate to Mindy</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Sub-group: Ceremony Arbor -->
+  <div class="subgroup">
+    <h3>Ceremony Arbor</h3>
+  </div>
+
+  <!-- Item: 3-Post Wooden Arbor -->
+  <div class="product-card">
+    <div class="card-layout">
+      <div class="card-image">
+        <div class="image-placeholder">
+          <div class="icon">&#x1f4f7;</div>
+          <span>Add Pinterest inspo + AI mockup</span>
+        </div>
+      </div>
+      <div class="card-body">
+        <div class="card-top-row">
+          <h4>3-Post Wooden Arbor with Asymmetric Florals</h4>
+          <span class="badge badge-inspo">Inspo</span>
+        </div>
+        <p class="card-description">
+          3-post arbor (2 vertical, 1 horizontal). Soft, flowy fabric draping in blush and sage. Asymmetric floral arrangement on one corner and/or one side — NOT symmetrical. Flowers: blush/cream focal blooms, eucalyptus, touches of pampas grass. NOT a backdrop of greenery — greenery as an accent only. No starfish.
+        </p>
+        <div class="card-footer">
+          <div class="card-footer-item">
+            <span class="card-footer-label">Placement</span>
+            <span class="card-footer-value">Beach ceremony focal point</span>
+          </div>
+          <div class="mindy-note">
+            <strong>Note for Mindy:</strong> Getting quote from florist. I will send you my top 2 Pinterest inspo photos via WhatsApp. I also created an AI mockup showing the vision.
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Sub-group: Ceremony Seating -->
+  <div class="subgroup">
+    <h3>Ceremony Seating</h3>
+  </div>
+
+  <!-- Item: Tiffany Chair -->
+  <div class="product-card">
+    <div class="card-layout">
+      <div class="card-image">
+        <div class="image-placeholder">
+          <div class="icon">&#x1f4f7;</div>
+          <span>Add MSM catalog screenshot</span>
+        </div>
+      </div>
+      <div class="card-body">
+        <div class="card-top-row">
+          <h4>Gold/Brown/White Tiffany Chair (cushion included)</h4>
+          <span class="badge badge-inspo">Inspo</span>
+        </div>
+        <p class="card-description">
+          Classic Tiffany chair in gold, brown, or white with cushion included. From MSM catalog. Rental through Mindy's vendor.
+        </p>
+        <div class="card-details">
+          <div class="detail-item">
+            <div class="detail-label">Price</div>
+            <div class="detail-value price">$5 USD each (MSM)</div>
+          </div>
+          <div class="detail-item">
+            <div class="detail-label">Target Count</div>
+            <div class="detail-value">~45 total</div>
+          </div>
+        </div>
+        <div class="card-footer">
+          <div class="card-footer-item">
+            <span class="card-footer-label">Placement</span>
+            <span class="card-footer-value">~15 for ceremony (3 rows &times; 5), plus ~30 for dinner reception. May alternate with the villa's existing chairs for an eclectic look.</span>
+          </div>
+          <div class="mindy-note">
+            <strong>Note for Mindy:</strong> I like these from the MSM catalog. Open to alternating with the house chairs for a mixed look, but want cushions for comfort.
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ════════════════════════════════════════════════════════════ -->
+<!-- CATEGORY 2: CANDLES & VOTIVES -->
+<!-- ════════════════════════════════════════════════════════════ -->
+<section class="category-section" id="candles">
+  <div class="category-header">
+    <div class="category-number">Category 2</div>
+    <h2>Candles &amp; Votives</h2>
+    <p class="category-vision">
+      Candles are a HUGE part of the look. Mixed candle types at varying heights surrounding the central floral arrangement on each dinner table. The warm glow of candlelight + florals is the core aesthetic. Also used at the bar, lounge, cake table, and scattered throughout.
+    </p>
+  </div>
+
+  <!-- Setup Blueprint -->
+  <div class="blueprint">
+    <h3>Setup Blueprint — Each Dinner Table</h3>
+    <ul>
+      <li>1 central floral arrangement (from florist)</li>
+      <li>3–4 glass cylinders with floating candles (varying heights)</li>
+      <li>2–3 pink ribbed pillar candles</li>
+      <li>2–3 green textured pillar candles</li>
+      <li>3–4 gold crystal votive holders with tealights</li>
+      <li>2–3 camel/amber votives</li>
+      <li>Possibly on a sheer chiffon runner (TBD)</li>
+      <li>All on bare wooden round tabletop — no tablecloth</li>
+    </ul>
+    <p class="note">Multiply by 3 tables for total counts, plus extras for bar, cake table, and lounge.</p>
+  </div>
+
+  <!-- Item: 8-Hour Tealight Candles -->
+  <div class="product-card">
+    <div class="card-layout">
+      <div class="card-image">
+        <div class="image-placeholder">
+          <div class="icon">&#x1f4f7;</div>
+          <span>Add product image</span>
+        </div>
+      </div>
+      <div class="card-body">
+        <div class="card-top-row">
+          <h4>8-Hour Tealight Candles (100 pack)</h4>
+          <span class="badge badge-product">Product</span>
+        </div>
+        <p class="card-description">
+          Long burn time tealight candles. These go inside the votive holders, gold crystal holders, and anywhere a small flame is needed.
+        </p>
+        <div class="card-details">
+          <div class="detail-item">
+            <div class="detail-label">Per Package</div>
+            <div class="detail-value">100 pieces</div>
+          </div>
+          <div class="detail-item">
+            <div class="detail-label">Qty to Order</div>
+            <div class="detail-value">1 package</div>
+          </div>
+          <div class="detail-item">
+            <div class="detail-label">Target Count</div>
+            <div class="detail-value">100 candles</div>
+          </div>
+          <div class="detail-item">
+            <div class="detail-label">Total Cost</div>
+            <div class="detail-value price">$34.39</div>
+          </div>
+        </div>
+        <div class="buy-options">
+          <div class="buy-options-header">Buy Options — Compare Per-Unit Price</div>
+          <div class="buy-option">
+            <span class="option-label">A</span>
+            <span class="option-store">Amazon</span>
+            <span class="option-price">$34.39/100pk</span>
+            <span class="option-unit">$0.34/candle</span>
+            <a href="https://a.co/d/06BwXjbQ" target="_blank">View &rarr;</a>
+          </div>
+          <div class="buy-option">
+            <span class="option-label">B</span>
+            <span class="option-store add-link-placeholder">Add backup link</span>
+            <span class="option-price">—</span>
+            <span class="option-unit">—</span>
+            <span class="add-link-placeholder">—</span>
+          </div>
+        </div>
+        <div class="card-footer">
+          <div class="card-footer-item">
+            <span class="card-footer-label">Shipping</span>
+            <span class="card-footer-value">2-day Prime shipping</span>
+          </div>
+          <div class="card-footer-item">
+            <span class="card-footer-label">Placement</span>
+            <span class="card-footer-value">Inside votive holders on dinner tables, bar, cake table, lounge, bathrooms</span>
+          </div>
+          <div class="card-footer-item">
+            <span class="card-footer-label">After Wedding</span>
+            <span class="card-footer-value">Use remainder at condo</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Item: Floating Candles -->
+  <div class="product-card">
+    <div class="card-layout">
+      <div class="card-image">
+        <div class="image-placeholder">
+          <div class="icon">&#x1f4f7;</div>
+          <span>Add product image</span>
+        </div>
+      </div>
+      <div class="card-body">
+        <div class="card-top-row">
+          <h4>Floating Candles (white/ivory)</h4>
+          <span class="badge badge-product">Product</span>
+        </div>
+        <p class="card-description">
+          Details TBD — sourced but not yet in spreadsheet. These go inside the glass cylinder vases for a gorgeous floating candle + water centerpiece look.
+        </p>
+        <div class="card-details">
+          <div class="detail-item">
+            <div class="detail-label">Per Package</div>
+            <div class="detail-value">TBD</div>
+          </div>
+          <div class="detail-item">
+            <div class="detail-label">Target Count</div>
+            <div class="detail-value">~12–15 total</div>
+          </div>
+          <div class="detail-item">
+            <div class="detail-label">Total Cost</div>
+            <div class="detail-value price">TBD</div>
+          </div>
+        </div>
+        <div class="buy-options">
+          <div class="buy-options-header">Buy Options — Compare Per-Unit Price</div>
+          <div class="buy-option">
+            <span class="option-label">A</span>
+            <span class="option-store add-link-placeholder">TBD — Amanda to add</span>
+            <span class="option-price">—</span>
+            <span class="option-unit">—</span>
+            <span class="add-link-placeholder">—</span>
+          </div>
+        </div>
+        <div class="card-footer">
+          <div class="card-footer-item">
+            <span class="card-footer-label">Placement</span>
+            <span class="card-footer-value">Inside glass cylinder vases on dinner tables. 3–4 per table &times; 3 tables, plus cake table.</span>
+          </div>
+          <div class="card-footer-item">
+            <span class="card-footer-label">After Wedding</span>
+            <span class="card-footer-value">Keep for condo</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Item: Glass Cylinder Vases -->
+  <div class="product-card">
+    <div class="card-layout">
+      <div class="card-image">
+        <div class="image-placeholder">
+          <div class="icon">&#x1f4f7;</div>
+          <span>Add product image</span>
+        </div>
+      </div>
+      <div class="card-body">
+        <div class="card-top-row">
+          <h4>Glass Cylinder Vases — Varying Heights</h4>
+          <span class="badge badge-product">Product</span>
+        </div>
+        <p class="card-description">
+          Details TBD — sourced but not yet in spreadsheet. Need a mix of tall, medium, and short clear glass cylinders for the floating candle centerpiece look.
+        </p>
+        <div class="card-details">
+          <div class="detail-item">
+            <div class="detail-label">Per Package</div>
+            <div class="detail-value">TBD</div>
+          </div>
+          <div class="detail-item">
+            <div class="detail-label">Target Count</div>
+            <div class="detail-value">~12–15 total</div>
+          </div>
+          <div class="detail-item">
+            <div class="detail-label">Total Cost</div>
+            <div class="detail-value price">TBD</div>
+          </div>
+        </div>
+        <div class="buy-options">
+          <div class="buy-options-header">Buy Options — Compare Per-Unit Price</div>
+          <div class="buy-option">
+            <span class="option-label">A</span>
+            <span class="option-store add-link-placeholder">TBD — Amanda to add</span>
+            <span class="option-price">—</span>
+            <span class="option-unit">—</span>
+            <span class="add-link-placeholder">—</span>
+          </div>
+        </div>
+        <div class="card-footer">
+          <div class="card-footer-item">
+            <span class="card-footer-label">Placement</span>
+            <span class="card-footer-value">Dinner table centerpieces — grouped with the central floral arrangement</span>
+          </div>
+          <div class="card-footer-item">
+            <span class="card-footer-label">After Wedding</span>
+            <span class="card-footer-value">Keep for condo</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Item: Pink Ribbed Pillar Candles -->
+  <div class="product-card">
+    <div class="card-layout">
+      <div class="card-image">
+        <div class="image-placeholder">
+          <div class="icon">&#x1f4f7;</div>
+          <span>Add product image</span>
+        </div>
+      </div>
+      <div class="card-body">
+        <div class="card-top-row">
+          <h4>Pink Ribbed Pillar Candles</h4>
+          <span class="badge badge-product">Product</span>
+        </div>
+        <p class="card-description">
+          Details TBD — sourced. Adds a blush/pink pop and textured look to the table.
+        </p>
+        <div class="card-details">
+          <div class="detail-item">
+            <div class="detail-label">Per Package</div>
+            <div class="detail-value">TBD</div>
+          </div>
+          <div class="detail-item">
+            <div class="detail-label">Target Count</div>
+            <div class="detail-value">~9–12 total</div>
+          </div>
+          <div class="detail-item">
+            <div class="detail-label">Total Cost</div>
+            <div class="detail-value price">TBD</div>
+          </div>
+        </div>
+        <div class="buy-options">
+          <div class="buy-options-header">Buy Options — Compare Per-Unit Price</div>
+          <div class="buy-option">
+            <span class="option-label">A</span>
+            <span class="option-store add-link-placeholder">TBD — Amanda to add</span>
+            <span class="option-price">—</span>
+            <span class="option-unit">—</span>
+            <span class="add-link-placeholder">—</span>
+          </div>
+        </div>
+        <div class="card-footer">
+          <div class="card-footer-item">
+            <span class="card-footer-label">Placement</span>
+            <span class="card-footer-value">Dinner table centerpiece cluster (2–3 per table), scattered at varying heights. Also at cake table.</span>
+          </div>
+          <div class="card-footer-item">
+            <span class="card-footer-label">After Wedding</span>
+            <span class="card-footer-value">Keep for condo or use up at wedding</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Item: Green Textured Pillar Candles -->
+  <div class="product-card">
+    <div class="card-layout">
+      <div class="card-image">
+        <div class="image-placeholder">
+          <div class="icon">&#x1f4f7;</div>
+          <span>Add product image</span>
+        </div>
+      </div>
+      <div class="card-body">
+        <div class="card-top-row">
+          <h4>Green Textured Pillar Candles</h4>
+          <span class="badge badge-product">Product</span>
+        </div>
+        <p class="card-description">
+          Details TBD — sourced. Sage/green to tie in the greenery palette.
+        </p>
+        <div class="card-details">
+          <div class="detail-item">
+            <div class="detail-label">Per Package</div>
+            <div class="detail-value">TBD</div>
+          </div>
+          <div class="detail-item">
+            <div class="detail-label">Target Count</div>
+            <div class="detail-value">~9–12 total</div>
+          </div>
+          <div class="detail-item">
+            <div class="detail-label">Total Cost</div>
+            <div class="detail-value price">TBD</div>
+          </div>
+        </div>
+        <div class="buy-options">
+          <div class="buy-options-header">Buy Options — Compare Per-Unit Price</div>
+          <div class="buy-option">
+            <span class="option-label">A</span>
+            <span class="option-store add-link-placeholder">TBD — Amanda to add</span>
+            <span class="option-price">—</span>
+            <span class="option-unit">—</span>
+            <span class="add-link-placeholder">—</span>
+          </div>
+        </div>
+        <div class="card-footer">
+          <div class="card-footer-item">
+            <span class="card-footer-label">Placement</span>
+            <span class="card-footer-value">Dinner table centerpiece cluster (2–3 per table). Also bar area.</span>
+          </div>
+          <div class="card-footer-item">
+            <span class="card-footer-label">After Wedding</span>
+            <span class="card-footer-value">Keep for condo or use up at wedding</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Item: Gold Crystal Votive Holders -->
+  <div class="product-card">
+    <div class="card-layout">
+      <div class="card-image">
+        <div class="image-placeholder">
+          <div class="icon">&#x1f4f7;</div>
+          <span>Add product image</span>
+        </div>
+      </div>
+      <div class="card-body">
+        <div class="card-top-row">
+          <h4>Gold Crystal Votive Holders</h4>
+          <span class="badge badge-product">Product</span>
+        </div>
+        <p class="card-description">
+          Details TBD — sourced. Small gold holders with crystal/jeweled accents. Hold tealight candles inside. These were in the AI mockup.
+        </p>
+        <div class="card-details">
+          <div class="detail-item">
+            <div class="detail-label">Per Package</div>
+            <div class="detail-value">TBD</div>
+          </div>
+          <div class="detail-item">
+            <div class="detail-label">Target Count</div>
+            <div class="detail-value">~12–16 total</div>
+          </div>
+          <div class="detail-item">
+            <div class="detail-label">Total Cost</div>
+            <div class="detail-value price">TBD</div>
+          </div>
+        </div>
+        <div class="buy-options">
+          <div class="buy-options-header">Buy Options — Compare Per-Unit Price</div>
+          <div class="buy-option">
+            <span class="option-label">A</span>
+            <span class="option-store add-link-placeholder">TBD — Amanda to add</span>
+            <span class="option-price">—</span>
+            <span class="option-unit">—</span>
+            <span class="add-link-placeholder">—</span>
+          </div>
+        </div>
+        <div class="card-footer">
+          <div class="card-footer-item">
+            <span class="card-footer-label">Placement</span>
+            <span class="card-footer-value">Dinner table centerpiece cluster (3–4 per table), cake table, bar, lounge</span>
+          </div>
+          <div class="card-footer-item">
+            <span class="card-footer-label">After Wedding</span>
+            <span class="card-footer-value">Keep for condo or donate to Mindy</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Item: Camel / Amber Votives -->
+  <div class="product-card">
+    <div class="card-layout">
+      <div class="card-image">
+        <div class="image-placeholder">
+          <div class="icon">&#x1f4f7;</div>
+          <span>Add product image</span>
+        </div>
+      </div>
+      <div class="card-body">
+        <div class="card-top-row">
+          <h4>Camel / Amber Votive Candle Holders</h4>
+          <span class="badge badge-product">Product</span>
+        </div>
+        <p class="card-description">
+          Details TBD — sourced. Warm amber/camel tone adds warmth to the palette.
+        </p>
+        <div class="card-details">
+          <div class="detail-item">
+            <div class="detail-label">Per Package</div>
+            <div class="detail-value">TBD</div>
+          </div>
+          <div class="detail-item">
+            <div class="detail-label">Target Count</div>
+            <div class="detail-value">~9–12 total</div>
+          </div>
+          <div class="detail-item">
+            <div class="detail-label">Total Cost</div>
+            <div class="detail-value price">TBD</div>
+          </div>
+        </div>
+        <div class="buy-options">
+          <div class="buy-options-header">Buy Options — Compare Per-Unit Price</div>
+          <div class="buy-option">
+            <span class="option-label">A</span>
+            <span class="option-store add-link-placeholder">TBD — Amanda to add</span>
+            <span class="option-price">—</span>
+            <span class="option-unit">—</span>
+            <span class="add-link-placeholder">—</span>
+          </div>
+        </div>
+        <div class="card-footer">
+          <div class="card-footer-item">
+            <span class="card-footer-label">Placement</span>
+            <span class="card-footer-value">Dinner table centerpiece cluster (2–3 per table), lounge area</span>
+          </div>
+          <div class="card-footer-item">
+            <span class="card-footer-label">After Wedding</span>
+            <span class="card-footer-value">Keep for condo</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ════════════════════════════════════════════════════════════ -->
+<!-- CATEGORY 3: DINNERWARE -->
+<!-- ════════════════════════════════════════════════════════════ -->
+<section class="category-section" id="dinnerware">
+  <div class="category-header">
+    <div class="category-number">Category 3</div>
+    <h2>Dinnerware</h2>
+    <p class="category-vision">
+      The villa chefs are preparing the wedding dinner (not a separate caterer). TBD whether the villa has enough dinnerware for ~30 guests — checking with Jeremie (villa manager). These are elevated plate options (gold-rimmed, blush, clear) that match the aesthetic and can be kept for the condo after. Since it's buffet/stations style, guests may go back for seconds — need more than 30 sets, or plan for dishwasher cycling.
+      <br><br>
+      <strong>Setup per place setting:</strong> Dinner plate + dessert/salad plate. No chargers (buffet style).
+    </p>
+  </div>
+
+  <div class="subgroup">
+    <h3>Plate Options</h3>
+    <p>Comparing different styles and pack sizes. All options include dinner + dessert plates.</p>
+  </div>
+
+  <!-- Item: White with Gold Rim (50 sets) -->
+  <div class="product-card">
+    <div class="card-layout">
+      <div class="card-image">
+        <div class="image-placeholder">
+          <div class="icon">&#x1f4f7;</div>
+          <span>Add product image</span>
+        </div>
+      </div>
+      <div class="card-body">
+        <div class="card-top-row">
+          <h4>Dinner &amp; Dessert Plates — White with Gold Rim (50 sets)</h4>
+          <span class="badge badge-product">Product</span>
+        </div>
+        <p class="card-description">
+          Classic white plates with gold rim. Clean, elegant. 1 dinner + 1 dessert per set.
+        </p>
+        <div class="card-details">
+          <div class="detail-item">
+            <div class="detail-label">Per Package</div>
+            <div class="detail-value">100 pc (50 dinner + 50 dessert)</div>
+          </div>
+          <div class="detail-item">
+            <div class="detail-label">Qty to Order</div>
+            <div class="detail-value">1 package</div>
+          </div>
+          <div class="detail-item">
+            <div class="detail-label">Target Count</div>
+            <div class="detail-value">50 sets</div>
+          </div>
+          <div class="detail-item">
+            <div class="detail-label">Total Cost</div>
+            <div class="detail-value price">$55.75</div>
+          </div>
+        </div>
+        <div class="buy-options">
+          <div class="buy-options-header">Buy Options — Compare Per-Unit Price</div>
+          <div class="buy-option">
+            <span class="option-label">A</span>
+            <span class="option-store">Temu</span>
+            <span class="option-price">$55.75/100pc</span>
+            <span class="option-unit">$1.12/plate</span>
+            <a href="https://share.temu.com/YiWhByFD47A" target="_blank">View &rarr;</a>
+          </div>
+          <div class="buy-option">
+            <span class="option-label">B</span>
+            <span class="option-store add-link-placeholder">Add backup link</span>
+            <span class="option-price">—</span>
+            <span class="option-unit">—</span>
+            <span class="add-link-placeholder">—</span>
+          </div>
+        </div>
+        <div class="card-footer">
+          <div class="card-footer-item">
+            <span class="card-footer-label">Shipping</span>
+            <span class="card-footer-value">34–36 business days</span>
+          </div>
+          <div class="card-footer-item">
+            <span class="card-footer-label">After Wedding</span>
+            <span class="card-footer-value">Keep for condo</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Item: Clear with Double Gold Rim (10 sets) -->
+  <div class="product-card">
+    <div class="card-layout">
+      <div class="card-image">
+        <div class="image-placeholder">
+          <div class="icon">&#x1f4f7;</div>
+          <span>Add product image</span>
+        </div>
+      </div>
+      <div class="card-body">
+        <div class="card-top-row">
+          <h4>Dinner &amp; Dessert Plates — Clear with Double Gold Rim (10 sets)</h4>
+          <span class="badge badge-product">Product</span>
+        </div>
+        <p class="card-description">
+          Clear/transparent plates with double gold rim. Lets the wooden table show through — beautiful on bare wood.
+        </p>
+        <div class="card-details">
+          <div class="detail-item">
+            <div class="detail-label">Per Package</div>
+            <div class="detail-value">20 pc (10 dinner + 10 dessert)</div>
+          </div>
+          <div class="detail-item">
+            <div class="detail-label">Qty to Order</div>
+            <div class="detail-value">6 packages</div>
+          </div>
+          <div class="detail-item">
+            <div class="detail-label">Target Count</div>
+            <div class="detail-value">60 sets</div>
+          </div>
+          <div class="detail-item">
+            <div class="detail-label">Total Cost</div>
+            <div class="detail-value price">$75.39</div>
+          </div>
+        </div>
+        <div class="buy-options">
+          <div class="buy-options-header">Buy Options — Compare Per-Unit Price</div>
+          <div class="buy-option">
+            <span class="option-label">A</span>
+            <span class="option-store">Temu</span>
+            <span class="option-price">$12.57/20pc</span>
+            <span class="option-unit">$1.26/plate</span>
+            <a href="https://share.temu.com/1CKvEyyjwXA" target="_blank">View &rarr;</a>
+          </div>
+          <div class="buy-option">
+            <span class="option-label">B</span>
+            <span class="option-store add-link-placeholder">Add backup link</span>
+            <span class="option-price">—</span>
+            <span class="option-unit">—</span>
+            <span class="add-link-placeholder">—</span>
+          </div>
+        </div>
+        <div class="card-footer">
+          <div class="card-footer-item">
+            <span class="card-footer-label">Shipping</span>
+            <span class="card-footer-value">34–36 business days</span>
+          </div>
+          <div class="card-footer-item">
+            <span class="card-footer-label">After Wedding</span>
+            <span class="card-footer-value">Keep for condo</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Item: Pink with Gold Rim (20 sets) -->
+  <div class="product-card">
+    <div class="card-layout">
+      <div class="card-image">
+        <div class="image-placeholder">
+          <div class="icon">&#x1f4f7;</div>
+          <span>Add product image</span>
+        </div>
+      </div>
+      <div class="card-body">
+        <div class="card-top-row">
+          <h4>Dinner &amp; Dessert Plates — Pink with Gold Rim (20 sets)</h4>
+          <span class="badge badge-product">Product</span>
+        </div>
+        <p class="card-description">
+          Pink/blush plates with gold rim. Matches the wedding color palette.
+        </p>
+        <div class="card-details">
+          <div class="detail-item">
+            <div class="detail-label">Per Package</div>
+            <div class="detail-value">40 pc (20 dinner + 20 dessert)</div>
+          </div>
+          <div class="detail-item">
+            <div class="detail-label">Qty to Order</div>
+            <div class="detail-value">3 packages</div>
+          </div>
+          <div class="detail-item">
+            <div class="detail-label">Target Count</div>
+            <div class="detail-value">60 sets</div>
+          </div>
+          <div class="detail-item">
+            <div class="detail-label">Total Cost</div>
+            <div class="detail-value price">$75.37</div>
+          </div>
+        </div>
+        <div class="buy-options">
+          <div class="buy-options-header">Buy Options — Compare Per-Unit Price</div>
+          <div class="buy-option">
+            <span class="option-label">A</span>
+            <span class="option-store">Temu</span>
+            <span class="option-price">$25.12/40pc</span>
+            <span class="option-unit">$1.26/plate</span>
+            <a href="https://share.temu.com/CdXdSL5e2NA" target="_blank">View &rarr;</a>
+          </div>
+          <div class="buy-option">
+            <span class="option-label">B</span>
+            <span class="option-store add-link-placeholder">Add backup link</span>
+            <span class="option-price">—</span>
+            <span class="option-unit">—</span>
+            <span class="add-link-placeholder">—</span>
+          </div>
+        </div>
+        <div class="card-footer">
+          <div class="card-footer-item">
+            <span class="card-footer-label">Shipping</span>
+            <span class="card-footer-value">34–36 business days</span>
+          </div>
+          <div class="card-footer-item">
+            <span class="card-footer-label">After Wedding</span>
+            <span class="card-footer-value">Keep for condo</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Item: White with Gold Design Rim — Dinner -->
+  <div class="product-card">
+    <div class="card-layout">
+      <div class="card-image">
+        <div class="image-placeholder">
+          <div class="icon">&#x1f4f7;</div>
+          <span>Add product image</span>
+        </div>
+      </div>
+      <div class="card-body">
+        <div class="card-top-row">
+          <h4>Dinner Plate — White with Gold Design Rim</h4>
+          <span class="badge badge-product">Product</span>
+        </div>
+        <p class="card-description">
+          White plate with ornate gold design pattern on the rim. More decorative than a simple gold line.
+        </p>
+        <div class="card-details">
+          <div class="detail-item">
+            <div class="detail-label">Per Package</div>
+            <div class="detail-value">30 pieces</div>
+          </div>
+          <div class="detail-item">
+            <div class="detail-label">Qty to Order</div>
+            <div class="detail-value">2 packages</div>
+          </div>
+          <div class="detail-item">
+            <div class="detail-label">Target Count</div>
+            <div class="detail-value">60 plates</div>
+          </div>
+          <div class="detail-item">
+            <div class="detail-label">Total Cost</div>
+            <div class="detail-value price">$18.31</div>
+          </div>
+        </div>
+        <div class="buy-options">
+          <div class="buy-options-header">Buy Options — Compare Per-Unit Price</div>
+          <div class="buy-option best-value">
+            <span class="option-label">A <span class="best-value-tag">Best Value</span></span>
+            <span class="option-store">Temu</span>
+            <span class="option-price">$9.15/30pc</span>
+            <span class="option-unit">$0.31/plate</span>
+            <a href="https://share.temu.com/XRuopHz1aOA" target="_blank">View &rarr;</a>
+          </div>
+          <div class="buy-option">
+            <span class="option-label">B</span>
+            <span class="option-store add-link-placeholder">Add backup link</span>
+            <span class="option-price">—</span>
+            <span class="option-unit">—</span>
+            <span class="add-link-placeholder">—</span>
+          </div>
+        </div>
+        <div class="card-footer">
+          <div class="card-footer-item">
+            <span class="card-footer-label">Shipping</span>
+            <span class="card-footer-value">34–36 business days</span>
+          </div>
+          <div class="card-footer-item">
+            <span class="card-footer-label">After Wedding</span>
+            <span class="card-footer-value">Keep for condo</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Item: White with Gold Design Rim — Dessert -->
+  <div class="product-card">
+    <div class="card-layout">
+      <div class="card-image">
+        <div class="image-placeholder">
+          <div class="icon">&#x1f4f7;</div>
+          <span>Add product image</span>
+        </div>
+      </div>
+      <div class="card-body">
+        <div class="card-top-row">
+          <h4>Dessert Plate — White with Gold Design Rim</h4>
+          <span class="badge badge-product">Product</span>
+        </div>
+        <p class="card-description">
+          Matching dessert size to the dinner plate above.
+        </p>
+        <div class="card-details">
+          <div class="detail-item">
+            <div class="detail-label">Per Package</div>
+            <div class="detail-value">30 pieces</div>
+          </div>
+          <div class="detail-item">
+            <div class="detail-label">Qty to Order</div>
+            <div class="detail-value">2 packages</div>
+          </div>
+          <div class="detail-item">
+            <div class="detail-label">Target Count</div>
+            <div class="detail-value">60 plates</div>
+          </div>
+          <div class="detail-item">
+            <div class="detail-label">Total Cost</div>
+            <div class="detail-value price">$25.23</div>
+          </div>
+        </div>
+        <div class="buy-options">
+          <div class="buy-options-header">Buy Options — Compare Per-Unit Price</div>
+          <div class="buy-option">
+            <span class="option-label">A</span>
+            <span class="option-store">Temu</span>
+            <span class="option-price">$12.62/30pc</span>
+            <span class="option-unit">$0.42/plate</span>
+            <a href="https://share.temu.com/XRuopHz1aOA" target="_blank">View &rarr;</a>
+          </div>
+          <div class="buy-option">
+            <span class="option-label">B</span>
+            <span class="option-store add-link-placeholder">Add backup link</span>
+            <span class="option-price">—</span>
+            <span class="option-unit">—</span>
+            <span class="add-link-placeholder">—</span>
+          </div>
+        </div>
+        <div class="card-footer">
+          <div class="card-footer-item">
+            <span class="card-footer-label">Shipping</span>
+            <span class="card-footer-value">34–36 business days</span>
+          </div>
+          <div class="card-footer-item">
+            <span class="card-footer-label">After Wedding</span>
+            <span class="card-footer-value">Keep for condo</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Item: Pink with Gold Rim (30 sets) -->
+  <div class="product-card">
+    <div class="card-layout">
+      <div class="card-image">
+        <div class="image-placeholder">
+          <div class="icon">&#x1f4f7;</div>
+          <span>Add product image</span>
+        </div>
+      </div>
+      <div class="card-body">
+        <div class="card-top-row">
+          <h4>Dinner &amp; Dessert Plates — Pink with Gold Rim (30 sets)</h4>
+          <span class="badge badge-product">Product</span>
+        </div>
+        <p class="card-description">
+          Same pink gold rim style, larger pack. Better per-unit value.
+        </p>
+        <div class="card-details">
+          <div class="detail-item">
+            <div class="detail-label">Per Package</div>
+            <div class="detail-value">60 pc (30 dinner + 30 dessert)</div>
+          </div>
+          <div class="detail-item">
+            <div class="detail-label">Qty to Order</div>
+            <div class="detail-value">2 packages</div>
+          </div>
+          <div class="detail-item">
+            <div class="detail-label">Target Count</div>
+            <div class="detail-value">60 sets</div>
+          </div>
+          <div class="detail-item">
+            <div class="detail-label">Total Cost</div>
+            <div class="detail-value price">$78.08</div>
+          </div>
+        </div>
+        <div class="buy-options">
+          <div class="buy-options-header">Buy Options — Compare Per-Unit Price</div>
+          <div class="buy-option">
+            <span class="option-label">A</span>
+            <span class="option-store">Temu</span>
+            <span class="option-price">$39.04/60pc</span>
+            <span class="option-unit">$0.65/plate</span>
+            <a href="https://share.temu.com/ix3rtkOzUiA" target="_blank">View &rarr;</a>
+          </div>
+          <div class="buy-option">
+            <span class="option-label">B</span>
+            <span class="option-store add-link-placeholder">Add backup link</span>
+            <span class="option-price">—</span>
+            <span class="option-unit">—</span>
+            <span class="add-link-placeholder">—</span>
+          </div>
+        </div>
+        <div class="card-footer">
+          <div class="card-footer-item">
+            <span class="card-footer-label">Shipping</span>
+            <span class="card-footer-value">34–36 business days</span>
+          </div>
+          <div class="card-footer-item">
+            <span class="card-footer-label">After Wedding</span>
+            <span class="card-footer-value">Keep for condo</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Item: White with Gold Rim (25 sets) -->
+  <div class="product-card">
+    <div class="card-layout">
+      <div class="card-image">
+        <div class="image-placeholder">
+          <div class="icon">&#x1f4f7;</div>
+          <span>Add product image</span>
+        </div>
+      </div>
+      <div class="card-body">
+        <div class="card-top-row">
+          <h4>Dinner &amp; Dessert Plates — White with Gold Rim (25 sets)</h4>
+          <span class="badge badge-product">Product</span>
+        </div>
+        <p class="card-description">
+          White with gold rim. Mid-size pack.
+        </p>
+        <div class="card-details">
+          <div class="detail-item">
+            <div class="detail-label">Per Package</div>
+            <div class="detail-value">50 pc (25 dinner + 25 dessert)</div>
+          </div>
+          <div class="detail-item">
+            <div class="detail-label">Qty to Order</div>
+            <div class="detail-value">3 packages</div>
+          </div>
+          <div class="detail-item">
+            <div class="detail-label">Target Count</div>
+            <div class="detail-value">75 sets</div>
+          </div>
+          <div class="detail-item">
+            <div class="detail-label">Total Cost</div>
+            <div class="detail-value price">$67.54</div>
+          </div>
+        </div>
+        <div class="buy-options">
+          <div class="buy-options-header">Buy Options — Compare Per-Unit Price</div>
+          <div class="buy-option best-value">
+            <span class="option-label">A <span class="best-value-tag">Best Value</span></span>
+            <span class="option-store">Temu</span>
+            <span class="option-price">$22.51/50pc</span>
+            <span class="option-unit">$0.45/plate</span>
+            <a href="https://share.temu.com/GAedpfHSTwA" target="_blank">View &rarr;</a>
+          </div>
+          <div class="buy-option">
+            <span class="option-label">B</span>
+            <span class="option-store add-link-placeholder">Add backup link</span>
+            <span class="option-price">—</span>
+            <span class="option-unit">—</span>
+            <span class="add-link-placeholder">—</span>
+          </div>
+        </div>
+        <div class="card-footer">
+          <div class="card-footer-item">
+            <span class="card-footer-label">Shipping</span>
+            <span class="card-footer-value">34–36 business days</span>
+          </div>
+          <div class="card-footer-item">
+            <span class="card-footer-label">After Wedding</span>
+            <span class="card-footer-value">Keep for condo</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Item: Clear with Gold Rim (20 sets) -->
+  <div class="product-card">
+    <div class="card-layout">
+      <div class="card-image">
+        <div class="image-placeholder">
+          <div class="icon">&#x1f4f7;</div>
+          <span>Add product image</span>
+        </div>
+      </div>
+      <div class="card-body">
+        <div class="card-top-row">
+          <h4>Dinner &amp; Dessert Plates — Clear with Gold Rim (20 sets)</h4>
+          <span class="badge badge-product">Product</span>
+        </div>
+        <p class="card-description">
+          Clear/transparent plates with single gold rim.
+        </p>
+        <div class="card-details">
+          <div class="detail-item">
+            <div class="detail-label">Per Package</div>
+            <div class="detail-value">40 pc (20 dinner + 20 dessert)</div>
+          </div>
+          <div class="detail-item">
+            <div class="detail-label">Qty to Order</div>
+            <div class="detail-value">3 packages</div>
+          </div>
+          <div class="detail-item">
+            <div class="detail-label">Target Count</div>
+            <div class="detail-value">60 sets</div>
+          </div>
+          <div class="detail-item">
+            <div class="detail-label">Total Cost</div>
+            <div class="detail-value price">$73.75</div>
+          </div>
+        </div>
+        <div class="buy-options">
+          <div class="buy-options-header">Buy Options — Compare Per-Unit Price</div>
+          <div class="buy-option">
+            <span class="option-label">A</span>
+            <span class="option-store">Temu</span>
+            <span class="option-price">$24.58/40pc</span>
+            <span class="option-unit">$0.61/plate</span>
+            <a href="https://share.temu.com/LgoJbKXp0hA" target="_blank">View &rarr;</a>
+          </div>
+          <div class="buy-option">
+            <span class="option-label">B</span>
+            <span class="option-store add-link-placeholder">Add backup link</span>
+            <span class="option-price">—</span>
+            <span class="option-unit">—</span>
+            <span class="add-link-placeholder">—</span>
+          </div>
+        </div>
+        <div class="card-footer">
+          <div class="card-footer-item">
+            <span class="card-footer-label">Shipping</span>
+            <span class="card-footer-value">34–36 business days</span>
+          </div>
+          <div class="card-footer-item">
+            <span class="card-footer-label">After Wedding</span>
+            <span class="card-footer-value">Keep for condo</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Item: Clear Scallop Gold Rim (10 sets) -->
+  <div class="product-card">
+    <div class="card-layout">
+      <div class="card-image">
+        <div class="image-placeholder">
+          <div class="icon">&#x1f4f7;</div>
+          <span>Add product image</span>
+        </div>
+      </div>
+      <div class="card-body">
+        <div class="card-top-row">
+          <h4>Dinner &amp; Dessert Plates — Clear Scallop Gold Rim (10 sets)</h4>
+          <span class="badge badge-product">Product</span>
+        </div>
+        <p class="card-description">
+          Clear plates with scalloped edge and gold rim. Most ornate/decorative option.
+        </p>
+        <div class="card-details">
+          <div class="detail-item">
+            <div class="detail-label">Per Package</div>
+            <div class="detail-value">20 pc (10 dinner + 10 dessert)</div>
+          </div>
+          <div class="detail-item">
+            <div class="detail-label">Qty to Order</div>
+            <div class="detail-value">6 packages</div>
+          </div>
+          <div class="detail-item">
+            <div class="detail-label">Target Count</div>
+            <div class="detail-value">60 sets</div>
+          </div>
+          <div class="detail-item">
+            <div class="detail-label">Total Cost</div>
+            <div class="detail-value price">$151.22</div>
+          </div>
+        </div>
+        <div class="buy-options">
+          <div class="buy-options-header">Buy Options — Compare Per-Unit Price</div>
+          <div class="buy-option">
+            <span class="option-label">A</span>
+            <span class="option-store">Temu</span>
+            <span class="option-price">$25.20/20pc</span>
+            <span class="option-unit">$2.52/plate</span>
+            <a href="https://share.temu.com/o9LT4BdLSOA" target="_blank">View &rarr;</a>
+          </div>
+          <div class="buy-option">
+            <span class="option-label">B</span>
+            <span class="option-store add-link-placeholder">Add backup link</span>
+            <span class="option-price">—</span>
+            <span class="option-unit">—</span>
+            <span class="add-link-placeholder">—</span>
+          </div>
+        </div>
+        <div class="card-footer">
+          <div class="card-footer-item">
+            <span class="card-footer-label">Shipping</span>
+            <span class="card-footer-value">34–36 business days</span>
+          </div>
+          <div class="card-footer-item">
+            <span class="card-footer-label">After Wedding</span>
+            <span class="card-footer-value">Keep for condo</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ════════════════════════════════════════════════════════════ -->
+<!-- CATEGORY 4: CUTLERY / FLATWARE -->
+<!-- ════════════════════════════════════════════════════════════ -->
+<section class="category-section" id="cutlery">
+  <div class="category-header">
+    <div class="category-number">Category 4</div>
+    <h2>Cutlery / Flatware</h2>
+    <p class="category-vision">
+      Gold cutlery to match the gold accents throughout (candle holders, plate rims, flower stands). Same buffet consideration — need enough for multiple rounds or plan for washing.
+    </p>
+  </div>
+
+  <!-- Item: 3-Piece Gold Cutlery — 20 sets "Normal" -->
+  <div class="product-card">
+    <div class="card-layout">
+      <div class="card-image">
+        <div class="image-placeholder">
+          <div class="icon">&#x1f4f7;</div>
+          <span>Add product image</span>
+        </div>
+      </div>
+      <div class="card-body">
+        <div class="card-top-row">
+          <h4>3-Piece Gold Cutlery — 20 sets ("Normal" style)</h4>
+          <span class="badge badge-product">Product</span>
+        </div>
+        <p class="card-description">
+          Fork, knife, spoon in gold. Simpler/standard style. Intended primarily for the wedding.
+        </p>
+        <div class="card-details">
+          <div class="detail-item">
+            <div class="detail-label">Per Package</div>
+            <div class="detail-value">60 pc (20 &times; 3-piece)</div>
+          </div>
+          <div class="detail-item">
+            <div class="detail-label">Qty to Order</div>
+            <div class="detail-value">2 packages</div>
+          </div>
+          <div class="detail-item">
+            <div class="detail-label">Target Count</div>
+            <div class="detail-value">120 pc (40 settings)</div>
+          </div>
+          <div class="detail-item">
+            <div class="detail-label">Total Cost</div>
+            <div class="detail-value price">$76.73</div>
+          </div>
+        </div>
+        <div class="buy-options">
+          <div class="buy-options-header">Buy Options — Compare Per-Unit Price</div>
+          <div class="buy-option">
+            <span class="option-label">A</span>
+            <span class="option-store">Temu</span>
+            <span class="option-price">$38.36/60pc</span>
+            <span class="option-unit">$0.64/pc &middot; $1.92/setting</span>
+            <a href="https://share.temu.com/svuPLGzsaJA" target="_blank">View &rarr;</a>
+          </div>
+          <div class="buy-option">
+            <span class="option-label">B</span>
+            <span class="option-store add-link-placeholder">Add backup link</span>
+            <span class="option-price">—</span>
+            <span class="option-unit">—</span>
+            <span class="add-link-placeholder">—</span>
+          </div>
+        </div>
+        <div class="card-footer">
+          <div class="card-footer-item">
+            <span class="card-footer-label">Shipping</span>
+            <span class="card-footer-value">34–36 business days</span>
+          </div>
+          <div class="card-footer-item">
+            <span class="card-footer-label">After Wedding</span>
+            <span class="card-footer-value">Keep for condo or donate</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Item: 5-Piece Gold Cutlery — 20 sets "Condo" -->
+  <div class="product-card">
+    <div class="card-layout">
+      <div class="card-image">
+        <div class="image-placeholder">
+          <div class="icon">&#x1f4f7;</div>
+          <span>Add product image</span>
+        </div>
+      </div>
+      <div class="card-body">
+        <div class="card-top-row">
+          <h4>5-Piece Gold Cutlery — 20 sets ("Condo" style)</h4>
+          <span class="badge badge-product">Product</span>
+        </div>
+        <p class="card-description">
+          Full 5-piece gold cutlery set. A style you'd want to keep for the condo long-term.
+        </p>
+        <div class="card-details">
+          <div class="detail-item">
+            <div class="detail-label">Per Package</div>
+            <div class="detail-value">100 pc (20 &times; 5-piece)</div>
+          </div>
+          <div class="detail-item">
+            <div class="detail-label">Qty to Order</div>
+            <div class="detail-value">2 packages</div>
+          </div>
+          <div class="detail-item">
+            <div class="detail-label">Target Count</div>
+            <div class="detail-value">200 pc (40 settings)</div>
+          </div>
+          <div class="detail-item">
+            <div class="detail-label">Total Cost</div>
+            <div class="detail-value price">$68.64</div>
+          </div>
+        </div>
+        <div class="buy-options">
+          <div class="buy-options-header">Buy Options — Compare Per-Unit Price</div>
+          <div class="buy-option best-value">
+            <span class="option-label">A <span class="best-value-tag">Best Value</span></span>
+            <span class="option-store">Temu</span>
+            <span class="option-price">$34.32/100pc</span>
+            <span class="option-unit">$0.34/pc &middot; $1.72/setting</span>
+            <a href="https://share.temu.com/98aAndMPGSA" target="_blank">View &rarr;</a>
+          </div>
+          <div class="buy-option">
+            <span class="option-label">B</span>
+            <span class="option-store add-link-placeholder">Add backup link</span>
+            <span class="option-price">—</span>
+            <span class="option-unit">—</span>
+            <span class="add-link-placeholder">—</span>
+          </div>
+        </div>
+        <div class="card-footer">
+          <div class="card-footer-item">
+            <span class="card-footer-label">Shipping</span>
+            <span class="card-footer-value">34–36 business days</span>
+          </div>
+          <div class="card-footer-item">
+            <span class="card-footer-label">After Wedding</span>
+            <span class="card-footer-value">Keep for condo</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Item: 3-Piece Gold Cutlery — 10 sets "Condo" -->
+  <div class="product-card">
+    <div class="card-layout">
+      <div class="card-image">
+        <div class="image-placeholder">
+          <div class="icon">&#x1f4f7;</div>
+          <span>Add product image</span>
+        </div>
+      </div>
+      <div class="card-body">
+        <div class="card-top-row">
+          <h4>3-Piece Gold Cutlery — 10 sets ("Condo" style)</h4>
+          <span class="badge badge-product">Product</span>
+        </div>
+        <p class="card-description">
+          Same "condo" style as above, smaller package option.
+        </p>
+        <div class="card-details">
+          <div class="detail-item">
+            <div class="detail-label">Per Package</div>
+            <div class="detail-value">30 pc (10 &times; 3-piece)</div>
+          </div>
+          <div class="detail-item">
+            <div class="detail-label">Qty to Order</div>
+            <div class="detail-value">4 packages</div>
+          </div>
+          <div class="detail-item">
+            <div class="detail-label">Target Count</div>
+            <div class="detail-value">120 pc (40 settings)</div>
+          </div>
+          <div class="detail-item">
+            <div class="detail-label">Total Cost</div>
+            <div class="detail-value price">$63.29</div>
+          </div>
+        </div>
+        <div class="buy-options">
+          <div class="buy-options-header">Buy Options — Compare Per-Unit Price</div>
+          <div class="buy-option">
+            <span class="option-label">A</span>
+            <span class="option-store">Temu</span>
+            <span class="option-price">$15.82/30pc</span>
+            <span class="option-unit">$0.53/pc &middot; $1.58/setting</span>
+            <a href="https://share.temu.com/gByonhGtheA" target="_blank">View &rarr;</a>
+          </div>
+          <div class="buy-option">
+            <span class="option-label">B</span>
+            <span class="option-store add-link-placeholder">Add backup link</span>
+            <span class="option-price">—</span>
+            <span class="option-unit">—</span>
+            <span class="add-link-placeholder">—</span>
+          </div>
+        </div>
+        <div class="card-footer">
+          <div class="card-footer-item">
+            <span class="card-footer-label">Shipping</span>
+            <span class="card-footer-value">34–36 business days</span>
+          </div>
+          <div class="card-footer-item">
+            <span class="card-footer-label">After Wedding</span>
+            <span class="card-footer-value">Keep for condo</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ════════════════════════════════════════════════════════════ -->
+<!-- CATEGORY 5: DRINKWARE -->
+<!-- ════════════════════════════════════════════════════════════ -->
+<section class="category-section" id="drinkware">
+  <div class="category-header">
+    <div class="category-number">Category 5</div>
+    <h2>Drinkware</h2>
+    <p class="category-vision">
+      Specialty glassware that adds to the aesthetic. Doing our own bar (buying our own alcohol, using the villa's bar counter). TBD whether the villa has enough glasses for 30 guests — but elevated glassware (colored, textured, or gold-rimmed) would tie into the decor. Open to buying or renting.
+    </p>
+  </div>
+
+  <div class="product-card">
+    <div class="card-layout">
+      <div class="card-image">
+        <div class="image-placeholder">
+          <div class="icon">&#x1f4f7;</div>
+          <span>Add inspo images — colored, textured, gold-rimmed</span>
+        </div>
+      </div>
+      <div class="card-body">
+        <div class="card-top-row">
+          <h4>Specialty Glassware</h4>
+          <span class="badge badge-inspo">Inspo</span>
+        </div>
+        <p class="card-description">
+          Elevated glassware for cocktails, wine, water — something with texture, color, or gold accents that ties into the palette. Possibly colored glass (blush, sage, amber) or gold-rimmed.
+        </p>
+        <div class="card-details">
+          <div class="detail-item">
+            <div class="detail-label">Target Count</div>
+            <div class="detail-value">~50 glasses</div>
+          </div>
+        </div>
+        <div class="card-footer">
+          <div class="mindy-note">
+            <strong>Note for Mindy:</strong> Getting quote from rental company. I'd love to see options — colored glass, textured glass, or gold-rimmed options that match the candle/decor aesthetic. Open to buying if the price is comparable to rental.
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ════════════════════════════════════════════════════════════ -->
+<!-- CATEGORY 6: LINENS -->
+<!-- ════════════════════════════════════════════════════════════ -->
+<section class="category-section" id="linens">
+  <div class="category-header">
+    <div class="category-number">Category 6</div>
+    <h2>Linens</h2>
+    <p class="category-vision">
+      Minimal linens — bare wooden tabletops are the look. Considering optional sheer runners and fabric napkins.
+    </p>
+  </div>
+
+  <div class="subgroup">
+    <h3>Table Runners</h3>
+  </div>
+
+  <div class="product-card">
+    <div class="card-layout">
+      <div class="card-image">
+        <div class="image-placeholder">
+          <div class="icon">&#x1f4f7;</div>
+          <span>Add product image</span>
+        </div>
+      </div>
+      <div class="card-body">
+        <div class="card-top-row">
+          <h4>Sheer Chiffon Table Runner</h4>
+          <span class="badge badge-product">Product</span>
+        </div>
+        <p class="card-description">
+          Details TBD — sourced but not yet in spreadsheet. Sheer/chiffon fabric in blush or cream. Goes down the center of the round wooden table under the centerpiece arrangement. Keeps the natural wood visible underneath.
+        </p>
+        <div class="card-details">
+          <div class="detail-item">
+            <div class="detail-label">Target Count</div>
+            <div class="detail-value">3 (one per dinner table)</div>
+          </div>
+          <div class="detail-item">
+            <div class="detail-label">Total Cost</div>
+            <div class="detail-value price">TBD</div>
+          </div>
+        </div>
+        <div class="buy-options">
+          <div class="buy-options-header">Buy Options — Compare Per-Unit Price</div>
+          <div class="buy-option">
+            <span class="option-label">A</span>
+            <span class="option-store add-link-placeholder">TBD — Amanda to add</span>
+            <span class="option-price">—</span>
+            <span class="option-unit">—</span>
+            <span class="add-link-placeholder">—</span>
+          </div>
+        </div>
+        <div class="card-footer">
+          <div class="card-footer-item">
+            <span class="card-footer-label">Placement</span>
+            <span class="card-footer-value">Center of each round dinner table, under the floral + candle arrangement</span>
+          </div>
+          <div class="mindy-note">
+            <strong>Note for Mindy:</strong> I'm indifferent on runners — could skip them entirely. But if we do them, I'd want sheer/chiffon so the wood still shows. Found some purchase options that may be cheaper than renting.
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="subgroup">
+    <h3>Napkins</h3>
+  </div>
+
+  <div class="product-card">
+    <div class="card-layout">
+      <div class="card-image">
+        <div class="image-placeholder">
+          <div class="icon">&#x1f4f7;</div>
+          <span>Add product image or inspo</span>
+        </div>
+      </div>
+      <div class="card-body">
+        <div class="card-top-row">
+          <h4>Fabric Napkins</h4>
+          <span class="badge badge-inspo">Inspo</span>
+        </div>
+        <p class="card-description">
+          Details TBD — sourced but not yet in spreadsheet. Looking at fabric napkins in blush, sage, cream, or a mix. Mindy mentioned that buying and renting are often about the same price. If we buy, we can keep for condo or donate to Mindy.
+        </p>
+        <div class="card-details">
+          <div class="detail-item">
+            <div class="detail-label">Target Count</div>
+            <div class="detail-value">~50 (guests + extras)</div>
+          </div>
+          <div class="detail-item">
+            <div class="detail-label">Total Cost</div>
+            <div class="detail-value price">TBD</div>
+          </div>
+        </div>
+        <div class="card-footer">
+          <div class="mindy-note">
+            <strong>Note for Mindy:</strong> What rental napkin options do you have? Color options? If we find a buy option at comparable price, we'll go that route and you can keep any extras.
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ════════════════════════════════════════════════════════════ -->
+<!-- CATEGORY 7: TABLES -->
+<!-- ════════════════════════════════════════════════════════════ -->
+<section class="category-section" id="tables">
+  <div class="category-header">
+    <div class="category-number">Category 7</div>
+    <h2>Tables</h2>
+    <p class="category-vision">
+      The villa has 1 round wooden table. We need 2 more to match — renting through Mindy's vendor.
+    </p>
+  </div>
+
+  <div class="product-card">
+    <div class="card-layout">
+      <div class="card-image">
+        <div class="image-placeholder">
+          <div class="icon">&#x1f4f7;</div>
+          <span>Add MSM catalog screenshot</span>
+        </div>
+      </div>
+      <div class="card-body">
+        <div class="card-top-row">
+          <h4>Round Wooden Tables</h4>
+          <span class="badge badge-inspo">Inspo</span>
+        </div>
+        <p class="card-description">
+          Round wooden tables that seat ~10 people. Natural wood finish, no tablecloth. The villa already has 1 round table — we need 2 more. Rental through Mindy's vendor.
+        </p>
+        <div class="card-details">
+          <div class="detail-item">
+            <div class="detail-label">Target Count</div>
+            <div class="detail-value">2 additional (3 total)</div>
+          </div>
+          <div class="detail-item">
+            <div class="detail-label">Estimated Price</div>
+            <div class="detail-value price">~$75 USD each (MSM)</div>
+          </div>
+          <div class="detail-item">
+            <div class="detail-label">Size</div>
+            <div class="detail-value">1.80m diameter, seats 10</div>
+          </div>
+        </div>
+        <div class="card-footer">
+          <div class="mindy-note">
+            <strong>Note for Mindy:</strong> Getting quote from rental company. Saw the wooden round tables in the MSM catalog and love the look. Want to match the existing villa table as closely as possible.
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ════════════════════════════════════════════════════════════ -->
+<!-- CATEGORY 8: LIGHTING -->
+<!-- ════════════════════════════════════════════════════════════ -->
+<section class="category-section" id="lighting">
+  <div class="category-header">
+    <div class="category-number">Category 8</div>
+    <h2>Lighting</h2>
+    <p class="category-vision">
+      Overhead string lights for the outdoor reception space, plus fairy lights woven throughout for ambient warmth. Combined with the candle glow, this creates the dreamy evening atmosphere.
+    </p>
+  </div>
+
+  <div class="product-card">
+    <div class="card-layout">
+      <div class="card-image">
+        <div class="image-placeholder">
+          <div class="icon">&#x1f4f7;</div>
+          <span>Add inspo — bistro lights zigzag pattern</span>
+        </div>
+      </div>
+      <div class="card-body">
+        <div class="card-top-row">
+          <h4>Bistro / Bulb String Lights + Ground Poles</h4>
+          <span class="badge badge-inspo">Inspo</span>
+        </div>
+        <p class="card-description">
+          Bistro-style bulb string lights strung overhead in a zigzag pattern from the house structure across the outdoor reception space to the pool edge (or beyond if pool is covered). Need ground poles — NOT lawn poles. Saw ground poles in Uno Audiovisual's content.
+        </p>
+        <div class="card-footer">
+          <div class="card-footer-item">
+            <span class="card-footer-label">Placement</span>
+            <span class="card-footer-value">Overhead across the outdoor reception / dance floor area</span>
+          </div>
+          <div class="mindy-note">
+            <strong>Note for Mindy:</strong> Getting quotes from AV vendors. Also open to twinkle/fairy lights if they look better for the space. Mindy to assess pole placement during Thursday walkthrough.
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="product-card">
+    <div class="card-layout">
+      <div class="card-image">
+        <div class="image-placeholder">
+          <div class="icon">&#x1f4f7;</div>
+          <span>Add inspo</span>
+        </div>
+      </div>
+      <div class="card-body">
+        <div class="card-top-row">
+          <h4>Twinkle / Fairy Lights</h4>
+          <span class="badge badge-inspo">Inspo</span>
+        </div>
+        <p class="card-description">
+          Battery-operated twinkle fairy lights woven throughout the space for ambient warmth. Included in coordination package.
+        </p>
+        <div class="card-footer">
+          <div class="mindy-note">
+            <strong>Note for Mindy:</strong> Getting quote from coordinator. 20 meters included in coordination twinkle light package. These supplement the overhead string lights.
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ════════════════════════════════════════════════════════════ -->
+<!-- CATEGORY 9: SIGNAGE & GUEST EXPERIENCE -->
+<!-- ════════════════════════════════════════════════════════════ -->
+<section class="category-section" id="signage">
+  <div class="category-header">
+    <div class="category-number">Category 9</div>
+    <h2>Signage &amp; Guest Experience</h2>
+    <p class="category-vision">
+      Interactive touches and photo ops that make the evening memorable — Polaroid guestbook, photo wall or 360 booth.
+    </p>
+  </div>
+
+  <div class="product-card">
+    <div class="card-layout">
+      <div class="card-image">
+        <div class="image-placeholder">
+          <div class="icon">&#x1f4f7;</div>
+          <span>Add product image</span>
+        </div>
+      </div>
+      <div class="card-body">
+        <div class="card-top-row">
+          <h4>Polaroid Camera + Film</h4>
+          <span class="badge badge-product">Product</span>
+        </div>
+        <p class="card-description">
+          Details TBD — looking for a camera with double-print capability so one photo goes in the guestbook and we keep a copy. For the Polaroid guestbook concept.
+        </p>
+        <div class="card-details">
+          <div class="detail-item">
+            <div class="detail-label">Target Count</div>
+            <div class="detail-value">1 camera + ~50+ photos film</div>
+          </div>
+          <div class="detail-item">
+            <div class="detail-label">Total Cost</div>
+            <div class="detail-value price">TBD</div>
+          </div>
+        </div>
+        <div class="buy-options">
+          <div class="buy-options-header">Buy Options — Compare Per-Unit Price</div>
+          <div class="buy-option">
+            <span class="option-label">A</span>
+            <span class="option-store add-link-placeholder">TBD — Amanda to add</span>
+            <span class="option-price">—</span>
+            <span class="option-unit">—</span>
+            <span class="add-link-placeholder">—</span>
+          </div>
+        </div>
+        <div class="card-footer">
+          <div class="card-footer-item">
+            <span class="card-footer-label">Placement</span>
+            <span class="card-footer-value">Guestbook area. TBD if this needs a dedicated photo backdrop or if guests just snap wherever.</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="product-card">
+    <div class="card-layout">
+      <div class="card-image">
+        <div class="image-placeholder">
+          <div class="icon">&#x1f4f7;</div>
+          <span>Add product image</span>
+        </div>
+      </div>
+      <div class="card-body">
+        <div class="card-top-row">
+          <h4>Guestbook / Album for Polaroids</h4>
+          <span class="badge badge-product">Product</span>
+        </div>
+        <p class="card-description">
+          Details TBD — album or book where guests stick their Polaroid + write a message.
+        </p>
+        <div class="card-details">
+          <div class="detail-item">
+            <div class="detail-label">Target Count</div>
+            <div class="detail-value">1</div>
+          </div>
+          <div class="detail-item">
+            <div class="detail-label">Total Cost</div>
+            <div class="detail-value price">TBD</div>
+          </div>
+        </div>
+        <div class="buy-options">
+          <div class="buy-options-header">Buy Options — Compare Per-Unit Price</div>
+          <div class="buy-option">
+            <span class="option-label">A</span>
+            <span class="option-store add-link-placeholder">TBD — Amanda to add</span>
+            <span class="option-price">—</span>
+            <span class="option-unit">—</span>
+            <span class="add-link-placeholder">—</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="product-card">
+    <div class="card-layout">
+      <div class="card-image">
+        <div class="image-placeholder">
+          <div class="icon">&#x1f4f7;</div>
+          <span>Add inspo for both options</span>
+        </div>
+      </div>
+      <div class="card-body">
+        <div class="card-top-row">
+          <h4>Photo Wall or 360 Photo Booth</h4>
+          <span class="badge badge-inspo">Inspo</span>
+        </div>
+        <p class="card-description">
+          Either a styled photo wall backdrop OR a 360 spinning photo booth. Not both — it's one or the other. Space dependent (Mindy checking during Thursday walkthrough).
+        </p>
+        <div class="card-details">
+          <div class="detail-item">
+            <div class="detail-label">360 Booth Price</div>
+            <div class="detail-value price">~$489 for 2 hours</div>
+          </div>
+        </div>
+        <div class="card-footer">
+          <div class="mindy-note">
+            <strong>Note for Mindy:</strong> Getting quote from vendor. Mason really wants one of these. 360 booth is ~$489 for 2 hours from a local vendor.
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ════════════════════════════════════════════════════════════ -->
+<!-- CATEGORY 10: FLOWERS & FLORALS -->
+<!-- ════════════════════════════════════════════════════════════ -->
+<section class="category-section" id="florals">
+  <div class="category-header">
+    <div class="category-number">Category 10</div>
+    <h2>Flowers &amp; Florals</h2>
+    <p class="category-vision">
+      Blush, cream, soft pink florals with eucalyptus (heart-shaped leaf variety) and touches of pampas grass. Romantic but not overly structured. Greenery as an accent, NOT as a backdrop. Flowers are at: arbor, aisle (on top of the gold stands), dinner table centerpieces, cake/dessert table, bud vases in secondary areas.
+      <br><br>
+      All florals below are INSPO — Mindy is getting a quote from the florist. Pinterest photos to follow via WhatsApp.
+    </p>
+  </div>
+
+  <div class="product-card">
+    <div class="card-layout">
+      <div class="card-image">
+        <div class="image-placeholder">
+          <div class="icon">&#x1f4f7;</div>
+          <span>Add Pinterest inspo</span>
+        </div>
+      </div>
+      <div class="card-body">
+        <div class="card-top-row">
+          <h4>Bridal Bouquet</h4>
+          <span class="badge badge-inspo">Inspo</span>
+        </div>
+        <p class="card-description">
+          Blush, cream, eucalyptus, touches of pampas. Specific inspo photos to follow.
+        </p>
+        <div class="card-details">
+          <div class="detail-item">
+            <div class="detail-label">Target Count</div>
+            <div class="detail-value">1</div>
+          </div>
+        </div>
+        <div class="card-footer">
+          <div class="mindy-note"><strong>Note for Mindy:</strong> Getting florist quote.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="product-card">
+    <div class="card-layout">
+      <div class="card-image">
+        <div class="image-placeholder">
+          <div class="icon">&#x1f4f7;</div>
+          <span>Add Pinterest inspo</span>
+        </div>
+      </div>
+      <div class="card-body">
+        <div class="card-top-row">
+          <h4>Bridesmaid Bouquets</h4>
+          <span class="badge badge-inspo">Inspo</span>
+        </div>
+        <p class="card-description">Smaller version of bridal bouquet. Same palette.</p>
+        <div class="card-details">
+          <div class="detail-item">
+            <div class="detail-label">Target Count</div>
+            <div class="detail-value">3–4 (final count TBD)</div>
+          </div>
+        </div>
+        <div class="card-footer">
+          <div class="mindy-note"><strong>Note for Mindy:</strong> Getting florist quote.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="product-card">
+    <div class="card-layout">
+      <div class="card-image">
+        <div class="image-placeholder">
+          <div class="icon">&#x1f4f7;</div>
+          <span>Add inspo</span>
+        </div>
+      </div>
+      <div class="card-body">
+        <div class="card-top-row">
+          <h4>Boutonnieres</h4>
+          <span class="badge badge-inspo">Inspo</span>
+        </div>
+        <p class="card-description">Simple boutonniere for the groom + TBD others (groomsmen, officiant, dads).</p>
+        <div class="card-details">
+          <div class="detail-item">
+            <div class="detail-label">Target Count</div>
+            <div class="detail-value">TBD — minimum 1 (Mason)</div>
+          </div>
+        </div>
+        <div class="card-footer">
+          <div class="mindy-note"><strong>Note for Mindy:</strong> Getting florist quote.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="product-card">
+    <div class="card-layout">
+      <div class="card-image">
+        <div class="image-placeholder">
+          <div class="icon">&#x1f4f7;</div>
+          <span>Add inspo</span>
+        </div>
+      </div>
+      <div class="card-body">
+        <div class="card-top-row">
+          <h4>Dinner Table Centerpiece Arrangements</h4>
+          <span class="badge badge-inspo">Inspo</span>
+        </div>
+        <p class="card-description">
+          Central floral arrangement for each round dinner table. Substantial arrangement — NOT bud vases. Surrounded by the candle collection (floating candles, pillar candles, votives). Blush, cream, eucalyptus.
+        </p>
+        <div class="card-details">
+          <div class="detail-item">
+            <div class="detail-label">Target Count</div>
+            <div class="detail-value">3 (one per table)</div>
+          </div>
+        </div>
+        <div class="card-footer">
+          <div class="mindy-note"><strong>Note for Mindy:</strong> Getting florist quote. Bud vases are great for secondary areas but NOT on the dinner tables.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="product-card">
+    <div class="card-layout">
+      <div class="card-image">
+        <div class="image-placeholder">
+          <div class="icon">&#x1f4f7;</div>
+          <span>Add inspo</span>
+        </div>
+      </div>
+      <div class="card-body">
+        <div class="card-top-row">
+          <h4>Cake / Dessert Table Flowers</h4>
+          <span class="badge badge-inspo">Inspo</span>
+        </div>
+        <p class="card-description">
+          Floral arrangement(s) for the cake and dessert display area. This is a priority area.
+        </p>
+        <div class="card-details">
+          <div class="detail-item">
+            <div class="detail-label">Target Count</div>
+            <div class="detail-value">1 arrangement</div>
+          </div>
+        </div>
+        <div class="card-footer">
+          <div class="mindy-note"><strong>Note for Mindy:</strong> Getting florist quote.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="product-card">
+    <div class="card-layout">
+      <div class="card-image">
+        <div class="image-placeholder">
+          <div class="icon">&#x1f4f7;</div>
+          <span>Add inspo</span>
+        </div>
+      </div>
+      <div class="card-body">
+        <div class="card-top-row">
+          <h4>2 Large Floor Arrangements (Ceremony Entrance)</h4>
+          <span class="badge badge-inspo">Inspo</span>
+        </div>
+        <p class="card-description">
+          Two larger arrangements for the ceremony entrance that can be picked up and moved to reception areas after the ceremony (bar, dance floor, etc.). Must be portable.
+        </p>
+        <div class="card-details">
+          <div class="detail-item">
+            <div class="detail-label">Target Count</div>
+            <div class="detail-value">2</div>
+          </div>
+        </div>
+        <div class="card-footer">
+          <div class="mindy-note"><strong>Note for Mindy:</strong> Getting florist quote. Key requirement: moveable/repurposable.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="product-card">
+    <div class="card-layout">
+      <div class="card-image">
+        <div class="image-placeholder">
+          <div class="icon">&#x1f4f7;</div>
+          <span>Add inspo</span>
+        </div>
+      </div>
+      <div class="card-body">
+        <div class="card-top-row">
+          <h4>Bulk / Loose Flowers for Bud Vases</h4>
+          <span class="badge badge-inspo">Inspo</span>
+        </div>
+        <p class="card-description">
+          Instead of paying for full arrangements in every secondary area, order loose/bulk flowers from the florist at lower cost. Mindy places them in her bud vases (from her inventory) at: bathrooms, guestbook area, cocktail tables, bar.
+        </p>
+        <div class="card-footer">
+          <div class="mindy-note"><strong>Note for Mindy:</strong> You mentioned you have bud vases in your bodegas — small fee for cleaning/breakage. I love this idea for the secondary areas. Let's get a bulk flower price from the florist.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="product-card">
+    <div class="card-layout">
+      <div class="card-image">
+        <div class="image-placeholder">
+          <div class="icon">&#x1f4f7;</div>
+          <span>Add flower type inspo photos</span>
+        </div>
+      </div>
+      <div class="card-body">
+        <div class="card-top-row">
+          <h4>Types of Flowers I Like</h4>
+          <span class="badge badge-inspo">Inspo</span>
+        </div>
+        <p class="card-description">
+          Still learning flower names, but here are types I'm drawn to. Adding more as I find them:
+        </p>
+        <ul style="margin: 0 0 16px 20px; font-size:0.85rem; color:var(--text-light); line-height:1.8;">
+          <li>Roses (blush, cream, garden roses)</li>
+          <li>Peonies (if in season)</li>
+          <li>Eucalyptus (heart-shaped leaf variety — NOT the long wispy kind)</li>
+          <li>Pampas grass (soft, fluffy — just touches, not overwhelming)</li>
+          <li><em>More to come...</em></li>
+        </ul>
+        <div class="card-footer">
+          <div class="mindy-note"><strong>Note for Mindy:</strong> Even if I don't know the name, I'll include the photo and you/florist can identify it.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ════════════════════════════════════════════════════════════ -->
+<!-- CATEGORY 11: DESSERT & CAKE -->
+<!-- ════════════════════════════════════════════════════════════ -->
+<section class="category-section" id="dessert">
+  <div class="category-header">
+    <div class="category-number">Category 11</div>
+    <h2>Dessert &amp; Cake</h2>
+    <p class="category-vision">
+      A mix of sweet treats — from a statement cake to late-night churros. The dessert experience is as much about presentation as taste.
+    </p>
+  </div>
+
+  <div class="product-card">
+    <div class="card-layout">
+      <div class="card-image">
+        <div class="image-placeholder">
+          <div class="icon">&#x1f4f7;</div>
+          <span>Add inspo</span>
+        </div>
+      </div>
+      <div class="card-body">
+        <div class="card-top-row">
+          <h4>Churro Display / Cart</h4>
+          <span class="badge badge-inspo">Inspo</span>
+        </div>
+        <p class="card-description">
+          Fresh made-to-order churros with toppings. Fun late-night snack option. Looking at fun display options.
+        </p>
+        <div class="card-footer">
+          <div class="mindy-note"><strong>Note for Mindy:</strong> Getting quote from dessert vendor. Love the idea of a late-night snack — churros would come out later in the evening.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="product-card">
+    <div class="card-layout">
+      <div class="card-image">
+        <div class="image-placeholder">
+          <div class="icon">&#x1f4f7;</div>
+          <span>Add inspo</span>
+        </div>
+      </div>
+      <div class="card-body">
+        <div class="card-top-row">
+          <h4>Dessert Table</h4>
+          <span class="badge badge-inspo">Inspo</span>
+        </div>
+        <p class="card-description">
+          Mix of mini desserts — sweet and/or savory options. Mini tiramisu, key lime pie, fruit tarts, Mexican wedding cookies, brownies, empanadas, etc.
+        </p>
+        <div class="card-footer">
+          <div class="mindy-note"><strong>Note for Mindy:</strong> Getting quote from dessert vendor. Open to subbing a traditional dessert course for this.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="product-card">
+    <div class="card-layout">
+      <div class="card-image">
+        <div class="image-placeholder">
+          <div class="icon">&#x1f4f7;</div>
+          <span>Add cake inspo</span>
+        </div>
+      </div>
+      <div class="card-body">
+        <div class="card-top-row">
+          <h4>Wedding Cake</h4>
+          <span class="badge badge-inspo">Inspo</span>
+        </div>
+        <p class="card-description">
+          Could be a full multi-tier cake OR a smaller cake designed for the cake-cutting moment + photos, with the churro cart and dessert table being the main dessert experience. TBD on size and style.
+        </p>
+        <div class="card-footer">
+          <div class="mindy-note"><strong>Note for Mindy:</strong> Getting quote from baker. What do you recommend — full cake or small cutting cake + dessert table?</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ════════════════════════════════════════════════════════════ -->
+<!-- VENDOR QUOTES TRACKER -->
+<!-- ════════════════════════════════════════════════════════════ -->
+<section class="category-section" id="quotes">
+  <div class="category-header">
+    <div class="category-number">Tracking</div>
+    <h2>Items Mindy Is Getting Quotes For</h2>
+    <p class="category-vision">
+      Items where Mindy is reaching out to her local vendors for pricing and availability.
+    </p>
+  </div>
+
+  <table class="quotes-table">
+    <thead>
+      <tr>
+        <th>Category</th>
+        <th>Item</th>
+        <th>Vendor Type</th>
+        <th>Notes</th>
+        <th>Status</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>Florals</td>
+        <td>Full floral package (arbor, bouquets, centerpieces, etc.)</td>
+        <td>Florist</td>
+        <td>Mindy sending brief after Amanda provides inspo photos</td>
+        <td><span class="status-badge status-pending">Pending</span></td>
+      </tr>
+      <tr>
+        <td>AV / Sound</td>
+        <td>Full wedding sound + DJ package</td>
+        <td>AV Company (Uno or Plugin)</td>
+        <td>Ceremony + dinner + reception. Cocktail hour = mariachi, just need backup speaker</td>
+        <td><span class="status-badge status-pending">Pending</span></td>
+      </tr>
+      <tr>
+        <td>AV / Sound</td>
+        <td>String lights + ground poles</td>
+        <td>AV Company</td>
+        <td>Zigzag pattern, bistro or twinkle, from house to pool</td>
+        <td><span class="status-badge status-pending">Pending</span></td>
+      </tr>
+      <tr>
+        <td>Entertainment</td>
+        <td>Mariachi band (3–4 piece)</td>
+        <td>Mariachi</td>
+        <td>For cocktail hour. Could lead guests or be waiting on rooftop</td>
+        <td><span class="status-badge status-pending">Pending</span></td>
+      </tr>
+      <tr>
+        <td>Entertainment</td>
+        <td>Live band for reception</td>
+        <td>Live Band (La Bombonera &amp; Guayaband)</td>
+        <td>Salsa/cumbia/reggae. 2 sets.</td>
+        <td><span class="status-badge status-pending">Pending</span></td>
+      </tr>
+      <tr>
+        <td>Entertainment</td>
+        <td>Ceremony musician (violin/guitar/sax)</td>
+        <td>Live Musician</td>
+        <td>For the ceremony</td>
+        <td><span class="status-badge status-pending">Pending</span></td>
+      </tr>
+      <tr>
+        <td>Furniture</td>
+        <td>Round wooden tables (&times;2)</td>
+        <td>Rental Company</td>
+        <td>To match villa's existing table</td>
+        <td><span class="status-badge status-pending">Pending</span></td>
+      </tr>
+      <tr>
+        <td>Furniture</td>
+        <td>Chairs (~45)</td>
+        <td>Rental Company (MSM)</td>
+        <td>Gold Tiffany w/ cushion preferred</td>
+        <td><span class="status-badge status-pending">Pending</span></td>
+      </tr>
+      <tr>
+        <td>Furniture</td>
+        <td>Cocktail tables</td>
+        <td>Rental Company</td>
+        <td>For cocktail hour area</td>
+        <td><span class="status-badge status-pending">Pending</span></td>
+      </tr>
+      <tr>
+        <td>Dessert</td>
+        <td>Churro cart + dessert table + cake</td>
+        <td>Baker / Dessert Vendor</td>
+        <td></td>
+        <td><span class="status-badge status-pending">Pending</span></td>
+      </tr>
+      <tr>
+        <td>Beauty</td>
+        <td>Bridal + bridesmaid hair &amp; makeup</td>
+        <td>Hair/Makeup (Beso Brides or Salty Beauty)</td>
+        <td>Checking availability. 5–6 people total.</td>
+        <td><span class="status-badge status-pending">Pending</span></td>
+      </tr>
+      <tr>
+        <td>Photo/Video</td>
+        <td>Photography</td>
+        <td>Photographer (FineArt Studio)</td>
+        <td>Checking availability — top pick</td>
+        <td><span class="status-badge status-pending">Pending</span></td>
+      </tr>
+      <tr>
+        <td>Photo/Video</td>
+        <td>Video + drone</td>
+        <td>Videographer (Dreamsgate Films)</td>
+        <td></td>
+        <td><span class="status-badge status-pending">Pending</span></td>
+      </tr>
+      <tr>
+        <td>Fun</td>
+        <td>360 photo booth OR photo wall</td>
+        <td>Entertainment Vendor</td>
+        <td>Either/or. Space dependent.</td>
+        <td><span class="status-badge status-pending">Pending</span></td>
+      </tr>
+      <tr>
+        <td>Officiant</td>
+        <td>Ceremony officiant</td>
+        <td>Officiant</td>
+        <td>Symbolic ceremony</td>
+        <td><span class="status-badge status-pending">Pending</span></td>
+      </tr>
+      <tr>
+        <td>Pool</td>
+        <td>Pool cover (clear plastic)</td>
+        <td>Specialty Vendor</td>
+        <td>To create more reception space. Seen at Villa La Jolla.</td>
+        <td><span class="status-badge status-pending">Pending</span></td>
+      </tr>
+      <tr>
+        <td>Coordination</td>
+        <td>Wedding coordination</td>
+        <td>Wedding Planner (Mindy/TLW)</td>
+        <td>Includes twinkle light package and setup</td>
+        <td><span class="status-badge status-pending">Pending</span></td>
+      </tr>
+    </tbody>
+  </table>
+</section>
+
+</div>
+
+<!-- Footer -->
+<footer style="text-align:center; padding:48px 24px 60px; border-top:1px solid var(--border); margin-top:40px;">
+  <p style="font-family:var(--font-display); font-size:1.4rem; font-weight:300; color:var(--text-light);">Amanda &amp; Mason</p>
+  <p style="font-size:0.75rem; color:var(--text-muted); margin-top:4px; letter-spacing:0.06em; text-transform:uppercase;">December 5, 2026 &middot; Tulum, Mexico</p>
+  <p style="font-size:0.7rem; color:var(--text-muted); margin-top:16px;">Catalog prepared for Mindy &middot; Last updated June 2026</p>
+</footer>
+
+</body>
+</html>
