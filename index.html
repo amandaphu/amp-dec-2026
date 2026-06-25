@@ -847,9 +847,9 @@
     display: flex; align-items: center; justify-content: center;
     font-size: 0.7rem; font-weight: 600; color: white; flex-shrink: 0;
   }
-  .comment-avatar.user-amanda { background: #C4A265; }
-  .comment-avatar.user-mason { background: #5BA3C9; }
-  .comment-avatar.user-mindy { background: #9CAF88; }
+  .comment-avatar.user-amanda { background: #D4A0A0; }
+  .comment-avatar.user-mason { background: #9CAF88; }
+  .comment-avatar.user-mindy { background: #C4A265; }
   .comment-body { flex: 1; min-width: 0; }
   .comment-meta {
     font-size: 0.72rem; color: var(--text-muted); margin-bottom: 3px;
@@ -1067,7 +1067,7 @@
       <div class="comment-thread" data-note-id="area-1-reception">
         <div class="comment-list"></div>
         <div class="comment-input-row">
-          <textarea class="comment-input" placeholder="Add a note..." rows="1"></textarea>
+          <textarea class="comment-input" placeholder="Add a comment..." rows="1"></textarea>
           <button class="comment-send">Send</button>
         </div>
       </div>
@@ -1090,7 +1090,7 @@
       <div class="comment-thread" data-note-id="area-2-outdoor">
         <div class="comment-list"></div>
         <div class="comment-input-row">
-          <textarea class="comment-input" placeholder="Add a note..." rows="1"></textarea>
+          <textarea class="comment-input" placeholder="Add a comment..." rows="1"></textarea>
           <button class="comment-send">Send</button>
         </div>
       </div>
@@ -1196,7 +1196,7 @@
       <div class="comment-thread" data-note-id="area-3-ceremony">
         <div class="comment-list"></div>
         <div class="comment-input-row">
-          <textarea class="comment-input" placeholder="Add a note..." rows="1"></textarea>
+          <textarea class="comment-input" placeholder="Add a comment..." rows="1"></textarea>
           <button class="comment-send">Send</button>
         </div>
       </div>
@@ -1295,7 +1295,7 @@
       <div class="comment-thread" data-note-id="area-4-rooftop">
         <div class="comment-list"></div>
         <div class="comment-input-row">
-          <textarea class="comment-input" placeholder="Add a note..." rows="1"></textarea>
+          <textarea class="comment-input" placeholder="Add a comment..." rows="1"></textarea>
           <button class="comment-send">Send</button>
         </div>
       </div>
@@ -1364,7 +1364,7 @@
       <div class="comment-thread" data-note-id="area-5-food">
         <div class="comment-list"></div>
         <div class="comment-input-row">
-          <textarea class="comment-input" placeholder="Add a note..." rows="1"></textarea>
+          <textarea class="comment-input" placeholder="Add a comment..." rows="1"></textarea>
           <button class="comment-send">Send</button>
         </div>
       </div>
@@ -1431,7 +1431,7 @@
       <div class="comment-thread" data-note-id="area-6-cake">
         <div class="comment-list"></div>
         <div class="comment-input-row">
-          <textarea class="comment-input" placeholder="Add a note..." rows="1"></textarea>
+          <textarea class="comment-input" placeholder="Add a comment..." rows="1"></textarea>
           <button class="comment-send">Send</button>
         </div>
       </div>
@@ -4057,8 +4057,8 @@ function showUserPicker() {
     overlay.className = 'user-picker-overlay';
     overlay.innerHTML =
       '<div class="user-picker-modal">' +
-        '<h3>Welcome!</h3>' +
-        '<p>Who\'s viewing the catalog?</p>' +
+        '<h3>Who are you?</h3>' +
+        '<p>Select your name to get started.</p>' +
         '<button class="user-picker-btn" data-user="amanda">Amanda</button>' +
         '<button class="user-picker-btn" data-user="mason">Mason</button>' +
         '<button class="user-picker-btn" data-user="mindy">Mindy</button>' +
@@ -4121,7 +4121,43 @@ function escapeHtml(str) {
   return div.innerHTML;
 }
 
+function makeThreadId(text) {
+  return text.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/^-|-$/g, '').substring(0, 50);
+}
+
+function createThreadEl(noteId) {
+  var div = document.createElement('div');
+  div.className = 'comment-thread';
+  div.setAttribute('data-note-id', noteId);
+  div.innerHTML =
+    '<div class="comment-list"></div>' +
+    '<div class="comment-input-row">' +
+      '<textarea class="comment-input" placeholder="Add a comment..." rows="1"></textarea>' +
+      '<button class="comment-send">Send</button>' +
+    '</div>';
+  return div;
+}
+
+function injectProductThreads() {
+  document.querySelectorAll('.product-card').forEach(function(card) {
+    var h4 = card.querySelector('h4');
+    if (!h4) return;
+    var noteId = 'product-' + makeThreadId(h4.textContent);
+    var body = card.querySelector('.card-body');
+    if (body && !body.querySelector('.comment-thread')) {
+      body.appendChild(createThreadEl(noteId));
+    }
+  });
+
+  var quotesSection = document.querySelector('#quotes');
+  if (quotesSection && !quotesSection.querySelector('.comment-thread')) {
+    quotesSection.appendChild(createThreadEl('quotes-general'));
+  }
+}
+
 function initThreads() {
+  injectProductThreads();
+
   document.querySelectorAll('.comment-thread').forEach(function(thread) {
     var noteId = thread.getAttribute('data-note-id');
     var list = thread.querySelector('.comment-list');
