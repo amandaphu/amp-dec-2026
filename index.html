@@ -859,12 +859,33 @@
     font-size: 0.82rem; color: var(--text-light); line-height: 1.5;
     white-space: pre-wrap; word-break: break-word;
   }
-  .comment-delete {
+  .comment-actions {
     position: absolute; top: 8px; right: 10px;
-    background: none; border: none; color: var(--text-muted);
-    cursor: pointer; font-size: 0.7rem; opacity: 0; transition: opacity 0.2s;
+    display: flex; gap: 6px;
   }
-  .comment-item:hover .comment-delete { opacity: 1; }
+  .comment-action-btn {
+    background: none; border: none; cursor: pointer; padding: 2px;
+    color: var(--text-muted); transition: color 0.2s;
+  }
+  .comment-action-btn:hover { color: var(--text); }
+  .comment-action-btn svg { width: 14px; height: 14px; }
+  .comment-edit-input {
+    width: 100%; padding: 6px 10px; border: 1px solid var(--gold);
+    border-radius: var(--radius-sm); font-family: var(--font-body);
+    font-size: 0.82rem; color: var(--text-light); background: var(--cream);
+    resize: none; margin-top: 4px;
+  }
+  .comment-edit-actions {
+    display: flex; gap: 6px; margin-top: 4px;
+  }
+  .comment-edit-actions button {
+    padding: 3px 10px; font-size: 0.72rem; border-radius: var(--radius-sm);
+    cursor: pointer; font-family: var(--font-body); border: 1px solid var(--border);
+    background: white; color: var(--text);
+  }
+  .comment-edit-actions .save-edit {
+    background: var(--gold); color: white; border-color: var(--gold);
+  }
   .comment-input-row {
     display: flex; gap: 8px; align-items: flex-end;
   }
@@ -4034,7 +4055,7 @@ document.querySelectorAll('.card-image img').forEach(function(img) {
 <!-- Firebase SDK -->
 <script type="module">
 import { initializeApp } from "https://www.gstatic.com/firebasejs/12.15.0/firebase-app.js";
-import { getDatabase, ref, push, remove, onValue } from "https://www.gstatic.com/firebasejs/12.15.0/firebase-database.js";
+import { getDatabase, ref, push, remove, update, onValue } from "https://www.gstatic.com/firebasejs/12.15.0/firebase-database.js";
 
 const firebaseConfig = {
   apiKey: "AIzaSyDGW3ro86l5Hie_bnvmjISqt_5tK0mjN6Q",
@@ -4098,19 +4119,29 @@ function renderComment(key, data) {
   var initials = { amanda: 'A', mason: 'M', mindy: 'M' };
   var avatarClass = 'comment-avatar user-' + data.user;
 
-  var deleteBtn = '';
+  var actions = '';
   if (data.user === currentUser) {
-    deleteBtn = '<button class="comment-delete" data-key="' + key +
-      '" data-area="' + data.area + '">delete</button>';
+    actions = '<div class="comment-actions">' +
+      '<button class="comment-action-btn comment-edit-btn" data-key="' + key +
+        '" data-area="' + data.area + '" title="Edit">' +
+        '<svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5">' +
+          '<path d="M11.5 1.5l3 3L5 14H2v-3z"/></svg></button>' +
+      '<button class="comment-action-btn comment-delete-btn" data-key="' + key +
+        '" data-area="' + data.area + '" title="Delete">' +
+        '<svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5">' +
+          '<path d="M2 4h12M5.3 4V2.7a1 1 0 011-1h3.4a1 1 0 011 1V4M6 7v5M10 7v5"/>' +
+          '<path d="M3.3 4l.8 9.3a1 1 0 001 .9h5.8a1 1 0 001-.9L12.7 4"/></svg></button>' +
+    '</div>';
   }
 
   item.innerHTML =
     '<div class="' + avatarClass + '">' + (initials[data.user] || '?') + '</div>' +
     '<div class="comment-body">' +
       '<div class="comment-meta"><strong>' + userDisplayName(data.user) +
-        '</strong> &mdash; ' + formatTime(data.timestamp) + '</div>' +
+        '</strong> &mdash; ' + formatTime(data.timestamp) +
+        (data.edited ? ' <em>(edited)</em>' : '') + '</div>' +
       '<div class="comment-text">' + escapeHtml(data.text) + '</div>' +
-    '</div>' + deleteBtn;
+    '</div>' + actions;
 
   return item;
 }
@@ -4175,11 +4206,45 @@ function initThreads() {
         });
       }
 
-      list.querySelectorAll('.comment-delete').forEach(function(btn) {
+      list.querySelectorAll('.comment-delete-btn').forEach(function(btn) {
         btn.addEventListener('click', function() {
           var k = btn.getAttribute('data-key');
           var a = btn.getAttribute('data-area');
           remove(ref(db, 'comments/' + a + '/' + k));
+        });
+      });
+
+      list.querySelectorAll('.comment-edit-btn').forEach(function(btn) {
+        btn.addEventListener('click', function() {
+          var k = btn.getAttribute('data-key');
+          var a = btn.getAttribute('data-area');
+          var commentItem = btn.closest('.comment-item');
+          var textEl = commentItem.querySelector('.comment-text');
+          var currentText = textEl.textContent;
+
+          textEl.innerHTML =
+            '<textarea class="comment-edit-input" rows="2">' + escapeHtml(currentText) + '</textarea>' +
+            '<div class="comment-edit-actions">' +
+              '<button class="save-edit">Save</button>' +
+              '<button class="cancel-edit">Cancel</button>' +
+            '</div>';
+
+          var editInput = textEl.querySelector('.comment-edit-input');
+          editInput.focus();
+
+          textEl.querySelector('.save-edit').addEventListener('click', function() {
+            var newText = editInput.value.trim();
+            if (newText) {
+              update(ref(db, 'comments/' + a + '/' + k), {
+                text: newText,
+                edited: Date.now()
+              });
+            }
+          });
+
+          textEl.querySelector('.cancel-edit').addEventListener('click', function() {
+            textEl.textContent = currentText;
+          });
         });
       });
     });
