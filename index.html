@@ -181,7 +181,6 @@
   .category-vision {
     font-size: 0.9rem;
     color: var(--text-light);
-    max-width: 800px;
     line-height: 1.8;
   }
 
@@ -200,7 +199,6 @@
   .subgroup p {
     font-size: 0.85rem;
     color: var(--text-light);
-    max-width: 700px;
   }
 
   /* ── Setup Blueprint ── */
@@ -633,9 +631,6 @@
     border-radius: var(--radius);
     overflow: hidden;
     background: var(--white);
-    max-width: 680px;
-    margin-left: auto;
-    margin-right: auto;
   }
   .floor-plan-label {
     background: linear-gradient(135deg, var(--gold-pale) 0%, var(--cream) 100%);
@@ -1223,38 +1218,36 @@
 
         <!-- Kitchen room outline — individual walls -->
         <!-- Top wall: solid -->
-        <line x1="40" y1="40" x2="460" y2="40" stroke="#3D3229" stroke-width="2.5"/>
+        <line x1="90" y1="40" x2="510" y2="40" stroke="#3D3229" stroke-width="2.5"/>
         <!-- Right wall: solid -->
-        <line x1="460" y1="40" x2="460" y2="300" stroke="#3D3229" stroke-width="2.5"/>
+        <line x1="510" y1="40" x2="510" y2="300" stroke="#3D3229" stroke-width="2.5"/>
         <!-- Left wall: glass (green dashed) -->
-        <line x1="40" y1="40" x2="40" y2="300" stroke="#9CAF88" stroke-width="2" stroke-dasharray="8 5" opacity="0.6"/>
+        <line x1="90" y1="40" x2="90" y2="300" stroke="#9CAF88" stroke-width="2" stroke-dasharray="8 5" opacity="0.6"/>
         <!-- Bottom wall: first 2/3 glass, last 1/3 open -->
-        <line x1="40" y1="300" x2="320" y2="300" stroke="#9CAF88" stroke-width="2" stroke-dasharray="8 5" opacity="0.6"/>
+        <line x1="90" y1="300" x2="370" y2="300" stroke="#9CAF88" stroke-width="2" stroke-dasharray="8 5" opacity="0.6"/>
 
         <!-- Kitchen counter — along top wall -->
-        <rect x="50" y="50" width="300" height="30" rx="2" fill="rgba(196,162,101,0.2)" stroke="#C4AD8B" stroke-width="1.5"/>
-        <text x="200" y="70" text-anchor="middle" fill="#9B8E80" font-size="8" font-weight="400">KITCHEN COUNTER</text>
+        <rect x="100" y="50" width="300" height="30" rx="2" fill="rgba(196,162,101,0.2)" stroke="#C4AD8B" stroke-width="1.5"/>
+        <text x="250" y="70" text-anchor="middle" fill="#9B8E80" font-size="8" font-weight="400">KITCHEN COUNTER</text>
 
         <!-- Kitchen island — center -->
-        <rect x="120" y="110" width="200" height="60" rx="3" fill="rgba(196,162,101,0.12)" stroke="#C4AD8B" stroke-width="1.5"/>
-        <text x="220" y="145" text-anchor="middle" fill="#9B8E80" font-size="8" font-weight="400">ISLAND / BAR SEATING</text>
+        <rect x="170" y="110" width="200" height="60" rx="3" fill="rgba(196,162,101,0.12)" stroke="#C4AD8B" stroke-width="1.5"/>
+        <text x="270" y="145" text-anchor="middle" fill="#9B8E80" font-size="8" font-weight="400">ISLAND / BAR SEATING</text>
 
         <!-- Cake table — round, bottom-right -->
-        <circle cx="400" cy="230" r="40" fill="rgba(232,196,196,0.2)" stroke="#E8C4C4" stroke-width="2"/>
-        <g transform="rotate(90 400 230)">
-          <text x="400" y="225" text-anchor="middle" fill="#6B5D4F" font-size="9" font-weight="600">CAKE</text>
-          <text x="400" y="240" text-anchor="middle" fill="#6B5D4F" font-size="9" font-weight="600">TABLE</text>
+        <circle cx="450" cy="230" r="40" fill="rgba(232,196,196,0.2)" stroke="#E8C4C4" stroke-width="2"/>
+        <g transform="rotate(90 450 230)">
+          <text x="450" y="225" text-anchor="middle" fill="#6B5D4F" font-size="9" font-weight="600">CAKE</text>
+          <text x="450" y="240" text-anchor="middle" fill="#6B5D4F" font-size="9" font-weight="600">TABLE</text>
         </g>
 
         <!-- Wall art — flush against right wall -->
-        <rect x="443" y="195" width="14" height="70" rx="2" fill="#E8DFD4" stroke="#C4AD8B" stroke-width="1"/>
-        <g transform="rotate(90 450 230)">
-          <text x="450" y="233" text-anchor="middle" fill="#9B8E80" font-size="7" font-weight="400" dominant-baseline="central">Wall art</text>
-        </g>
+        <rect x="493" y="195" width="14" height="70" rx="2" fill="#E8DFD4" stroke="#C4AD8B" stroke-width="1"/>
+        <text x="500" y="230" text-anchor="middle" dominant-baseline="central" fill="#9B8E80" font-size="7" font-weight="400" transform="rotate(90 500 230)">Wall art</text>
 
         <!-- Labels below -->
-        <text x="180" y="320" text-anchor="middle" fill="#C4AD8B" font-size="8" font-weight="400" opacity="0.5">↓ RECEPTION</text>
-        <text x="390" y="320" text-anchor="middle" fill="#C4AD8B" font-size="8" font-weight="400" opacity="0.5">↓ SMALL DINING</text>
+        <text x="230" y="320" text-anchor="middle" fill="#C4AD8B" font-size="8" font-weight="400" opacity="0.5">↓ RECEPTION</text>
+        <text x="440" y="320" text-anchor="middle" fill="#C4AD8B" font-size="8" font-weight="400" opacity="0.5">↓ SMALL DINING</text>
       </svg>
       <div class="fp-legend">
         <div class="fp-legend-item"><div class="fp-legend-swatch" style="background:rgba(232,196,196,0.3);border-color:#E8C4C4;border-radius:50%"></div>Cake table</div>
@@ -1421,7 +1414,7 @@
             <span class="card-footer-value">Donate to Mindy or keep for condo</span>
           </div>
           <div class="mindy-note">
-            <strong>Floral Arrangement Reference:</strong> This image shows the exact arrangement style I want on all gold stands (with or without crystals). Flowers: blush pink roses, cream/ivory roses, white hydrangeas, white stock flowers (tall spikes in back for height), blush filler flowers. Greenery: eucalyptus and fern foliage. Ask florist to scale down the arrangement size by ~20% so it doesn't overflow the vase as much — keep it compact and contained on top.
+            <strong>Floral Arrangement Reference:</strong> This image shows the arrangement style I'd like on all gold stands. Flowers: blush pink roses, cream/ivory roses, white hydrangeas, white stock flowers (tall spikes in back for height), blush filler flowers. Greenery: eucalyptus and fern foliage. Ideally the arrangement size would be scaled down by ~20% so it doesn't overflow the vase as much — keeping it compact and contained on top.
           </div>
         </div>
       </div>
