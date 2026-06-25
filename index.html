@@ -286,9 +286,10 @@
     overflow: hidden;
   }
   .card-image img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
+    max-width: 100%;
+    max-height: 300px;
+    object-fit: contain;
+    padding: 12px;
   }
   .image-placeholder {
     text-align: center;
@@ -611,11 +612,6 @@
     color: var(--gold);
     font-weight: 500;
   }
-  .venue-details li.circle::before { content: '○'; }
-  .venue-details li.rect::before { content: '▭'; font-size: 0.7em; top: 2px; }
-  .venue-details li.arrow::before { content: '→'; }
-  .venue-details li.x-mark::before { content: '✕'; color: var(--soft-pink); }
-  .venue-details li.note::before { content: '✎'; }
   .venue-notes-field {
     margin-top: 12px;
     width: 100%;
@@ -628,6 +624,68 @@
     color: var(--text-light);
     background: var(--cream);
     resize: vertical;
+  }
+
+  /* ── Floor Plan Schematic ── */
+  .floor-plan-wrap {
+    margin-top: 16px;
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    overflow: hidden;
+    background: var(--white);
+    max-width: 680px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+  .floor-plan-label {
+    background: linear-gradient(135deg, var(--gold-pale) 0%, var(--cream) 100%);
+    padding: 10px 20px;
+    font-family: var(--font-display);
+    font-size: 0.95rem;
+    font-weight: 500;
+    color: var(--text);
+    border-bottom: 1px solid var(--border);
+    letter-spacing: 0.02em;
+  }
+  .floor-plan-svg {
+    width: 100%;
+    display: block;
+    background: #FEFCF9;
+    max-height: 70vh;
+  }
+  .floor-plan-svg text {
+    font-family: 'Montserrat', sans-serif;
+    font-size-adjust: none;
+  }
+  .floor-plan-svg text[font-size="6"] { font-size: 9px !important; }
+  .floor-plan-svg text[font-size="6.5"] { font-size: 9.5px !important; }
+  .floor-plan-svg text[font-size="7"] { font-size: 10px !important; }
+  .floor-plan-svg text[font-size="7.5"] { font-size: 10.5px !important; }
+  .floor-plan-svg text[font-size="8"] { font-size: 11px !important; }
+  .floor-plan-svg text[font-size="8.5"] { font-size: 11.5px !important; }
+  .floor-plan-svg text[font-size="9"] { font-size: 12px !important; }
+  .floor-plan-svg text[font-size="10"] { font-size: 13px !important; }
+  .fp-legend {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 16px;
+    padding: 12px 20px;
+    background: var(--cream);
+    border-top: 1px solid var(--border);
+    font-size: 0.72rem;
+    color: var(--text-light);
+  }
+  .fp-legend-item {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+  }
+  .fp-legend-swatch {
+    width: 14px;
+    height: 14px;
+    border-radius: 3px;
+    border: 1.5px solid rgba(0,0,0,0.15);
+    flex-shrink: 0;
   }
 
   /* ── Quotes Table ── */
@@ -681,30 +739,6 @@
     border: 1px solid var(--gold-light);
   }
 
-  /* ── Annotation Legend ── */
-  .annotation-legend {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 16px;
-    padding: 16px 24px;
-    background: var(--cream);
-    border: 1px solid var(--border);
-    border-radius: var(--radius-sm);
-    margin-bottom: 28px;
-    font-size: 0.78rem;
-    color: var(--text-light);
-  }
-  .legend-item {
-    display: flex;
-    align-items: center;
-    gap: 6px;
-  }
-  .legend-symbol {
-    font-weight: 600;
-    color: var(--gold);
-    font-size: 1rem;
-  }
-
   /* ── Responsive ── */
   @media (max-width: 768px) {
     .card-layout {
@@ -733,7 +767,10 @@
     .catalog-nav { background: var(--cream); border-top: 1px solid var(--border); }
     .product-card { break-inside: avoid; box-shadow: none; border: 1px solid #ddd; }
     .product-card:hover { transform: none; box-shadow: none; }
-    .venue-card { break-inside: avoid; box-shadow: none; border: 1px solid #ddd; }
+    .venue-card { box-shadow: none; border: 1px solid #ddd; }
+    .floor-plan-wrap { break-inside: avoid; box-shadow: none; border: 1px solid #ddd; }
+    .floor-plan-svg { background: white; }
+    .fp-legend { background: #f9f6f1; }
     .blueprint { break-inside: avoid; }
     .category-section { break-before: auto; }
     .category-header { break-after: avoid; }
@@ -796,16 +833,8 @@
     <div class="category-number">Layout Planning</div>
     <h2>Venue Map</h2>
     <p class="category-vision">
-      Annotated venue photos showing Mindy exactly where everything goes at Tankah Art House &amp; Villa Vihara. Drop in venue photos and mark them up with placement notes. Use the legend below for annotation symbols.
+      Venue photos and schematic floor plans showing Mindy exactly where everything goes at Tankah Art House &amp; Villa Vihara. Each area includes reference photos followed by a clean floor plan sketch.
     </p>
-  </div>
-
-  <div class="annotation-legend">
-    <div class="legend-item"><span class="legend-symbol">○</span> Round dinner table</div>
-    <div class="legend-item"><span class="legend-symbol">▭</span> Zone (bar, DJ, food, lounge, dance)</div>
-    <div class="legend-item"><span class="legend-symbol">→</span> Furniture movement / guest flow</div>
-    <div class="legend-item"><span class="legend-symbol" style="color:var(--soft-pink)">✕</span> Remove this item</div>
-    <div class="legend-item"><span class="legend-symbol">✎</span> Label / note</div>
   </div>
 
   <!-- Area 1: Reception — Main House Ground Floor -->
@@ -821,14 +850,86 @@
       <div class="venue-img"><img src="images/venue/dining-table-daytime.png" alt="Round table and dining area daytime"><span class="img-label">Existing Round Table — Daytime</span></div>
       <div class="venue-img"><img src="images/venue/reception-dining-kitchen-night.png" alt="Dining table and kitchen area at night"><span class="img-label">Dining + Kitchen — Night</span></div>
     </div>
+    <!-- Floor Plan Schematic -->
+    <div class="floor-plan-wrap">
+      <div class="floor-plan-label">Floor Plan — Ground Floor + Outdoor</div>
+      <svg class="floor-plan-svg" viewBox="0 0 900 700" xmlns="http://www.w3.org/2000/svg">
+        <rect width="900" height="700" fill="#FEFCF9"/>
+
+        <!-- Orientation -->
+        <text x="450" y="695" text-anchor="middle" fill="#5BA3C9" font-size="8" font-weight="500" letter-spacing="0.5">↓ OCEAN ↓</text>
+
+        <!-- ═══ BUILDING OUTLINE ═══ -->
+        <rect x="40" y="40" width="820" height="340" rx="4" fill="none" stroke="#3D3229" stroke-width="2.5"/>
+
+        <!-- ═══ LIVING ROOM — top-left (glass-enclosed) ═══ -->
+        <rect x="70" y="60" width="340" height="90" rx="3" fill="none" stroke="#9CAF88" stroke-width="1.8" stroke-dasharray="8 5" opacity="0.6"/>
+        <text x="240" y="112" text-anchor="middle" fill="#9B8E80" font-size="10" font-weight="500" letter-spacing="0.5">LIVING ROOM</text>
+
+        <!-- ═══ KITCHEN + SMALL DINING — single connected L-shape, glass-enclosed ═══ -->
+        <path d="M483,60 L847,60 L847,350 L717,350 L717,150 L483,150 Z" rx="3" fill="none" stroke="#9CAF88" stroke-width="1.8" stroke-dasharray="8 5" opacity="0.6"/>
+        <text x="610" y="112" text-anchor="middle" fill="#9B8E80" font-size="10" font-weight="500" letter-spacing="0.5">KITCHEN</text>
+        <text x="782" y="248" text-anchor="middle" fill="#9B8E80" font-size="10" font-weight="500">SMALL</text>
+        <text x="782" y="264" text-anchor="middle" fill="#9B8E80" font-size="10" font-weight="500">DINING</text>
+        <text x="782" y="286" text-anchor="middle" fill="#C4A265" font-size="7.5" font-weight="400" font-style="italic">FOOD STATION?</text>
+        <text x="782" y="298" text-anchor="middle" fill="#9B8E80" font-size="6.5">See zoomed view below</text>
+
+        <!-- ═══ BAR — left side, narrow with horizontal text ═══ -->
+        <rect x="55" y="195" width="70" height="145" rx="4" fill="#D4DFC7" stroke="#9CAF88" stroke-width="2"/>
+        <text x="90" y="275" text-anchor="middle" fill="#3D3229" font-size="10" font-weight="600" letter-spacing="1">BAR</text>
+
+        <!-- ═══ 3 ROUND DINNER TABLES — centered row ═══ -->
+        <circle cx="280" cy="260" r="52" fill="rgba(196,162,101,0.12)" stroke="#C4A265" stroke-width="1.8"/>
+        <text x="280" y="264" text-anchor="middle" fill="#8B7355" font-size="10" font-weight="600">TABLE 1</text>
+
+        <circle cx="450" cy="260" r="52" fill="rgba(196,162,101,0.12)" stroke="#C4A265" stroke-width="1.8"/>
+        <text x="450" y="264" text-anchor="middle" fill="#8B7355" font-size="10" font-weight="600">TABLE 2</text>
+
+        <circle cx="610" cy="260" r="52" fill="rgba(196,162,101,0.12)" stroke="#C4A265" stroke-width="1.8"/>
+        <text x="610" y="264" text-anchor="middle" fill="#8B7355" font-size="10" font-weight="600">TABLE 3</text>
+
+        <!-- ═══ THRESHOLD — indoor/outdoor ═══ -->
+        <line x1="40" y1="380" x2="860" y2="380" stroke="#3D3229" stroke-width="2.5" stroke-dasharray="14 7"/>
+        <text x="450" y="400" text-anchor="middle" fill="#9B8E80" font-size="9" font-weight="400" letter-spacing="1.5">OPEN TO OUTDOOR</text>
+
+        <!-- ═══ OUTDOOR ZONE — centered with house ═══ -->
+
+        <!-- Lounge — centered with house/pool -->
+        <rect x="150" y="425" width="220" height="120" rx="5" fill="rgba(156,175,136,0.1)" stroke="#9CAF88" stroke-width="1.5"/>
+        <text x="260" y="478" text-anchor="middle" fill="#6B5D4F" font-size="10" font-weight="600">LOUNGE</text>
+        <text x="260" y="498" text-anchor="middle" fill="#9B8E80" font-size="8.5">Indoor furniture moved</text>
+        <text x="260" y="512" text-anchor="middle" fill="#9B8E80" font-size="8.5">outside, if space permits</text>
+
+        <!-- Dance Floor — center -->
+        <rect x="380" y="425" width="280" height="120" rx="5" fill="rgba(232,196,196,0.15)" stroke="#E8C4C4" stroke-width="1.8"/>
+        <text x="520" y="480" text-anchor="middle" fill="#8B7355" font-size="10" font-weight="600" letter-spacing="0.5">DANCE FLOOR</text>
+        <text x="520" y="500" text-anchor="middle" fill="#9B8E80" font-size="8.5">Existing concrete</text>
+
+        <!-- DJ — portrait, facing dance floor -->
+        <rect x="670" y="425" width="80" height="120" rx="5" fill="rgba(196,162,101,0.15)" stroke="#C4A265" stroke-width="1.8"/>
+        <text x="710" y="490" text-anchor="middle" fill="#8B7355" font-size="10" font-weight="600">DJ</text>
+        <!-- Arrow facing left toward dance floor -->
+        <line x1="668" y1="485" x2="653" y2="485" stroke="#C4A265" stroke-width="1.5"/>
+        <polygon points="653,481 645,485 653,489" fill="#C4A265"/>
+
+        <!-- ═══ POOL — bottom, centered ═══ -->
+        <rect x="100" y="590" width="700" height="70" rx="5" fill="rgba(100,190,230,0.1)" stroke="#5BA3C9" stroke-width="1.8"/>
+        <text x="450" y="628" text-anchor="middle" fill="#5BA3C9" font-size="10" font-weight="600" letter-spacing="1.5">POOL</text>
+        <text x="450" y="646" text-anchor="middle" fill="#9B8E80" font-size="8.5">Cover TBD — quote pending</text>
+      </svg>
+      <div class="fp-legend">
+        <div class="fp-legend-item"><div class="fp-legend-swatch" style="background:#D4DFC7;border-color:#9CAF88"></div>Bar</div>
+        <div class="fp-legend-item"><div class="fp-legend-swatch" style="background:rgba(196,162,101,0.15);border-color:#C4A265;border-radius:50%"></div>Dinner tables</div>
+        <div class="fp-legend-item"><div class="fp-legend-swatch" style="background:rgba(232,196,196,0.2);border-color:#E8C4C4"></div>Dance floor</div>
+        <div class="fp-legend-item"><div class="fp-legend-swatch" style="background:rgba(196,162,101,0.2);border-color:#C4A265"></div>DJ</div>
+        <div class="fp-legend-item"><div class="fp-legend-swatch" style="background:rgba(156,175,136,0.12);border-color:#9CAF88"></div>Lounge</div>
+        <div class="fp-legend-item"><div class="fp-legend-swatch" style="background:rgba(100,190,230,0.12);border-color:#5BA3C9"></div>Pool</div>
+        <div class="fp-legend-item"><span style="color:#9CAF88;font-size:0.8rem">┈ ┈</span> Glass-enclosed</div>
+      </div>
+    </div>
+
     <div class="venue-details">
-      <ul>
-        <li class="rect">Bar: Existing counter along the back wall — use as-is</li>
-        <li class="circle">Dinner tables: 3 round wooden tables in the open-air space between glass-enclosed kitchen and living room</li>
-        <li class="arrow">Lounge (indoor/outdoor): Reposition existing outdoor furniture to the outdoor area by the palm tree/grass — if it fits, otherwise remove</li>
-        <li class="x-mark">Remove: Beach lounge chairs and umbrellas</li>
-      </ul>
-      <textarea class="venue-notes-field" placeholder="Notes about this area..."></textarea>
+      <textarea class="venue-notes-field" placeholder="Notes for Mindy about this area..."></textarea>
     </div>
   </div>
 
@@ -844,13 +945,8 @@
       <div class="venue-img"><img src="images/venue/pool-beach-drone.png" alt="Pool and house from beach drone"><span class="img-label">Drone — From Beach</span></div>
     </div>
     <div class="venue-details">
-      <ul>
-        <li class="rect">DJ setup: Outside near the pool</li>
-        <li class="rect">Dance floor: Concrete area — no dedicated floor needed (unless pool is covered)</li>
-        <li class="note">String lights: Zigzag on ground poles from house to before pool edge — or after/including pool if covered</li>
-        <li class="note">Pool cover: TBD — getting a quote for clear plastic cover</li>
-      </ul>
-      <textarea class="venue-notes-field" placeholder="Notes about this area..."></textarea>
+      <p style="font-size:0.8rem;color:var(--text-muted);margin-bottom:8px">See combined floor plan in Area 1 above — outdoor zone shown below the threshold line.</p>
+      <textarea class="venue-notes-field" placeholder="Notes for Mindy about the outdoor area..."></textarea>
     </div>
   </div>
 
@@ -864,13 +960,93 @@
       <div class="venue-img"><img src="images/venue/beach-from-pool.png" alt="Beach view from pool edge"><span class="img-label">Ceremony Beach — From Pool</span></div>
       <div class="venue-img"><img src="images/venue/aerial-ocean.png" alt="Aerial view from ocean"><span class="img-label">Aerial — From Ocean</span></div>
     </div>
+    <!-- Floor Plan Schematic -->
+    <div class="floor-plan-wrap">
+      <div class="floor-plan-label">Floor Plan — Beach Ceremony</div>
+      <svg class="floor-plan-svg" viewBox="0 0 600 480" xmlns="http://www.w3.org/2000/svg">
+        <rect width="600" height="480" fill="#FEFCF9"/>
+
+        <!-- Ocean at top -->
+        <rect x="0" y="0" width="600" height="50" fill="rgba(100,190,230,0.08)"/>
+        <line x1="0" y1="50" x2="600" y2="50" stroke="#5BA3C9" stroke-width="1" stroke-dasharray="8 4" opacity="0.3"/>
+        <text x="300" y="32" text-anchor="middle" fill="#5BA3C9" font-size="10" font-weight="500" letter-spacing="2">OCEAN</text>
+
+        <!-- House/Pool at bottom -->
+        <rect x="0" y="420" width="600" height="60" fill="rgba(232,213,168,0.08)"/>
+        <text x="300" y="455" text-anchor="middle" fill="#C4AD8B" font-size="9" font-weight="400" letter-spacing="1">↓ HOUSE / POOL ↓</text>
+
+        <!-- ═══ ARBOR — centered near ocean ═══ -->
+        <rect x="220" y="75" width="160" height="40" rx="4" fill="rgba(156,175,136,0.2)" stroke="#9CAF88" stroke-width="2"/>
+        <circle cx="225" cy="80" r="3.5" fill="#9CAF88" opacity="0.5"/>
+        <circle cx="375" cy="80" r="3.5" fill="#9CAF88" opacity="0.5"/>
+        <circle cx="225" cy="110" r="3.5" fill="#9CAF88" opacity="0.5"/>
+        <circle cx="375" cy="110" r="3.5" fill="#9CAF88" opacity="0.5"/>
+        <text x="300" y="100" text-anchor="middle" fill="#6B5D4F" font-size="10" font-weight="600" letter-spacing="0.5">ARBOR</text>
+
+        <!-- ═══ ROW 1 — closest to arbor ═══ -->
+        <!-- Left 5 chairs -->
+        <rect x="100" y="165" width="22" height="14" rx="3" fill="rgba(196,162,101,0.15)" stroke="#C4A265" stroke-width="1.2"/>
+        <rect x="127" y="165" width="22" height="14" rx="3" fill="rgba(196,162,101,0.15)" stroke="#C4A265" stroke-width="1.2"/>
+        <rect x="154" y="165" width="22" height="14" rx="3" fill="rgba(196,162,101,0.15)" stroke="#C4A265" stroke-width="1.2"/>
+        <rect x="181" y="165" width="22" height="14" rx="3" fill="rgba(196,162,101,0.15)" stroke="#C4A265" stroke-width="1.2"/>
+        <rect x="208" y="165" width="22" height="14" rx="3" fill="rgba(196,162,101,0.15)" stroke="#C4A265" stroke-width="1.2"/>
+        <!-- Aisle decor: LED candelabras -->
+        <rect x="248" y="167" width="8" height="8" rx="1.5" fill="#C4A265" opacity="0.6"/>
+        <rect x="344" y="167" width="8" height="8" rx="1.5" fill="#C4A265" opacity="0.6"/>
+        <!-- Right 5 chairs -->
+        <rect x="370" y="165" width="22" height="14" rx="3" fill="rgba(196,162,101,0.15)" stroke="#C4A265" stroke-width="1.2"/>
+        <rect x="397" y="165" width="22" height="14" rx="3" fill="rgba(196,162,101,0.15)" stroke="#C4A265" stroke-width="1.2"/>
+        <rect x="424" y="165" width="22" height="14" rx="3" fill="rgba(196,162,101,0.15)" stroke="#C4A265" stroke-width="1.2"/>
+        <rect x="451" y="165" width="22" height="14" rx="3" fill="rgba(196,162,101,0.15)" stroke="#C4A265" stroke-width="1.2"/>
+        <rect x="478" y="165" width="22" height="14" rx="3" fill="rgba(196,162,101,0.15)" stroke="#C4A265" stroke-width="1.2"/>
+        <text x="75" y="176" text-anchor="end" fill="#9B8E80" font-size="8" font-weight="400">ROW 1</text>
+
+        <!-- ═══ ROW 2 — middle ═══ -->
+        <rect x="100" y="215" width="22" height="14" rx="3" fill="rgba(196,162,101,0.15)" stroke="#C4A265" stroke-width="1.2"/>
+        <rect x="127" y="215" width="22" height="14" rx="3" fill="rgba(196,162,101,0.15)" stroke="#C4A265" stroke-width="1.2"/>
+        <rect x="154" y="215" width="22" height="14" rx="3" fill="rgba(196,162,101,0.15)" stroke="#C4A265" stroke-width="1.2"/>
+        <rect x="181" y="215" width="22" height="14" rx="3" fill="rgba(196,162,101,0.15)" stroke="#C4A265" stroke-width="1.2"/>
+        <rect x="208" y="215" width="22" height="14" rx="3" fill="rgba(196,162,101,0.15)" stroke="#C4A265" stroke-width="1.2"/>
+        <!-- Aisle decor: Gold flower stands -->
+        <circle cx="252" cy="222" r="4.5" fill="#C4A265" opacity="0.8"/>
+        <circle cx="348" cy="222" r="4.5" fill="#C4A265" opacity="0.8"/>
+        <rect x="370" y="215" width="22" height="14" rx="3" fill="rgba(196,162,101,0.15)" stroke="#C4A265" stroke-width="1.2"/>
+        <rect x="397" y="215" width="22" height="14" rx="3" fill="rgba(196,162,101,0.15)" stroke="#C4A265" stroke-width="1.2"/>
+        <rect x="424" y="215" width="22" height="14" rx="3" fill="rgba(196,162,101,0.15)" stroke="#C4A265" stroke-width="1.2"/>
+        <rect x="451" y="215" width="22" height="14" rx="3" fill="rgba(196,162,101,0.15)" stroke="#C4A265" stroke-width="1.2"/>
+        <rect x="478" y="215" width="22" height="14" rx="3" fill="rgba(196,162,101,0.15)" stroke="#C4A265" stroke-width="1.2"/>
+        <text x="75" y="226" text-anchor="end" fill="#9B8E80" font-size="8" font-weight="400">ROW 2</text>
+
+        <!-- ═══ ROW 3 — closest to house ═══ -->
+        <rect x="100" y="265" width="22" height="14" rx="3" fill="rgba(196,162,101,0.15)" stroke="#C4A265" stroke-width="1.2"/>
+        <rect x="127" y="265" width="22" height="14" rx="3" fill="rgba(196,162,101,0.15)" stroke="#C4A265" stroke-width="1.2"/>
+        <rect x="154" y="265" width="22" height="14" rx="3" fill="rgba(196,162,101,0.15)" stroke="#C4A265" stroke-width="1.2"/>
+        <rect x="181" y="265" width="22" height="14" rx="3" fill="rgba(196,162,101,0.15)" stroke="#C4A265" stroke-width="1.2"/>
+        <rect x="208" y="265" width="22" height="14" rx="3" fill="rgba(196,162,101,0.15)" stroke="#C4A265" stroke-width="1.2"/>
+        <!-- Aisle decor: LED candelabras -->
+        <rect x="248" y="267" width="8" height="8" rx="1.5" fill="#C4A265" opacity="0.6"/>
+        <rect x="344" y="267" width="8" height="8" rx="1.5" fill="#C4A265" opacity="0.6"/>
+        <rect x="370" y="265" width="22" height="14" rx="3" fill="rgba(196,162,101,0.15)" stroke="#C4A265" stroke-width="1.2"/>
+        <rect x="397" y="265" width="22" height="14" rx="3" fill="rgba(196,162,101,0.15)" stroke="#C4A265" stroke-width="1.2"/>
+        <rect x="424" y="265" width="22" height="14" rx="3" fill="rgba(196,162,101,0.15)" stroke="#C4A265" stroke-width="1.2"/>
+        <rect x="451" y="265" width="22" height="14" rx="3" fill="rgba(196,162,101,0.15)" stroke="#C4A265" stroke-width="1.2"/>
+        <rect x="478" y="265" width="22" height="14" rx="3" fill="rgba(196,162,101,0.15)" stroke="#C4A265" stroke-width="1.2"/>
+        <text x="75" y="276" text-anchor="end" fill="#9B8E80" font-size="8" font-weight="400">ROW 3</text>
+
+        <!-- Legend note -->
+        <text x="300" y="320" text-anchor="middle" fill="#9B8E80" font-size="8.5" font-weight="400">LED candelabras (Rows 1 &amp; 3 aisle) · Gold stands (Row 2 aisle)</text>
+        <text x="300" y="338" text-anchor="middle" fill="#9B8E80" font-size="8.5" font-weight="400" font-style="italic">Note: Angle chairs inward toward arbor in V-shape</text>
+      </svg>
+      <div class="fp-legend">
+        <div class="fp-legend-item"><div class="fp-legend-swatch" style="background:rgba(156,175,136,0.3);border-color:#9CAF88"></div>Arbor</div>
+        <div class="fp-legend-item"><div class="fp-legend-swatch" style="background:rgba(196,162,101,0.2);border-color:#C4A265"></div>Guest chairs (3 rows x 5)</div>
+        <div class="fp-legend-item"><span style="color:#C4A265;font-size:0.75rem">&#9632;</span> LED candelabras</div>
+        <div class="fp-legend-item"><span style="color:#C4A265;font-size:0.75rem">&#9679;</span> Gold flower stands</div>
+      </div>
+    </div>
+
     <div class="venue-details">
-      <ul>
-        <li class="note">Arbor: On the sand facing the ocean</li>
-        <li class="circle">Chairs: 3 rows &times; 5 chairs</li>
-        <li class="note">Aisle decor: Gold flower stands + LED candle holders alternating</li>
-      </ul>
-      <textarea class="venue-notes-field" placeholder="Notes about this area..."></textarea>
+      <textarea class="venue-notes-field" placeholder="Notes for Mindy about ceremony setup..."></textarea>
     </div>
   </div>
 
@@ -878,21 +1054,92 @@
   <div class="venue-card">
     <div class="venue-card-header">
       <h4>4. Cocktail Hour — Rooftop (Villa Vihara)</h4>
-      <p class="venue-subtitle">Mariachi, cocktail tables</p>
+      <p class="venue-subtitle">Mariachi, cocktail tables, built-in seating, rooftop bar</p>
     </div>
-    <div class="venue-image-container">
-      <div class="venue-placeholder">
-        <div class="icon">&#x1f378;</div>
-        <span>Photo coming — Villa Vihara rooftop</span>
-        <p class="annotation-hint">Amanda to upload rooftop photos. Annotate with: mariachi location, cocktail table placement.</p>
+    <div class="venue-image-grid grid-1">
+      <div class="venue-img"><img src="images/venue/vihara-rooftop-full.png" alt="Villa Vihara rooftop — full view with bar, wood table, built-in seating"><span class="img-label">Rooftop — Full View</span></div>
+      <div class="venue-img"><img src="images/venue/vihara-rooftop-bar.png" alt="Rooftop bar counter with pergola and plunge pool"><span class="img-label">Rooftop Bar + Pergola</span></div>
+      <div class="venue-img"><img src="images/venue/vihara-rooftop-seating.png" alt="Built-in L-shaped seating with ocean view"><span class="img-label">Built-in Seating — Ocean View</span></div>
+      <div class="venue-img"><img src="images/venue/vihara-rooftop-wide.png" alt="Rooftop from behind showing full layout"><span class="img-label">Wide Angle — From Behind</span></div>
+      <div class="venue-img"><img src="images/venue/vihara-aerial.png" alt="Villa Vihara aerial top-down view"><span class="img-label">Aerial — Top Down</span></div>
+    </div>
+    <!-- Floor Plan Schematic -->
+    <div class="floor-plan-wrap">
+      <div class="floor-plan-label">Floor Plan — Rooftop Cocktail Hour</div>
+      <svg class="floor-plan-svg" viewBox="0 0 560 620" xmlns="http://www.w3.org/2000/svg">
+        <rect width="560" height="620" fill="#FEFCF9"/>
+
+        <!-- Orientation -->
+        <text x="30" y="28" text-anchor="start" fill="#5BA3C9" font-size="8" font-weight="500" letter-spacing="0.5">← OCEAN</text>
+
+        <!-- ═══ BUILT-IN SEATING — U-shape rotated, open on right ═══ -->
+        <path d="M40,40 L200,40 L200,70 L70,70 L70,160 L200,160 L200,190 L40,190 Z" fill="rgba(156,175,136,0.15)" stroke="#9CAF88" stroke-width="2"/>
+        <text x="120" y="120" text-anchor="middle" fill="#6B5D4F" font-size="9" font-weight="500">BUILT-IN</text>
+        <text x="120" y="135" text-anchor="middle" fill="#6B5D4F" font-size="9" font-weight="500">SEATING</text>
+
+        <!-- Round wood table (top-right) -->
+        <circle cx="370" cy="100" r="45" fill="none" stroke="#C4AD8B" stroke-width="1.8"/>
+        <text x="370" y="97" text-anchor="middle" fill="#8B7355" font-size="7" font-weight="500">WOOD</text>
+        <text x="370" y="109" text-anchor="middle" fill="#8B7355" font-size="7" font-weight="500">TABLE</text>
+
+        <!-- ═══ LOUNGE (middle-left) ═══ -->
+        <rect x="40" y="220" width="210" height="150" rx="3" fill="none" stroke="#8B7355" stroke-width="1.8"/>
+        <text x="145" y="248" text-anchor="middle" fill="#6B5D4F" font-size="9" font-weight="500">LOUNGE</text>
+        <!-- 2 lounger chairs inside, centered -->
+        <rect x="105" y="270" width="35" height="60" rx="3" fill="none" stroke="#5BA3C9" stroke-width="1.5"/>
+        <rect x="150" y="270" width="35" height="60" rx="3" fill="none" stroke="#5BA3C9" stroke-width="1.5"/>
+        <text x="145" y="352" text-anchor="middle" fill="#9B8E80" font-size="8">Loungers</text>
+
+        <!-- ═══ PERGOLA — tall portrait, right side, aligned with lounge through past bar ═══ -->
+        <rect x="290" y="220" width="230" height="390" rx="3" fill="rgba(196,162,101,0.06)" stroke="#8B7E00" stroke-width="1.5"/>
+        <!-- Beam lines -->
+        <line x1="290" y1="250" x2="520" y2="250" stroke="#8B7E00" stroke-width="0.7" opacity="0.4"/>
+        <line x1="290" y1="280" x2="520" y2="280" stroke="#8B7E00" stroke-width="0.7" opacity="0.4"/>
+        <line x1="290" y1="310" x2="520" y2="310" stroke="#8B7E00" stroke-width="0.7" opacity="0.4"/>
+        <line x1="290" y1="340" x2="520" y2="340" stroke="#8B7E00" stroke-width="0.7" opacity="0.4"/>
+        <line x1="290" y1="370" x2="520" y2="370" stroke="#8B7E00" stroke-width="0.7" opacity="0.4"/>
+        <line x1="290" y1="400" x2="520" y2="400" stroke="#8B7E00" stroke-width="0.7" opacity="0.4"/>
+        <line x1="290" y1="430" x2="520" y2="430" stroke="#8B7E00" stroke-width="0.7" opacity="0.4"/>
+        <line x1="290" y1="460" x2="520" y2="460" stroke="#8B7E00" stroke-width="0.7" opacity="0.4"/>
+        <line x1="290" y1="490" x2="520" y2="490" stroke="#8B7E00" stroke-width="0.7" opacity="0.4"/>
+        <line x1="290" y1="520" x2="520" y2="520" stroke="#8B7E00" stroke-width="0.7" opacity="0.4"/>
+        <line x1="290" y1="550" x2="520" y2="550" stroke="#8B7E00" stroke-width="0.7" opacity="0.4"/>
+        <line x1="290" y1="580" x2="520" y2="580" stroke="#8B7E00" stroke-width="0.7" opacity="0.4"/>
+        <text x="405" y="420" text-anchor="middle" fill="#8B7E00" font-size="10" font-weight="600" letter-spacing="1">PERGOLA</text>
+
+        <!-- ═══ COCKTAIL TABLES — inside pergola ═══ -->
+        <circle cx="340" cy="270" r="18" fill="rgba(196,162,101,0.15)" stroke="#C4A265" stroke-width="1.5"/>
+        <text x="340" y="274" text-anchor="middle" fill="#8B7355" font-size="8">CT</text>
+
+        <circle cx="470" cy="330" r="18" fill="rgba(196,162,101,0.15)" stroke="#C4A265" stroke-width="1.5"/>
+        <text x="470" y="334" text-anchor="middle" fill="#8B7355" font-size="8">CT</text>
+
+        <circle cx="340" cy="480" r="18" fill="rgba(196,162,101,0.15)" stroke="#C4A265" stroke-width="1.5"/>
+        <text x="340" y="484" text-anchor="middle" fill="#8B7355" font-size="8">CT</text>
+
+        <circle cx="470" cy="540" r="18" fill="rgba(196,162,101,0.15)" stroke="#C4A265" stroke-width="1.5"/>
+        <text x="470" y="544" text-anchor="middle" fill="#8B7355" font-size="8">CT</text>
+
+        <!-- ═══ PLUNGE POOL — below lounge, left side ═══ -->
+        <rect x="40" y="390" width="210" height="110" rx="4" fill="rgba(0,220,255,0.3)" stroke="#00DCFF" stroke-width="2"/>
+        <text x="145" y="452" text-anchor="middle" fill="#008BA8" font-size="10" font-weight="600">PLUNGE POOL</text>
+
+        <!-- ═══ L-SHAPED BAR — single path, no internal lines ═══ -->
+        <path d="M170,580 L170,550 L220,550 L220,520 L250,520 L250,580 Z" fill="rgba(156,175,136,0.2)" stroke="#3D3229" stroke-width="2"/>
+        <text x="205" y="570" text-anchor="middle" fill="#3D3229" font-size="10" font-weight="600">BAR</text>
+      </svg>
+      <div class="fp-legend">
+        <div class="fp-legend-item"><div class="fp-legend-swatch" style="background:rgba(156,175,136,0.2);border-color:#9CAF88"></div>Built-in seating</div>
+        <div class="fp-legend-item"><div class="fp-legend-swatch" style="background:rgba(156,175,136,0.25);border-color:#3D3229"></div>Bar</div>
+        <div class="fp-legend-item"><div class="fp-legend-swatch" style="background:rgba(196,162,101,0.12);border-color:#C4AD8B;border-radius:50%"></div>Wood table</div>
+        <div class="fp-legend-item"><div class="fp-legend-swatch" style="background:rgba(196,162,101,0.15);border-color:#C4A265;border-radius:50%"></div>Cocktail tables (4)</div>
+        <div class="fp-legend-item"><div class="fp-legend-swatch" style="background:rgba(0,220,255,0.3);border-color:#00DCFF"></div>Plunge pool</div>
+        <div class="fp-legend-item"><div class="fp-legend-swatch" style="background:rgba(196,162,101,0.08);border-color:#8B7E00"></div>Pergola</div>
       </div>
     </div>
+
     <div class="venue-details">
-      <ul>
-        <li class="note">Mariachi location</li>
-        <li class="circle">Cocktail tables</li>
-      </ul>
-      <textarea class="venue-notes-field" placeholder="Notes about this area..."></textarea>
+      <textarea class="venue-notes-field" placeholder="Notes for Mindy about cocktail hour setup..."></textarea>
     </div>
   </div>
 
@@ -906,13 +1153,56 @@
       <div class="venue-img"><img src="images/venue/dining-table-daytime.png" alt="Dining area daytime showing smaller room behind glass"><span class="img-label">Dining Area — Smaller Room Visible Right</span></div>
       <div class="venue-img"><img src="images/venue/reception-dining-table.png" alt="Dining room night view"><span class="img-label">Dining Area — Night View</span></div>
     </div>
+    <!-- Floor Plan Schematic -->
+    <div class="floor-plan-wrap">
+      <div class="floor-plan-label">Floor Plan — Food Station</div>
+      <svg class="floor-plan-svg" viewBox="0 0 400 450" xmlns="http://www.w3.org/2000/svg">
+        <rect width="400" height="450" fill="#FEFCF9"/>
+
+        <!-- ═══ Context: Kitchen above, extends over reception area (faded, dashed) ═══ -->
+        <rect x="20" y="10" width="300" height="60" rx="3" fill="none" stroke="#9CAF88" stroke-width="1.5" stroke-dasharray="8 5" opacity="0.4"/>
+        <text x="160" y="45" text-anchor="middle" fill="#C4AD8B" font-size="9" font-weight="400" opacity="0.5">KITCHEN</text>
+
+        <!-- ═══ Context: Reception area to the left (just label) ═══ -->
+        <text x="50" y="230" text-anchor="middle" fill="#C4AD8B" font-size="8" font-weight="400" opacity="0.5">RECEPTION</text>
+        <text x="50" y="242" text-anchor="middle" fill="#C4AD8B" font-size="8" font-weight="400" opacity="0.5">←</text>
+
+        <!-- ═══ SMALL DINING ROOM — portrait ═══ -->
+        <!-- Left wall: glass (dashed) -->
+        <line x1="100" y1="90" x2="100" y2="370" stroke="#9CAF88" stroke-width="2" stroke-dasharray="8 5" opacity="0.6"/>
+        <!-- Top: open to kitchen (no line) -->
+        <!-- Right wall: solid -->
+        <line x1="320" y1="90" x2="320" y2="370" stroke="#3D3229" stroke-width="2.5"/>
+        <!-- Bottom wall: solid -->
+        <line x1="100" y1="370" x2="320" y2="370" stroke="#3D3229" stroke-width="2.5"/>
+        <text x="210" y="110" text-anchor="middle" fill="#9B8E80" font-size="8" font-weight="400">SMALL DINING</text>
+
+        <!-- ═══ BUFFET TABLES — U-shape along left, bottom, right walls ═══ -->
+        <!-- Left wall tables -->
+        <rect x="110" y="125" width="30" height="100" rx="3" fill="rgba(196,162,101,0.15)" stroke="#C4A265" stroke-width="1.5"/>
+        <rect x="110" y="240" width="30" height="100" rx="3" fill="rgba(196,162,101,0.15)" stroke="#C4A265" stroke-width="1.5"/>
+
+        <!-- Bottom wall table -->
+        <rect x="150" y="330" width="120" height="30" rx="3" fill="rgba(196,162,101,0.15)" stroke="#C4A265" stroke-width="1.5"/>
+
+        <!-- Right wall tables -->
+        <rect x="280" y="125" width="30" height="100" rx="3" fill="rgba(196,162,101,0.15)" stroke="#C4A265" stroke-width="1.5"/>
+        <rect x="280" y="240" width="30" height="100" rx="3" fill="rgba(196,162,101,0.15)" stroke="#C4A265" stroke-width="1.5"/>
+
+        <!-- Label -->
+        <text x="210" y="230" text-anchor="middle" fill="#8B7355" font-size="10" font-weight="600">BUFFET</text>
+        <text x="210" y="245" text-anchor="middle" fill="#8B7355" font-size="10" font-weight="600">TABLES</text>
+
+        <!-- Note -->
+        <text x="210" y="420" text-anchor="middle" fill="#9B8E80" font-size="8" font-weight="400" font-style="italic">FOOD STATION? — Mindy to assess</text>
+      </svg>
+      <div class="fp-legend">
+        <div class="fp-legend-item"><div class="fp-legend-swatch" style="background:rgba(196,162,101,0.2);border-color:#C4A265"></div>Buffet tables (U-shape)</div>
+      </div>
+    </div>
+
     <div class="venue-details">
-      <ul>
-        <li class="note">Location TBD — Mindy assessing during Thursday walkthrough</li>
-        <li class="note">Options: Small enclosed dining room, or table setup near kitchen</li>
-        <li class="note">Buffet table decorated with same candle/greenery aesthetic</li>
-      </ul>
-      <textarea class="venue-notes-field" placeholder="Notes about this area..."></textarea>
+      <textarea class="venue-notes-field" placeholder="Notes for Mindy about food station setup..."></textarea>
     </div>
   </div>
 
@@ -925,12 +1215,57 @@
     <div class="venue-image-grid grid-1">
       <div class="venue-img"><img src="images/venue/kitchen-closeup.png" alt="Kitchen — cake table on right side by wall"><span class="img-label">Kitchen — Cake Table on Right Side by Wall</span></div>
     </div>
+    <!-- Floor Plan Schematic -->
+    <div class="floor-plan-wrap">
+      <div class="floor-plan-label">Floor Plan — Cake / Dessert Display</div>
+      <svg class="floor-plan-svg" viewBox="0 0 600 350" xmlns="http://www.w3.org/2000/svg">
+        <rect width="600" height="350" fill="#FEFCF9"/>
+
+        <!-- Kitchen room outline — individual walls -->
+        <!-- Top wall: solid -->
+        <line x1="40" y1="40" x2="460" y2="40" stroke="#3D3229" stroke-width="2.5"/>
+        <!-- Right wall: solid -->
+        <line x1="460" y1="40" x2="460" y2="300" stroke="#3D3229" stroke-width="2.5"/>
+        <!-- Left wall: glass (green dashed) -->
+        <line x1="40" y1="40" x2="40" y2="300" stroke="#9CAF88" stroke-width="2" stroke-dasharray="8 5" opacity="0.6"/>
+        <!-- Bottom wall: first 2/3 glass, last 1/3 open -->
+        <line x1="40" y1="300" x2="320" y2="300" stroke="#9CAF88" stroke-width="2" stroke-dasharray="8 5" opacity="0.6"/>
+
+        <!-- Kitchen counter — along top wall -->
+        <rect x="50" y="50" width="300" height="30" rx="2" fill="rgba(196,162,101,0.2)" stroke="#C4AD8B" stroke-width="1.5"/>
+        <text x="200" y="70" text-anchor="middle" fill="#9B8E80" font-size="8" font-weight="400">KITCHEN COUNTER</text>
+
+        <!-- Kitchen island — center -->
+        <rect x="120" y="110" width="200" height="60" rx="3" fill="rgba(196,162,101,0.12)" stroke="#C4AD8B" stroke-width="1.5"/>
+        <text x="220" y="145" text-anchor="middle" fill="#9B8E80" font-size="8" font-weight="400">ISLAND / BAR SEATING</text>
+
+        <!-- Cake table — round, bottom-right -->
+        <circle cx="400" cy="230" r="40" fill="rgba(232,196,196,0.2)" stroke="#E8C4C4" stroke-width="2"/>
+        <g transform="rotate(90 400 230)">
+          <text x="400" y="225" text-anchor="middle" fill="#6B5D4F" font-size="9" font-weight="600">CAKE</text>
+          <text x="400" y="240" text-anchor="middle" fill="#6B5D4F" font-size="9" font-weight="600">TABLE</text>
+        </g>
+
+        <!-- Wall art — flush against right wall -->
+        <rect x="443" y="195" width="14" height="70" rx="2" fill="#E8DFD4" stroke="#C4AD8B" stroke-width="1"/>
+        <g transform="rotate(90 450 230)">
+          <text x="450" y="233" text-anchor="middle" fill="#9B8E80" font-size="7" font-weight="400" dominant-baseline="central">Wall art</text>
+        </g>
+
+        <!-- Labels below -->
+        <text x="180" y="320" text-anchor="middle" fill="#C4AD8B" font-size="8" font-weight="400" opacity="0.5">↓ RECEPTION</text>
+        <text x="390" y="320" text-anchor="middle" fill="#C4AD8B" font-size="8" font-weight="400" opacity="0.5">↓ SMALL DINING</text>
+      </svg>
+      <div class="fp-legend">
+        <div class="fp-legend-item"><div class="fp-legend-swatch" style="background:rgba(232,196,196,0.3);border-color:#E8C4C4;border-radius:50%"></div>Cake table</div>
+        <div class="fp-legend-item"><div class="fp-legend-swatch" style="background:rgba(196,162,101,0.2);border-color:#C4AD8B"></div>Counter / island</div>
+        <div class="fp-legend-item"><div class="fp-legend-swatch" style="background:#E8DFD4;border-color:#C4AD8B"></div>Wall art</div>
+        <div class="fp-legend-item"><span style="color:#9CAF88;font-size:0.8rem">┈ ┈</span> Glass wall</div>
+      </div>
+    </div>
+
     <div class="venue-details">
-      <ul>
-        <li class="note">Off to the side in the kitchen, by the rectangle/art on the right wall</li>
-        <li class="note">Dedicated table with floral arrangement + candle collection</li>
-      </ul>
-      <textarea class="venue-notes-field" placeholder="Notes about this area..."></textarea>
+      <textarea class="venue-notes-field" placeholder="Notes for Mindy about cake display setup..."></textarea>
     </div>
   </div>
 </section>
@@ -950,17 +1285,14 @@
   <!-- Sub-group: Gold Flower Stands -->
   <div class="subgroup">
     <h3>Gold Flower Stands</h3>
-    <p>Pedestal pieces that line the ceremony aisle, alternating with candle holders. Topped with small floral arrangements. After ceremony, repurposed at reception.</p>
+    <p>Pedestal pieces that line the ceremony aisle, alternating with candle holders. Topped with small floral arrangements. After ceremony, repurposed at reception. <strong>Same floral arrangement on all stands</strong> — see the crystal stand card for the reference image and flower list.</p>
   </div>
 
   <!-- Item: 2-Piece Gold Flower Stand -->
   <div class="product-card">
     <div class="card-layout">
       <div class="card-image">
-        <div class="image-placeholder">
-          <div class="icon">&#x1f4f7;</div>
-          <span>Add product image</span>
-        </div>
+        <img src="images/products/gold-flower-stand-plain.png" alt="2-Piece Gold Flower Stand">
       </div>
       <div class="card-body">
         <div class="card-top-row">
@@ -968,7 +1300,7 @@
           <span class="badge badge-product">Product</span>
         </div>
         <p class="card-description">
-          Elegant gold metal flower/candle stand. Clean design, no crystals. Height: 21.6 inches.
+          Elegant gold metal flower/candle stand. Clean design, no crystals. Height: 21.26 inches. With or without crystals preferred — see crystal versions below.
         </p>
         <div class="card-details">
           <div class="detail-item">
@@ -977,15 +1309,15 @@
           </div>
           <div class="detail-item">
             <div class="detail-label">Qty to Order</div>
-            <div class="detail-value">3 packages</div>
+            <div class="detail-value">1 package</div>
           </div>
           <div class="detail-item">
             <div class="detail-label">Target Count</div>
-            <div class="detail-value">6 stands</div>
+            <div class="detail-value">2 stands</div>
           </div>
           <div class="detail-item">
             <div class="detail-label">Total Cost</div>
-            <div class="detail-value price">$35.84</div>
+            <div class="detail-value price">~$26.60 USD (461.18 MXN)</div>
           </div>
         </div>
         <div class="buy-options">
@@ -993,8 +1325,8 @@
           <div class="buy-option">
             <span class="option-label">A</span>
             <span class="option-store">Temu</span>
-            <span class="option-price">$11.95/pkg</span>
-            <span class="option-unit">$5.98/stand</span>
+            <span class="option-price">461.18 MXN/pkg (~$26.60 USD)</span>
+            <span class="option-unit">~$13.30/stand</span>
             <a href="https://share.temu.com/nwCN9J6BCWA" target="_blank">View &rarr;</a>
           </div>
           <div class="buy-option">
@@ -1012,14 +1344,14 @@
           </div>
           <div class="card-footer-item">
             <span class="card-footer-label">Placement</span>
-            <span class="card-footer-value">Ceremony aisle (alternating with candle holders), then moved to reception bar area, cake table, or lounge</span>
+            <span class="card-footer-value">Ceremony aisle — center row (row 2), topped with florals. LED 5-arm candelabras go in rows 1 &amp; 3. After ceremony, moved to reception.</span>
           </div>
           <div class="card-footer-item">
             <span class="card-footer-label">After Wedding</span>
             <span class="card-footer-value">Donate to Mindy or keep for condo</span>
           </div>
           <div class="mindy-note">
-            <strong>Note for Mindy:</strong> These are the plain gold version. I also have crystal versions below — I like mixing them for texture.
+            <strong>Note for Mindy:</strong> These are the plain gold version. Prefer with crystals if possible — see crystal versions below. Mixing styles for texture.
           </div>
         </div>
       </div>
@@ -1030,10 +1362,7 @@
   <div class="product-card">
     <div class="card-layout">
       <div class="card-image">
-        <div class="image-placeholder">
-          <div class="icon">&#x1f4f7;</div>
-          <span>Add product image</span>
-        </div>
+        <img src="images/products/gold-flower-stand-crystals-new.png" alt="Gold Flower Stand with Crystals">
       </div>
       <div class="card-body">
         <div class="card-top-row">
@@ -1041,7 +1370,7 @@
           <span class="badge badge-product">Product</span>
         </div>
         <p class="card-description">
-          Gold flower stand with hanging crystal bead accents. Adds sparkle. Height: 21.6 inches.
+          Gold flower stand with hanging crystal bead accents. Adds sparkle. Height: 20 inches.
         </p>
         <div class="card-details">
           <div class="detail-item">
@@ -1050,15 +1379,15 @@
           </div>
           <div class="detail-item">
             <div class="detail-label">Qty to Order</div>
-            <div class="detail-value">2 packages</div>
+            <div class="detail-value">1 package</div>
           </div>
           <div class="detail-item">
             <div class="detail-label">Target Count</div>
-            <div class="detail-value">4 stands</div>
+            <div class="detail-value">2 stands</div>
           </div>
           <div class="detail-item">
             <div class="detail-label">Total Cost</div>
-            <div class="detail-value price">$18.96</div>
+            <div class="detail-value price">~$10.85 USD (188.09 MXN)</div>
           </div>
         </div>
         <div class="buy-options">
@@ -1066,16 +1395,16 @@
           <div class="buy-option">
             <span class="option-label">A</span>
             <span class="option-store">Temu</span>
-            <span class="option-price">$9.48/pkg</span>
-            <span class="option-unit">$4.74/stand</span>
-            <a href="https://share.temu.com/oKdnTROpvTA" target="_blank">View &rarr;</a>
+            <span class="option-price">376.18 MXN/pkg (~$21.70 USD)</span>
+            <span class="option-unit">~$10.85/stand</span>
+            <a href="https://share.temu.com/N1cQo2qK5aA" target="_blank">View &rarr;</a>
           </div>
           <div class="buy-option">
             <span class="option-label">B</span>
-            <span class="option-store add-link-placeholder">Add backup link</span>
-            <span class="option-price">—</span>
+            <span class="option-store add-link-placeholder">Original sold out</span>
+            <span class="option-price"><s>$9.48/pkg</s></span>
             <span class="option-unit">—</span>
-            <span class="add-link-placeholder">—</span>
+            <a href="https://share.temu.com/oKdnTROpvTA" target="_blank" style="color:var(--text-muted)">Sold out</a>
           </div>
         </div>
         <div class="card-footer">
@@ -1091,89 +1420,20 @@
             <span class="card-footer-label">After Wedding</span>
             <span class="card-footer-value">Donate to Mindy or keep for condo</span>
           </div>
+          <div class="mindy-note">
+            <strong>Floral Arrangement Reference:</strong> This image shows the exact arrangement style I want on all gold stands (with or without crystals). Flowers: blush pink roses, cream/ivory roses, white hydrangeas, white stock flowers (tall spikes in back for height), blush filler flowers. Greenery: eucalyptus and fern foliage. Ask florist to scale down the arrangement size by ~20% so it doesn't overflow the vase as much — keep it compact and contained on top.
+          </div>
         </div>
       </div>
     </div>
   </div>
 
-  <!-- Item: 6-Piece Gold Flower Stand -->
-  <div class="product-card">
-    <div class="card-layout">
-      <div class="card-image">
-        <div class="image-placeholder">
-          <div class="icon">&#x1f4f7;</div>
-          <span>Add product image</span>
-        </div>
-      </div>
-      <div class="card-body">
-        <div class="card-top-row">
-          <h4>6-Piece Gold Flower Stand</h4>
-          <span class="badge badge-product">Product</span>
-        </div>
-        <p class="card-description">
-          Same gold pedestal style. Best value — 6 per order. Height: 19.7 inches.
-        </p>
-        <div class="card-details">
-          <div class="detail-item">
-            <div class="detail-label">Per Package</div>
-            <div class="detail-value">6 pieces</div>
-          </div>
-          <div class="detail-item">
-            <div class="detail-label">Qty to Order</div>
-            <div class="detail-value">1 package</div>
-          </div>
-          <div class="detail-item">
-            <div class="detail-label">Target Count</div>
-            <div class="detail-value">6 stands</div>
-          </div>
-          <div class="detail-item">
-            <div class="detail-label">Total Cost</div>
-            <div class="detail-value price">$25.14</div>
-          </div>
-        </div>
-        <div class="buy-options">
-          <div class="buy-options-header">Buy Options — Compare Per-Unit Price</div>
-          <div class="buy-option best-value">
-            <span class="option-label">A <span class="best-value-tag">Best Value</span></span>
-            <span class="option-store">Temu</span>
-            <span class="option-price">$25.14/pkg</span>
-            <span class="option-unit">$4.19/stand</span>
-            <a href="https://share.temu.com/Er9Y8GLrOhA" target="_blank">View &rarr;</a>
-          </div>
-          <div class="buy-option">
-            <span class="option-label">B</span>
-            <span class="option-store add-link-placeholder">Add backup link</span>
-            <span class="option-price">—</span>
-            <span class="option-unit">—</span>
-            <span class="add-link-placeholder">—</span>
-          </div>
-        </div>
-        <div class="card-footer">
-          <div class="card-footer-item">
-            <span class="card-footer-label">Shipping</span>
-            <span class="card-footer-value">35–36 business days</span>
-          </div>
-          <div class="card-footer-item">
-            <span class="card-footer-label">Placement</span>
-            <span class="card-footer-value">Ceremony aisle, then reception</span>
-          </div>
-          <div class="card-footer-item">
-            <span class="card-footer-label">After Wedding</span>
-            <span class="card-footer-value">Donate to Mindy or keep for condo</span>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
 
   <!-- Item: 2-Piece Gold & Multi-Crystal Stand -->
   <div class="product-card">
     <div class="card-layout">
       <div class="card-image">
-        <div class="image-placeholder">
-          <div class="icon">&#x1f4f7;</div>
-          <span>Add product image</span>
-        </div>
+        <img src="images/products/gold-stand-multi-crystal.png" alt="Gold & Multi-Crystal Stand">
       </div>
       <div class="card-body">
         <div class="card-top-row">
@@ -1190,15 +1450,15 @@
           </div>
           <div class="detail-item">
             <div class="detail-label">Qty to Order</div>
-            <div class="detail-value">3 packages</div>
+            <div class="detail-value">1 package</div>
           </div>
           <div class="detail-item">
             <div class="detail-label">Target Count</div>
-            <div class="detail-value">6 stands</div>
+            <div class="detail-value">2 stands</div>
           </div>
           <div class="detail-item">
             <div class="detail-label">Total Cost</div>
-            <div class="detail-value price">$59.87</div>
+            <div class="detail-value price">~$26.28 USD (455.53 MXN)</div>
           </div>
         </div>
         <div class="buy-options">
@@ -1206,8 +1466,8 @@
           <div class="buy-option">
             <span class="option-label">A</span>
             <span class="option-store">Temu</span>
-            <span class="option-price">$19.96/pkg</span>
-            <span class="option-unit">$9.98/stand</span>
+            <span class="option-price">455.53 MXN/pkg (~$26.28 USD)</span>
+            <span class="option-unit">~$13.14/stand</span>
             <a href="https://share.temu.com/o2vewlTfTlA" target="_blank">View &rarr;</a>
           </div>
           <div class="buy-option">
@@ -1240,10 +1500,7 @@
   <div class="product-card">
     <div class="card-layout">
       <div class="card-image">
-        <div class="image-placeholder">
-          <div class="icon">&#x1f4f7;</div>
-          <span>Add product image</span>
-        </div>
+        <img src="images/products/gold-stand-crystal-simple.png" alt="Gold & Crystal Stand">
       </div>
       <div class="card-body">
         <div class="card-top-row">
@@ -1260,15 +1517,15 @@
           </div>
           <div class="detail-item">
             <div class="detail-label">Qty to Order</div>
-            <div class="detail-value">3 packages</div>
+            <div class="detail-value">1 package</div>
           </div>
           <div class="detail-item">
             <div class="detail-label">Target Count</div>
-            <div class="detail-value">6 stands</div>
+            <div class="detail-value">2 stands</div>
           </div>
           <div class="detail-item">
             <div class="detail-label">Total Cost</div>
-            <div class="detail-value price">$39.40</div>
+            <div class="detail-value price">~$26.28 USD (455.50 MXN)</div>
           </div>
         </div>
         <div class="buy-options">
@@ -1276,8 +1533,8 @@
           <div class="buy-option">
             <span class="option-label">A</span>
             <span class="option-store">Temu</span>
-            <span class="option-price">$13.13/pkg</span>
-            <span class="option-unit">$6.57/stand</span>
+            <span class="option-price">455.50 MXN/pkg (~$26.28 USD)</span>
+            <span class="option-unit">~$13.14/stand</span>
             <a href="https://share.temu.com/9iU84NH6BOA" target="_blank">View &rarr;</a>
           </div>
           <div class="buy-option">
@@ -1316,10 +1573,7 @@
   <div class="product-card">
     <div class="card-layout">
       <div class="card-image">
-        <div class="image-placeholder">
-          <div class="icon">&#x1f4f7;</div>
-          <span>Add product image</span>
-        </div>
+        <img src="images/products/led-candle-holder-5head.png" alt="5-Head LED Candle Holder">
       </div>
       <div class="card-body">
         <div class="card-top-row">
@@ -1344,7 +1598,7 @@
           </div>
           <div class="detail-item">
             <div class="detail-label">Total Cost</div>
-            <div class="detail-value price">$59.68</div>
+            <div class="detail-value price">~$95.97 USD (1,663.68 MXN)</div>
           </div>
         </div>
         <div class="buy-options">
@@ -1352,8 +1606,8 @@
           <div class="buy-option">
             <span class="option-label">A</span>
             <span class="option-store">Temu</span>
-            <span class="option-price">$14.92/unit</span>
-            <span class="option-unit">$14.92/holder</span>
+            <span class="option-price">415.92 MXN/unit (~$23.99 USD)</span>
+            <span class="option-unit">~$23.99/holder</span>
             <a href="https://share.temu.com/VDh5sGu2MGA" target="_blank">View &rarr;</a>
           </div>
           <div class="buy-option">
