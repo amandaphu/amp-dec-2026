@@ -830,9 +830,12 @@
     background: white; font-family: var(--font-body); font-size: 0.9rem;
     color: var(--text); cursor: pointer; transition: all 0.2s;
   }
-  .user-picker-btn:hover {
-    border-color: var(--gold); background: var(--gold-pale);
-  }
+  .user-picker-btn[data-user="amanda"] { border-color: #D4A0A0; }
+  .user-picker-btn[data-user="amanda"]:hover { background: #f5e8e8; }
+  .user-picker-btn[data-user="mason"] { border-color: #9CAF88; }
+  .user-picker-btn[data-user="mason"]:hover { background: #eef3ea; }
+  .user-picker-btn[data-user="mindy"] { border-color: #C4A265; }
+  .user-picker-btn[data-user="mindy"]:hover { background: #f9f1e2; }
 
   /* Comment Thread */
   .comment-thread { margin-top: 16px; }
