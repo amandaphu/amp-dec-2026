@@ -4079,14 +4079,21 @@ function showUserPicker() {
   return new Promise(function(resolve) {
     var overlay = document.createElement('div');
     overlay.className = 'user-picker-overlay';
-    overlay.innerHTML =
-      '<div class="user-picker-modal">' +
-        '<h3>Who are you?</h3>' +
-        '<p>Select your name to get started.</p>' +
-        '<button class="user-picker-btn" data-user="amanda">Amanda</button>' +
-        '<button class="user-picker-btn" data-user="mason">Mason</button>' +
-        '<button class="user-picker-btn" data-user="mindy">Mindy</button>' +
-      '</div>';
+    var modal = document.createElement('div');
+    modal.className = 'user-picker-modal';
+    modal.innerHTML = '<h3>Who are you?</h3><p>Select your name to get started.</p>';
+    ['amanda', 'mason', 'mindy'].forEach(function(name) {
+      var btn = document.createElement('button');
+      btn.className = 'user-picker-btn';
+      btn.setAttribute('data-user', name);
+      btn.textContent = name.charAt(0).toUpperCase() + name.slice(1);
+      var colors = { amanda: ['#D4A0A0','#f5e8e8'], mason: ['#9CAF88','#eef3ea'], mindy: ['#C4A265','#f9f1e2'] };
+      btn.style.borderColor = colors[name][0];
+      btn.addEventListener('mouseenter', function() { btn.style.background = colors[name][1]; });
+      btn.addEventListener('mouseleave', function() { btn.style.background = 'white'; });
+      modal.appendChild(btn);
+    });
+    overlay.appendChild(modal);
     document.body.appendChild(overlay);
     overlay.querySelectorAll('.user-picker-btn').forEach(function(btn) {
       btn.addEventListener('click', function() {
