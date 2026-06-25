@@ -645,19 +645,6 @@
     color: var(--gold);
     font-weight: 500;
   }
-  .venue-notes-field {
-    margin-top: 12px;
-    width: 100%;
-    min-height: 60px;
-    border: 1px dashed var(--border);
-    border-radius: var(--radius-sm);
-    padding: 12px 16px;
-    font-family: var(--font-body);
-    font-size: 0.82rem;
-    color: var(--text-light);
-    background: var(--cream);
-    resize: vertical;
-  }
 
   /* ── Floor Plan Schematic ── */
   .floor-plan-wrap {
@@ -818,7 +805,30 @@
     .quotes-table { break-inside: auto; }
     .quotes-table tr { break-inside: avoid; }
     .buy-option a { color: var(--gold); }
-    .venue-notes-field { border: 1px solid #ccc; }
+  }
+  .venue-notes-field {
+    margin-top: 12px;
+    width: 100%;
+    min-height: 60px;
+    border: 1px dashed var(--border);
+    border-radius: var(--radius-sm);
+    padding: 12px 16px;
+    font-family: var(--font-body);
+    font-size: 0.82rem;
+    color: var(--text-light);
+    background: var(--cream);
+    resize: vertical;
+    transition: border-color 0.2s;
+  }
+  .venue-notes-field:focus {
+    outline: none;
+    border-color: var(--gold);
+  }
+  .venue-notes-status {
+    font-size: 0.7rem;
+    color: var(--text-muted);
+    margin-top: 4px;
+    min-height: 1em;
   }
 </style>
 </head>
@@ -1003,7 +1013,8 @@
     </div>
 
     <div class="venue-details">
-      <textarea class="venue-notes-field" placeholder="Notes for Mindy about this area..."></textarea>
+      <textarea class="venue-notes-field" data-note-id="area-1-reception" placeholder="Notes for Mindy about this area..."></textarea>
+      <div class="venue-notes-status"></div>
     </div>
   </div>
 
@@ -1020,7 +1031,8 @@
     </div>
     <div class="venue-details">
       <p style="font-size:0.8rem;color:var(--text-muted);margin-bottom:8px">See combined floor plan in Area 1 above — outdoor zone shown below the threshold line.</p>
-      <textarea class="venue-notes-field" placeholder="Notes for Mindy about the outdoor area..."></textarea>
+      <textarea class="venue-notes-field" data-note-id="area-2-outdoor" placeholder="Notes for Mindy about the outdoor area..."></textarea>
+      <div class="venue-notes-status"></div>
     </div>
   </div>
 
@@ -1120,7 +1132,8 @@
     </div>
 
     <div class="venue-details">
-      <textarea class="venue-notes-field" placeholder="Notes for Mindy about ceremony setup..."></textarea>
+      <textarea class="venue-notes-field" data-note-id="area-3-ceremony" placeholder="Notes for Mindy about ceremony setup..."></textarea>
+      <div class="venue-notes-status"></div>
     </div>
   </div>
 
@@ -1213,7 +1226,8 @@
     </div>
 
     <div class="venue-details">
-      <textarea class="venue-notes-field" placeholder="Notes for Mindy about cocktail hour setup..."></textarea>
+      <textarea class="venue-notes-field" data-note-id="area-4-rooftop" placeholder="Notes for Mindy about cocktail hour setup..."></textarea>
+      <div class="venue-notes-status"></div>
     </div>
   </div>
 
@@ -1276,7 +1290,8 @@
     </div>
 
     <div class="venue-details">
-      <textarea class="venue-notes-field" placeholder="Notes for Mindy about food station setup..."></textarea>
+      <textarea class="venue-notes-field" data-note-id="area-5-food" placeholder="Notes for Mindy about food station setup..."></textarea>
+      <div class="venue-notes-status"></div>
     </div>
   </div>
 
@@ -1337,7 +1352,8 @@
     </div>
 
     <div class="venue-details">
-      <textarea class="venue-notes-field" placeholder="Notes for Mindy about cake display setup..."></textarea>
+      <textarea class="venue-notes-field" data-note-id="area-6-cake" placeholder="Notes for Mindy about cake display setup..."></textarea>
+      <div class="venue-notes-status"></div>
     </div>
   </div>
 </section>
@@ -3931,6 +3947,53 @@ document.querySelectorAll('.card-image img').forEach(function(img) {
   hint.className = 'zoom-hint';
   hint.innerHTML = '<svg viewBox="0 0 20 20"><circle cx="8" cy="8" r="6"/><line x1="12.5" y1="12.5" x2="18" y2="18"/><line x1="5.5" y1="8" x2="10.5" y2="8"/><line x1="8" y1="5.5" x2="8" y2="10.5"/></svg>Click to enlarge';
   a.appendChild(hint);
+});
+</script>
+
+<!-- Firebase SDK -->
+<script type="module">
+import { initializeApp } from "https://www.gstatic.com/firebasejs/12.15.0/firebase-app.js";
+import { getDatabase, ref, set, onValue } from "https://www.gstatic.com/firebasejs/12.15.0/firebase-database.js";
+
+const firebaseConfig = {
+  apiKey: "AIzaSyDGW3ro86l5Hie_bnvmjISqt_5tK0mjN6Q",
+  authDomain: "wedding-catalog-amp.firebaseapp.com",
+  databaseURL: "https://wedding-catalog-amp-default-rtdb.firebaseio.com",
+  projectId: "wedding-catalog-amp",
+  storageBucket: "wedding-catalog-amp.firebasestorage.app",
+  messagingSenderId: "651188671284",
+  appId: "1:651188671284:web:ac930c3f6e06f42353cb61"
+};
+
+const app = initializeApp(firebaseConfig);
+const db = getDatabase(app);
+
+document.querySelectorAll('.venue-notes-field').forEach(function(textarea) {
+  var noteId = textarea.getAttribute('data-note-id');
+  var statusEl = textarea.nextElementSibling;
+  var debounceTimer = null;
+  var isRemoteUpdate = false;
+
+  onValue(ref(db, 'notes/' + noteId), function(snapshot) {
+    var val = snapshot.val();
+    if (val !== null && val !== textarea.value) {
+      isRemoteUpdate = true;
+      textarea.value = val;
+      isRemoteUpdate = false;
+    }
+  });
+
+  textarea.addEventListener('input', function() {
+    if (isRemoteUpdate) return;
+    if (statusEl) statusEl.textContent = 'Saving...';
+    clearTimeout(debounceTimer);
+    debounceTimer = setTimeout(function() {
+      set(ref(db, 'notes/' + noteId), textarea.value).then(function() {
+        if (statusEl) statusEl.textContent = 'Saved';
+        setTimeout(function() { if (statusEl) statusEl.textContent = ''; }, 2000);
+      });
+    }, 500);
+  });
 });
 </script>
 
