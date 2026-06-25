@@ -806,30 +806,81 @@
     .quotes-table tr { break-inside: avoid; }
     .buy-option a { color: var(--gold); }
   }
-  .venue-notes-field {
-    margin-top: 12px;
-    width: 100%;
-    min-height: 60px;
-    border: 1px dashed var(--border);
-    border-radius: var(--radius-sm);
-    padding: 12px 16px;
-    font-family: var(--font-body);
-    font-size: 0.82rem;
-    color: var(--text-light);
-    background: var(--cream);
-    resize: vertical;
-    transition: border-color 0.2s;
+  /* User Picker Modal */
+  .user-picker-overlay {
+    position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+    background: rgba(61,50,41,0.5); z-index: 9999;
+    display: flex; align-items: center; justify-content: center;
   }
-  .venue-notes-field:focus {
-    outline: none;
-    border-color: var(--gold);
+  .user-picker-modal {
+    background: var(--cream); border-radius: var(--radius); padding: 40px 36px;
+    text-align: center; max-width: 360px; width: 90%;
+    box-shadow: 0 8px 32px rgba(0,0,0,0.15);
   }
-  .venue-notes-status {
-    font-size: 0.7rem;
-    color: var(--text-muted);
-    margin-top: 4px;
-    min-height: 1em;
+  .user-picker-modal h3 {
+    font-family: var(--font-display); font-weight: 400; font-size: 1.3rem;
+    color: var(--text); margin-bottom: 8px;
   }
+  .user-picker-modal p {
+    font-size: 0.82rem; color: var(--text-light); margin-bottom: 24px;
+  }
+  .user-picker-btn {
+    display: block; width: 100%; padding: 12px; margin-bottom: 10px;
+    border: 1.5px solid var(--border); border-radius: var(--radius-sm);
+    background: white; font-family: var(--font-body); font-size: 0.9rem;
+    color: var(--text); cursor: pointer; transition: all 0.2s;
+  }
+  .user-picker-btn:hover {
+    border-color: var(--gold); background: var(--gold-pale);
+  }
+
+  /* Comment Thread */
+  .comment-thread { margin-top: 16px; }
+  .comment-list { margin-bottom: 12px; }
+  .comment-item {
+    display: flex; align-items: flex-start; gap: 10px;
+    padding: 10px 14px; border-radius: var(--radius-sm);
+    background: white; margin-bottom: 8px; position: relative;
+  }
+  .comment-avatar {
+    width: 28px; height: 28px; border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 0.7rem; font-weight: 600; color: white; flex-shrink: 0;
+  }
+  .comment-avatar.user-amanda { background: #C4A265; }
+  .comment-avatar.user-mason { background: #5BA3C9; }
+  .comment-avatar.user-mindy { background: #9CAF88; }
+  .comment-body { flex: 1; min-width: 0; }
+  .comment-meta {
+    font-size: 0.72rem; color: var(--text-muted); margin-bottom: 3px;
+  }
+  .comment-meta strong { color: var(--text); }
+  .comment-text {
+    font-size: 0.82rem; color: var(--text-light); line-height: 1.5;
+    white-space: pre-wrap; word-break: break-word;
+  }
+  .comment-delete {
+    position: absolute; top: 8px; right: 10px;
+    background: none; border: none; color: var(--text-muted);
+    cursor: pointer; font-size: 0.7rem; opacity: 0; transition: opacity 0.2s;
+  }
+  .comment-item:hover .comment-delete { opacity: 1; }
+  .comment-input-row {
+    display: flex; gap: 8px; align-items: flex-end;
+  }
+  .comment-input {
+    flex: 1; padding: 10px 14px; border: 1px dashed var(--border);
+    border-radius: var(--radius-sm); font-family: var(--font-body);
+    font-size: 0.82rem; color: var(--text-light); background: var(--cream);
+    resize: none; min-height: 40px; transition: border-color 0.2s;
+  }
+  .comment-input:focus { outline: none; border-color: var(--gold); }
+  .comment-send {
+    padding: 10px 18px; background: var(--gold); color: white;
+    border: none; border-radius: var(--radius-sm); font-family: var(--font-body);
+    font-size: 0.8rem; cursor: pointer; white-space: nowrap; transition: background 0.2s;
+  }
+  .comment-send:hover { background: #b08c4a; }
 </style>
 </head>
 <body>
@@ -1013,8 +1064,13 @@
     </div>
 
     <div class="venue-details">
-      <textarea class="venue-notes-field" data-note-id="area-1-reception" placeholder="Notes for Mindy about this area..."></textarea>
-      <div class="venue-notes-status"></div>
+      <div class="comment-thread" data-note-id="area-1-reception">
+        <div class="comment-list"></div>
+        <div class="comment-input-row">
+          <textarea class="comment-input" placeholder="Add a note..." rows="1"></textarea>
+          <button class="comment-send">Send</button>
+        </div>
+      </div>
     </div>
   </div>
 
@@ -1031,8 +1087,13 @@
     </div>
     <div class="venue-details">
       <p style="font-size:0.8rem;color:var(--text-muted);margin-bottom:8px">See combined floor plan in Area 1 above — outdoor zone shown below the threshold line.</p>
-      <textarea class="venue-notes-field" data-note-id="area-2-outdoor" placeholder="Notes for Mindy about the outdoor area..."></textarea>
-      <div class="venue-notes-status"></div>
+      <div class="comment-thread" data-note-id="area-2-outdoor">
+        <div class="comment-list"></div>
+        <div class="comment-input-row">
+          <textarea class="comment-input" placeholder="Add a note..." rows="1"></textarea>
+          <button class="comment-send">Send</button>
+        </div>
+      </div>
     </div>
   </div>
 
@@ -1132,8 +1193,13 @@
     </div>
 
     <div class="venue-details">
-      <textarea class="venue-notes-field" data-note-id="area-3-ceremony" placeholder="Notes for Mindy about ceremony setup..."></textarea>
-      <div class="venue-notes-status"></div>
+      <div class="comment-thread" data-note-id="area-3-ceremony">
+        <div class="comment-list"></div>
+        <div class="comment-input-row">
+          <textarea class="comment-input" placeholder="Add a note..." rows="1"></textarea>
+          <button class="comment-send">Send</button>
+        </div>
+      </div>
     </div>
   </div>
 
@@ -1226,8 +1292,13 @@
     </div>
 
     <div class="venue-details">
-      <textarea class="venue-notes-field" data-note-id="area-4-rooftop" placeholder="Notes for Mindy about cocktail hour setup..."></textarea>
-      <div class="venue-notes-status"></div>
+      <div class="comment-thread" data-note-id="area-4-rooftop">
+        <div class="comment-list"></div>
+        <div class="comment-input-row">
+          <textarea class="comment-input" placeholder="Add a note..." rows="1"></textarea>
+          <button class="comment-send">Send</button>
+        </div>
+      </div>
     </div>
   </div>
 
@@ -1290,8 +1361,13 @@
     </div>
 
     <div class="venue-details">
-      <textarea class="venue-notes-field" data-note-id="area-5-food" placeholder="Notes for Mindy about food station setup..."></textarea>
-      <div class="venue-notes-status"></div>
+      <div class="comment-thread" data-note-id="area-5-food">
+        <div class="comment-list"></div>
+        <div class="comment-input-row">
+          <textarea class="comment-input" placeholder="Add a note..." rows="1"></textarea>
+          <button class="comment-send">Send</button>
+        </div>
+      </div>
     </div>
   </div>
 
@@ -1352,8 +1428,13 @@
     </div>
 
     <div class="venue-details">
-      <textarea class="venue-notes-field" data-note-id="area-6-cake" placeholder="Notes for Mindy about cake display setup..."></textarea>
-      <div class="venue-notes-status"></div>
+      <div class="comment-thread" data-note-id="area-6-cake">
+        <div class="comment-list"></div>
+        <div class="comment-input-row">
+          <textarea class="comment-input" placeholder="Add a note..." rows="1"></textarea>
+          <button class="comment-send">Send</button>
+        </div>
+      </div>
     </div>
   </div>
 </section>
@@ -3953,7 +4034,7 @@ document.querySelectorAll('.card-image img').forEach(function(img) {
 <!-- Firebase SDK -->
 <script type="module">
 import { initializeApp } from "https://www.gstatic.com/firebasejs/12.15.0/firebase-app.js";
-import { getDatabase, ref, set, onValue } from "https://www.gstatic.com/firebasejs/12.15.0/firebase-database.js";
+import { getDatabase, ref, push, remove, onValue } from "https://www.gstatic.com/firebasejs/12.15.0/firebase-database.js";
 
 const firebaseConfig = {
   apiKey: "AIzaSyDGW3ro86l5Hie_bnvmjISqt_5tK0mjN6Q",
@@ -3968,33 +4049,131 @@ const firebaseConfig = {
 const app = initializeApp(firebaseConfig);
 const db = getDatabase(app);
 
-document.querySelectorAll('.venue-notes-field').forEach(function(textarea) {
-  var noteId = textarea.getAttribute('data-note-id');
-  var statusEl = textarea.nextElementSibling;
-  var debounceTimer = null;
-  var isRemoteUpdate = false;
+var currentUser = localStorage.getItem('wedding-catalog-user');
 
-  onValue(ref(db, 'notes/' + noteId), function(snapshot) {
-    var val = snapshot.val();
-    if (val !== null && val !== textarea.value) {
-      isRemoteUpdate = true;
-      textarea.value = val;
-      isRemoteUpdate = false;
-    }
-  });
-
-  textarea.addEventListener('input', function() {
-    if (isRemoteUpdate) return;
-    if (statusEl) statusEl.textContent = 'Saving...';
-    clearTimeout(debounceTimer);
-    debounceTimer = setTimeout(function() {
-      set(ref(db, 'notes/' + noteId), textarea.value).then(function() {
-        if (statusEl) statusEl.textContent = 'Saved';
-        setTimeout(function() { if (statusEl) statusEl.textContent = ''; }, 2000);
+function showUserPicker() {
+  return new Promise(function(resolve) {
+    var overlay = document.createElement('div');
+    overlay.className = 'user-picker-overlay';
+    overlay.innerHTML =
+      '<div class="user-picker-modal">' +
+        '<h3>Welcome!</h3>' +
+        '<p>Who\'s viewing the catalog?</p>' +
+        '<button class="user-picker-btn" data-user="amanda">Amanda</button>' +
+        '<button class="user-picker-btn" data-user="mason">Mason</button>' +
+        '<button class="user-picker-btn" data-user="mindy">Mindy</button>' +
+      '</div>';
+    document.body.appendChild(overlay);
+    overlay.querySelectorAll('.user-picker-btn').forEach(function(btn) {
+      btn.addEventListener('click', function() {
+        var user = btn.getAttribute('data-user');
+        localStorage.setItem('wedding-catalog-user', user);
+        currentUser = user;
+        overlay.remove();
+        resolve(user);
       });
-    }, 500);
+    });
   });
-});
+}
+
+function userDisplayName(id) {
+  return { amanda: 'Amanda', mason: 'Mason', mindy: 'Mindy' }[id] || id;
+}
+
+function formatTime(ts) {
+  var d = new Date(ts);
+  var months = ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'];
+  var h = d.getHours(); var m = d.getMinutes();
+  var ampm = h >= 12 ? 'pm' : 'am';
+  h = h % 12 || 12;
+  return months[d.getMonth()] + ' ' + d.getDate() + ', ' +
+    h + ':' + (m < 10 ? '0' : '') + m + ampm;
+}
+
+function renderComment(key, data) {
+  var item = document.createElement('div');
+  item.className = 'comment-item';
+  item.setAttribute('data-key', key);
+
+  var initials = { amanda: 'A', mason: 'M', mindy: 'M' };
+  var avatarClass = 'comment-avatar user-' + data.user;
+
+  var deleteBtn = '';
+  if (data.user === currentUser) {
+    deleteBtn = '<button class="comment-delete" data-key="' + key +
+      '" data-area="' + data.area + '">delete</button>';
+  }
+
+  item.innerHTML =
+    '<div class="' + avatarClass + '">' + (initials[data.user] || '?') + '</div>' +
+    '<div class="comment-body">' +
+      '<div class="comment-meta"><strong>' + userDisplayName(data.user) +
+        '</strong> &mdash; ' + formatTime(data.timestamp) + '</div>' +
+      '<div class="comment-text">' + escapeHtml(data.text) + '</div>' +
+    '</div>' + deleteBtn;
+
+  return item;
+}
+
+function escapeHtml(str) {
+  var div = document.createElement('div');
+  div.textContent = str;
+  return div.innerHTML;
+}
+
+function initThreads() {
+  document.querySelectorAll('.comment-thread').forEach(function(thread) {
+    var noteId = thread.getAttribute('data-note-id');
+    var list = thread.querySelector('.comment-list');
+    var input = thread.querySelector('.comment-input');
+    var sendBtn = thread.querySelector('.comment-send');
+
+    onValue(ref(db, 'comments/' + noteId), function(snapshot) {
+      list.innerHTML = '';
+      var comments = snapshot.val();
+      if (comments) {
+        Object.keys(comments).sort(function(a, b) {
+          return comments[a].timestamp - comments[b].timestamp;
+        }).forEach(function(key) {
+          list.appendChild(renderComment(key, comments[key]));
+        });
+      }
+
+      list.querySelectorAll('.comment-delete').forEach(function(btn) {
+        btn.addEventListener('click', function() {
+          var k = btn.getAttribute('data-key');
+          var a = btn.getAttribute('data-area');
+          remove(ref(db, 'comments/' + a + '/' + k));
+        });
+      });
+    });
+
+    function sendComment() {
+      var text = input.value.trim();
+      if (!text || !currentUser) return;
+      push(ref(db, 'comments/' + noteId), {
+        user: currentUser,
+        text: text,
+        timestamp: Date.now(),
+        area: noteId
+      });
+      input.value = '';
+    }
+
+    sendBtn.addEventListener('click', sendComment);
+    input.addEventListener('keydown', function(e) {
+      if (e.key === 'Enter' && !e.shiftKey) {
+        e.preventDefault();
+        sendComment();
+      }
+    });
+  });
+}
+
+(async function() {
+  if (!currentUser) await showUserPicker();
+  initThreads();
+})();
 </script>
 
 </body>
